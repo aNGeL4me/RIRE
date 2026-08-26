@@ -1,0 +1,101 @@
+{
+    "sha": "00ae5b401b24592a9f7019baada5b349152ee2fc",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGFlNWI0MDFiMjQ1OTJhOWY3MDE5YmFhZGE1YjM0OTE1MmVlMmZj",
+    "commit": {
+        "author": {
+            "name": "Hendrik Leppkes",
+            "email": "h.leppkes@gmail.com",
+            "date": "2015-09-30T11:09:01Z"
+        },
+        "committer": {
+            "name": "Hendrik Leppkes",
+            "email": "h.leppkes@gmail.com",
+            "date": "2015-10-20T11:02:18Z"
+        },
+        "message": "dca_parser: don't overwrite the sample rate, it may not be correct\n\nThe parser only reads the dca core sample rate, which is limited to a\nmaximum of 48000 Hz, while X96 and HD extensions can increase the sample\nrate up to 192000 Hz.\n\nThis change prevents the parser and decoder fighting over the sample rate,\npotentially confusing user applications. This also fixes sample rate\ndisplay of >48000Hz files with ffmpeg/ffprobe when using libdcadec.\n\nFixes ticket #4397",
+        "tree": {
+            "sha": "e308342eb75667bdec299169971aab5aa0e2894a",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/e308342eb75667bdec299169971aab5aa0e2894a"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00ae5b401b24592a9f7019baada5b349152ee2fc",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00ae5b401b24592a9f7019baada5b349152ee2fc",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00ae5b401b24592a9f7019baada5b349152ee2fc",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00ae5b401b24592a9f7019baada5b349152ee2fc/comments",
+    "author": {
+        "login": "Nevcairiel",
+        "id": 17890,
+        "node_id": "MDQ6VXNlcjE3ODkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/17890?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Nevcairiel",
+        "html_url": "https://github.com/Nevcairiel",
+        "followers_url": "https://api.github.com/users/Nevcairiel/followers",
+        "following_url": "https://api.github.com/users/Nevcairiel/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Nevcairiel/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Nevcairiel/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Nevcairiel/subscriptions",
+        "organizations_url": "https://api.github.com/users/Nevcairiel/orgs",
+        "repos_url": "https://api.github.com/users/Nevcairiel/repos",
+        "events_url": "https://api.github.com/users/Nevcairiel/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Nevcairiel/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "Nevcairiel",
+        "id": 17890,
+        "node_id": "MDQ6VXNlcjE3ODkw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/17890?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Nevcairiel",
+        "html_url": "https://github.com/Nevcairiel",
+        "followers_url": "https://api.github.com/users/Nevcairiel/followers",
+        "following_url": "https://api.github.com/users/Nevcairiel/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Nevcairiel/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Nevcairiel/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Nevcairiel/subscriptions",
+        "organizations_url": "https://api.github.com/users/Nevcairiel/orgs",
+        "repos_url": "https://api.github.com/users/Nevcairiel/repos",
+        "events_url": "https://api.github.com/users/Nevcairiel/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Nevcairiel/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "de1b1a7da9e6ddf42447271e519099a88b389e4a",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/de1b1a7da9e6ddf42447271e519099a88b389e4a",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/de1b1a7da9e6ddf42447271e519099a88b389e4a"
+        }
+    ],
+    "stats": {
+        "total": 1,
+        "additions": 0,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "70e64a89b8d6826ef7355c1744368b4f97133fc7",
+            "filename": "libavcodec/dca_parser.c",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00ae5b401b24592a9f7019baada5b349152ee2fc/libavcodec%2Fdca_parser.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00ae5b401b24592a9f7019baada5b349152ee2fc/libavcodec%2Fdca_parser.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fdca_parser.c?ref=00ae5b401b24592a9f7019baada5b349152ee2fc",
+            "patch": "@@ -166,7 +166,6 @@ static int dca_parse(AVCodecParserContext *s, AVCodecContext *avctx,\n     /* read the duration and sample rate from the frame header */\n     if (!dca_parse_params(buf, buf_size, &duration, &sample_rate, &pc1->framesize)) {\n         s->duration        = duration;\n-        avctx->sample_rate = sample_rate;\n     } else\n         s->duration = 0;\n "
+        }
+    ]
+}

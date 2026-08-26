@@ -1,0 +1,101 @@
+{
+    "sha": "0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTkwYjZhNDNlNzZhZWM4MDMxYjZjOGE0NmJiYTJiZjZjZDI1ZmE3",
+    "commit": {
+        "author": {
+            "name": "elupus",
+            "email": "elupus@ecce.se",
+            "date": "2008-08-27T18:07:51Z"
+        },
+        "committer": {
+            "name": "Michael Niedermayer",
+            "email": "michaelni@gmx.at",
+            "date": "2011-09-14T15:10:40Z"
+        },
+        "message": "check return value of url_fseek in mpegts_get_pcr",
+        "tree": {
+            "sha": "a3630a0ae8aa3d9badaaca3f43f8fd11bc905888",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/a3630a0ae8aa3d9badaaca3f43f8fd11bc905888"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7/comments",
+    "author": {
+        "login": "elupus",
+        "id": 482976,
+        "node_id": "MDQ6VXNlcjQ4Mjk3Ng==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/482976?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/elupus",
+        "html_url": "https://github.com/elupus",
+        "followers_url": "https://api.github.com/users/elupus/followers",
+        "following_url": "https://api.github.com/users/elupus/following{/other_user}",
+        "gists_url": "https://api.github.com/users/elupus/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/elupus/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/elupus/subscriptions",
+        "organizations_url": "https://api.github.com/users/elupus/orgs",
+        "repos_url": "https://api.github.com/users/elupus/repos",
+        "events_url": "https://api.github.com/users/elupus/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/elupus/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "880e83827f47f638596cf60681ee1dfa89535c75",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/880e83827f47f638596cf60681ee1dfa89535c75",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/880e83827f47f638596cf60681ee1dfa89535c75"
+        }
+    ],
+    "stats": {
+        "total": 3,
+        "additions": 2,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "011868e059a20b065d1ffef8ad22c89d5b24f8be",
+            "filename": "libavformat/mpegts.c",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7/libavformat%2Fmpegts.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7/libavformat%2Fmpegts.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavformat%2Fmpegts.c?ref=0a90b6a43e76aec8031b6c8a46bba2bf6cd25fa7",
+            "patch": "@@ -1720,7 +1720,8 @@ static int64_t mpegts_get_pcr(AVFormatContext *s, int stream_index,\n     int pcr_l, pcr_pid = ((PESContext*)s->streams[stream_index]->priv_data)->pcr_pid;\n     pos = ((*ppos  + ts->raw_packet_size - 1 - ts->pos47) / ts->raw_packet_size) * ts->raw_packet_size + ts->pos47;\n         while(pos < pos_limit) {\n-            avio_seek(s->pb, pos, SEEK_SET);\n+            if (avio_seek(s->pb, pos, SEEK_SET) < 0)\n+                return AV_NOPTS_VALUE;\n             if (avio_read(s->pb, buf, TS_PACKET_SIZE) != TS_PACKET_SIZE)\n                 return AV_NOPTS_VALUE;\n             if ((pcr_pid < 0 || (AV_RB16(buf + 1) & 0x1fff) == pcr_pid) &&"
+        }
+    ]
+}

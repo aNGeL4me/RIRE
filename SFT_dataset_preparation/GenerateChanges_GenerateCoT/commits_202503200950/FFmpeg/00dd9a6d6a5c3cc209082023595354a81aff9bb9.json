@@ -1,0 +1,101 @@
+{
+    "sha": "00dd9a6d6a5c3cc209082023595354a81aff9bb9",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGRkOWE2ZDZhNWMzY2MyMDkwODIwMjM1OTUzNTRhODFhZmY5YmI5",
+    "commit": {
+        "author": {
+            "name": "Justin Ruggles",
+            "email": "justin.ruggles@gmail.com",
+            "date": "2012-11-20T05:57:41Z"
+        },
+        "committer": {
+            "name": "Justin Ruggles",
+            "email": "justin.ruggles@gmail.com",
+            "date": "2012-11-20T15:52:49Z"
+        },
+        "message": "pcm: fix decoding of pcm_s16le_planar on big-endian\n\nThe sample count is decremented by the DECODE() macro and needs to be reset\nin each loop iteration. Also, DECODE() increments the src pointer so that does\nnot need to be done separately.",
+        "tree": {
+            "sha": "6ed84f91c6f54dd9f46d88a3384c55b85e1f175b",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/6ed84f91c6f54dd9f46d88a3384c55b85e1f175b"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00dd9a6d6a5c3cc209082023595354a81aff9bb9",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00dd9a6d6a5c3cc209082023595354a81aff9bb9",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00dd9a6d6a5c3cc209082023595354a81aff9bb9",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00dd9a6d6a5c3cc209082023595354a81aff9bb9/comments",
+    "author": {
+        "login": "justinruggles",
+        "id": 108822,
+        "node_id": "MDQ6VXNlcjEwODgyMg==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/108822?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/justinruggles",
+        "html_url": "https://github.com/justinruggles",
+        "followers_url": "https://api.github.com/users/justinruggles/followers",
+        "following_url": "https://api.github.com/users/justinruggles/following{/other_user}",
+        "gists_url": "https://api.github.com/users/justinruggles/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/justinruggles/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/justinruggles/subscriptions",
+        "organizations_url": "https://api.github.com/users/justinruggles/orgs",
+        "repos_url": "https://api.github.com/users/justinruggles/repos",
+        "events_url": "https://api.github.com/users/justinruggles/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/justinruggles/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "justinruggles",
+        "id": 108822,
+        "node_id": "MDQ6VXNlcjEwODgyMg==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/108822?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/justinruggles",
+        "html_url": "https://github.com/justinruggles",
+        "followers_url": "https://api.github.com/users/justinruggles/followers",
+        "following_url": "https://api.github.com/users/justinruggles/following{/other_user}",
+        "gists_url": "https://api.github.com/users/justinruggles/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/justinruggles/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/justinruggles/subscriptions",
+        "organizations_url": "https://api.github.com/users/justinruggles/orgs",
+        "repos_url": "https://api.github.com/users/justinruggles/repos",
+        "events_url": "https://api.github.com/users/justinruggles/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/justinruggles/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "ae3822bca16f1cdb2460a35b16f8ef636a04314e",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/ae3822bca16f1cdb2460a35b16f8ef636a04314e",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/ae3822bca16f1cdb2460a35b16f8ef636a04314e"
+        }
+    ],
+    "stats": {
+        "total": 6,
+        "additions": 4,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "a24a38ba80b484565046efa2e86415b8f1cc55a2",
+            "filename": "libavcodec/pcm.c",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 2,
+            "changes": 6,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00dd9a6d6a5c3cc209082023595354a81aff9bb9/libavcodec%2Fpcm.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00dd9a6d6a5c3cc209082023595354a81aff9bb9/libavcodec%2Fpcm.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fpcm.c?ref=00dd9a6d6a5c3cc209082023595354a81aff9bb9",
+            "patch": "@@ -338,15 +338,17 @@ static int pcm_decode_frame(AVCodecContext *avctx, void *data,\n         break;\n     case AV_CODEC_ID_PCM_S16LE_PLANAR:\n     {\n+        int av_unused n2;\n         n /= avctx->channels;\n         for (c = 0; c < avctx->channels; c++) {\n             samples = s->frame.extended_data[c];\n #if HAVE_BIGENDIAN\n-            DECODE(16, le16, src, samples, n, 0, 0)\n+            n2 = n;\n+            DECODE(16, le16, src, samples, n2, 0, 0)\n #else\n             memcpy(samples, src, n * 2);\n-#endif\n             src += n * 2;\n+#endif\n         }\n         break;\n     }"
+        }
+    ]
+}

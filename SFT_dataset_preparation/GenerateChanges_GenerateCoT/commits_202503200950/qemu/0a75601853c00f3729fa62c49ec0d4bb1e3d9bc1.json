@@ -1,0 +1,93 @@
+{
+    "sha": "0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTc1NjAxODUzYzAwZjM3MjlmYTYyYzQ5ZWMwZDRiYjFlM2Q5YmMx",
+    "commit": {
+        "author": {
+            "name": "Fam Zheng",
+            "email": "famz@redhat.com",
+            "date": "2016-03-01T06:18:19Z"
+        },
+        "committer": {
+            "name": "Paolo Bonzini",
+            "email": "pbonzini@redhat.com",
+            "date": "2016-03-07T12:18:28Z"
+        },
+        "message": "memory: Move assignment to ram_block to memory_region_init_*\n\nWe don't force \"const\" qualifiers with pointers in QEMU, but it's still\ngood to keep a clean function interface. Assigning to mr->ram_block is\nin this sense ugly - one initializer mutating its owning object's state.\n\nMove it to memory_region_init_*, where mr->ram_addr is assigned.\n\nReviewed-by: Gonglei <arei.gonglei@huawei.com>\nSigned-off-by: Fam Zheng <famz@redhat.com>\nMessage-Id: <1456813104-25902-3-git-send-email-famz@redhat.com>\nSigned-off-by: Paolo Bonzini <pbonzini@redhat.com>",
+        "tree": {
+            "sha": "9bbc82f3283b969e716970d1403f212fe832bb97",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/9bbc82f3283b969e716970d1403f212fe832bb97"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+    "html_url": "https://github.com/qemu/qemu/commit/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1/comments",
+    "author": null,
+    "committer": {
+        "login": "bonzini",
+        "id": 42082,
+        "node_id": "MDQ6VXNlcjQyMDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/42082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bonzini",
+        "html_url": "https://github.com/bonzini",
+        "followers_url": "https://api.github.com/users/bonzini/followers",
+        "following_url": "https://api.github.com/users/bonzini/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bonzini/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bonzini/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bonzini/subscriptions",
+        "organizations_url": "https://api.github.com/users/bonzini/orgs",
+        "repos_url": "https://api.github.com/users/bonzini/repos",
+        "events_url": "https://api.github.com/users/bonzini/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bonzini/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "528f46af6ecd1e300db18684969104d4067b867b",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/528f46af6ecd1e300db18684969104d4067b867b",
+            "html_url": "https://github.com/qemu/qemu/commit/528f46af6ecd1e300db18684969104d4067b867b"
+        }
+    ],
+    "stats": {
+        "total": 6,
+        "additions": 5,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "83e3f7d31bbeb5f8a067f4d3bb2caa3fc278b480",
+            "filename": "exec.c",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1/exec.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1/exec.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/exec.c?ref=0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+            "patch": "@@ -1711,7 +1711,6 @@ RAMBlock *qemu_ram_alloc_internal(ram_addr_t size, ram_addr_t max_size,\n         error_propagate(errp, local_err);\n         return NULL;\n     }\n-    mr->ram_block = new_block;\n     return new_block;\n }\n "
+        },
+        {
+            "sha": "1aa777da7feea50f6c66b76fa131d22faa629bb9",
+            "filename": "memory.c",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1/memory.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1/memory.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/memory.c?ref=0a75601853c00f3729fa62c49ec0d4bb1e3d9bc1",
+            "patch": "@@ -1277,6 +1277,7 @@ void memory_region_init_ram(MemoryRegion *mr,\n     mr->terminates = true;\n     mr->destructor = memory_region_destructor_ram;\n     ram_block = qemu_ram_alloc(size, mr, errp);\n+    mr->ram_block = ram_block;\n     mr->ram_addr = ram_block->offset;\n     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;\n }\n@@ -1298,6 +1299,7 @@ void memory_region_init_resizeable_ram(MemoryRegion *mr,\n     mr->terminates = true;\n     mr->destructor = memory_region_destructor_ram;\n     ram_block = qemu_ram_alloc_resizeable(size, max_size, resized, mr, errp);\n+    mr->ram_block = ram_block;\n     mr->ram_addr = ram_block->offset;\n     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;\n }\n@@ -1318,6 +1320,7 @@ void memory_region_init_ram_from_file(MemoryRegion *mr,\n     mr->terminates = true;\n     mr->destructor = memory_region_destructor_ram;\n     ram_block = qemu_ram_alloc_from_file(size, mr, share, path, errp);\n+    mr->ram_block = ram_block;\n     mr->ram_addr = ram_block->offset;\n     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;\n }\n@@ -1340,6 +1343,7 @@ void memory_region_init_ram_ptr(MemoryRegion *mr,\n     /* qemu_ram_alloc_from_ptr cannot fail with ptr != NULL.  */\n     assert(ptr != NULL);\n     ram_block = qemu_ram_alloc_from_ptr(size, ptr, mr, &error_fatal);\n+    mr->ram_block = ram_block;\n     mr->ram_addr = ram_block->offset;\n }\n \n@@ -1377,6 +1381,7 @@ void memory_region_init_rom_device(MemoryRegion *mr,\n     mr->rom_device = true;\n     mr->destructor = memory_region_destructor_rom_device;\n     ram_block = qemu_ram_alloc(size, mr, errp);\n+    mr->ram_block = ram_block;\n     mr->ram_addr = ram_block->offset;\n }\n "
+        }
+    ]
+}

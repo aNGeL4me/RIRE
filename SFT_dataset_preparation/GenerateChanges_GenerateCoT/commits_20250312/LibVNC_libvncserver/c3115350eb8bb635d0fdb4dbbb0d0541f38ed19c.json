@@ -1,0 +1,101 @@
+{
+  "sha": "c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6YzMxMTUzNTBlYjhiYjYzNWQwZmRiNGRiYmIwZDA1NDFmMzhlZDE5Yw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T19:32:59Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T19:32:59Z"
+    },
+    "message": "LibVNCClient: fix possible infinite loop\n\nCloses #251",
+    "tree": {
+      "sha": "68cab2ae957dfe142d7cf08d58e518f2ad02b957",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/68cab2ae957dfe142d7cf08d58e518f2ad02b957"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niFwEABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCW6/TawAKCRBCG7O0XGBn\n+CPEAJd/SdtXCFNzDkhW5uxPnZge7f6aAKCq6Y3Ck/rW7gYMwKccEhrN4bDQJw==\n=Q/nn\n-----END PGP SIGNATURE-----",
+      "payload": "tree 68cab2ae957dfe142d7cf08d58e518f2ad02b957\nparent 2f5b2ad1c6c99b1ac6482c95844a84d66bb52838\nauthor Christian Beier <dontmind@freeshell.org> 1538249579 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1538249579 +0200\n\nLibVNCClient: fix possible infinite loop\n\nCloses #251\n",
+      "verified_at": "2024-11-23T09:21:28Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "2f5b2ad1c6c99b1ac6482c95844a84d66bb52838",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/2f5b2ad1c6c99b1ac6482c95844a84d66bb52838",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/2f5b2ad1c6c99b1ac6482c95844a84d66bb52838"
+    }
+  ],
+  "stats": {
+    "total": 2,
+    "additions": 1,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "8d6a4c1f0d9d4f155e993212f2ac9023543fd9dc",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=c3115350eb8bb635d0fdb4dbbb0d0541f38ed19c",
+      "patch": "@@ -1879,7 +1879,7 @@ HandleRFBServerMessage(rfbClient* client)\n \t/* Regardless of cause, do not divide by zero. */\n \tlinesToRead = bytesPerLine ? (RFB_BUFFER_SIZE / bytesPerLine) : 0;\n \n-\twhile (h > 0) {\n+\twhile (linesToRead && h > 0) {\n \t  if (linesToRead > h)\n \t    linesToRead = h;\n "
+    }
+  ]
+}

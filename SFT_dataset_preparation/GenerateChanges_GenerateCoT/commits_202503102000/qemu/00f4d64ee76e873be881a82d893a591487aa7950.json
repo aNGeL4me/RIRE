@@ -1,0 +1,101 @@
+{
+    "sha": "00f4d64ee76e873be881a82d893a591487aa7950",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGY0ZDY0ZWU3NmU4NzNiZTg4MWE4MmQ4OTNhNTkxNDg3YWE3OTUw",
+    "commit": {
+        "author": {
+            "name": "Marcelo Tosatti",
+            "email": "mtosatti@redhat.com",
+            "date": "2013-06-18T23:38:25Z"
+        },
+        "committer": {
+            "name": "Paolo Bonzini",
+            "email": "pbonzini@redhat.com",
+            "date": "2013-07-03T08:41:32Z"
+        },
+        "message": "kvmclock: clock should count only if vm is running\n\nkvmclock should not count while vm is paused, because:\n\n1) if the vm is paused for long periods, timekeeping\nmath can overflow while converting the (large) clocksource\ndelta to nanoseconds.\n\n2) Users rely on CLOCK_MONOTONIC to count run time, that is,\ntime which OS has been in a runnable state (see CLOCK_BOOTTIME).\n\nChange kvmclock driver so as to save clock value when vm transitions\nfrom runnable to stopped state, and to restore clock value from stopped\nto runnable transition.\n\nCc: qemu-stable@nongnu.org\nSigned-off-by: Marcelo Tosatti <mtosatti@redhat.com>\nSigned-off-by: Gleb Natapov <gleb@redhat.com>\nSigned-off-by: Paolo Bonzini <pbonzini@redhat.com>",
+        "tree": {
+            "sha": "8175716bcd820616bc2fa278d98536de50aa2595",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/8175716bcd820616bc2fa278d98536de50aa2595"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00f4d64ee76e873be881a82d893a591487aa7950",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00f4d64ee76e873be881a82d893a591487aa7950",
+    "html_url": "https://github.com/qemu/qemu/commit/00f4d64ee76e873be881a82d893a591487aa7950",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00f4d64ee76e873be881a82d893a591487aa7950/comments",
+    "author": {
+        "login": "matosatti",
+        "id": 59877361,
+        "node_id": "MDQ6VXNlcjU5ODc3MzYx",
+        "avatar_url": "https://avatars.githubusercontent.com/u/59877361?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/matosatti",
+        "html_url": "https://github.com/matosatti",
+        "followers_url": "https://api.github.com/users/matosatti/followers",
+        "following_url": "https://api.github.com/users/matosatti/following{/other_user}",
+        "gists_url": "https://api.github.com/users/matosatti/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/matosatti/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/matosatti/subscriptions",
+        "organizations_url": "https://api.github.com/users/matosatti/orgs",
+        "repos_url": "https://api.github.com/users/matosatti/repos",
+        "events_url": "https://api.github.com/users/matosatti/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/matosatti/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "bonzini",
+        "id": 42082,
+        "node_id": "MDQ6VXNlcjQyMDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/42082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bonzini",
+        "html_url": "https://github.com/bonzini",
+        "followers_url": "https://api.github.com/users/bonzini/followers",
+        "following_url": "https://api.github.com/users/bonzini/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bonzini/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bonzini/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bonzini/subscriptions",
+        "organizations_url": "https://api.github.com/users/bonzini/orgs",
+        "repos_url": "https://api.github.com/users/bonzini/repos",
+        "events_url": "https://api.github.com/users/bonzini/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bonzini/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "bd50cbaa0f34e47c5b82eba1cd1e88143018fa19",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/bd50cbaa0f34e47c5b82eba1cd1e88143018fa19",
+            "html_url": "https://github.com/qemu/qemu/commit/bd50cbaa0f34e47c5b82eba1cd1e88143018fa19"
+        }
+    ],
+    "stats": {
+        "total": 64,
+        "additions": 30,
+        "deletions": 34
+    },
+    "files": [
+        {
+            "sha": "98e5ca52586d680ea761925a9fc40fc0a6edeef0",
+            "filename": "hw/i386/kvm/clock.c",
+            "status": "modified",
+            "additions": 30,
+            "deletions": 34,
+            "changes": 64,
+            "blob_url": "https://github.com/qemu/qemu/blob/00f4d64ee76e873be881a82d893a591487aa7950/hw%2Fi386%2Fkvm%2Fclock.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00f4d64ee76e873be881a82d893a591487aa7950/hw%2Fi386%2Fkvm%2Fclock.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fi386%2Fkvm%2Fclock.c?ref=00f4d64ee76e873be881a82d893a591487aa7950",
+            "patch": "@@ -28,38 +28,6 @@ typedef struct KVMClockState {\n     bool clock_valid;\n } KVMClockState;\n \n-static void kvmclock_pre_save(void *opaque)\n-{\n-    KVMClockState *s = opaque;\n-    struct kvm_clock_data data;\n-    int ret;\n-\n-    if (s->clock_valid) {\n-        return;\n-    }\n-    ret = kvm_vm_ioctl(kvm_state, KVM_GET_CLOCK, &data);\n-    if (ret < 0) {\n-        fprintf(stderr, \"KVM_GET_CLOCK failed: %s\\n\", strerror(ret));\n-        data.clock = 0;\n-    }\n-    s->clock = data.clock;\n-    /*\n-     * If the VM is stopped, declare the clock state valid to avoid re-reading\n-     * it on next vmsave (which would return a different value). Will be reset\n-     * when the VM is continued.\n-     */\n-    s->clock_valid = !runstate_is_running();\n-}\n-\n-static int kvmclock_post_load(void *opaque, int version_id)\n-{\n-    KVMClockState *s = opaque;\n-    struct kvm_clock_data data;\n-\n-    data.clock = s->clock;\n-    data.flags = 0;\n-    return kvm_vm_ioctl(kvm_state, KVM_SET_CLOCK, &data);\n-}\n \n static void kvmclock_vm_state_change(void *opaque, int running,\n                                      RunState state)\n@@ -70,8 +38,18 @@ static void kvmclock_vm_state_change(void *opaque, int running,\n     int ret;\n \n     if (running) {\n+        struct kvm_clock_data data;\n+\n         s->clock_valid = false;\n \n+        data.clock = s->clock;\n+        data.flags = 0;\n+        ret = kvm_vm_ioctl(kvm_state, KVM_SET_CLOCK, &data);\n+        if (ret < 0) {\n+            fprintf(stderr, \"KVM_SET_CLOCK failed: %s\\n\", strerror(ret));\n+            abort();\n+        }\n+\n         if (!cap_clock_ctrl) {\n             return;\n         }\n@@ -84,6 +62,26 @@ static void kvmclock_vm_state_change(void *opaque, int running,\n                 return;\n             }\n         }\n+    } else {\n+        struct kvm_clock_data data;\n+        int ret;\n+\n+        if (s->clock_valid) {\n+            return;\n+        }\n+        ret = kvm_vm_ioctl(kvm_state, KVM_GET_CLOCK, &data);\n+        if (ret < 0) {\n+            fprintf(stderr, \"KVM_GET_CLOCK failed: %s\\n\", strerror(ret));\n+            abort();\n+        }\n+        s->clock = data.clock;\n+\n+        /*\n+         * If the VM is stopped, declare the clock state valid to\n+         * avoid re-reading it on next vmsave (which would return\n+         * a different value). Will be reset when the VM is continued.\n+         */\n+        s->clock_valid = true;\n     }\n }\n \n@@ -100,8 +98,6 @@ static const VMStateDescription kvmclock_vmsd = {\n     .version_id = 1,\n     .minimum_version_id = 1,\n     .minimum_version_id_old = 1,\n-    .pre_save = kvmclock_pre_save,\n-    .post_load = kvmclock_post_load,\n     .fields = (VMStateField[]) {\n         VMSTATE_UINT64(clock, KVMClockState),\n         VMSTATE_END_OF_LIST()"
+        }
+    ]
+}

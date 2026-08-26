@@ -1,0 +1,101 @@
+{
+  "sha": "ca2a5ac02fbbadd0a21fabba779c1ea69173d10b",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6Y2EyYTVhYzAyZmJiYWRkMGEyMWZhYmJhNzc5YzFlYTY5MTczZDEwYg==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-10-21T18:52:04Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-10-21T18:52:04Z"
+    },
+    "message": "tightvnc-filetransfer: fix heap use-after-free\n\nOne can only guess what the intended semantics were here, but as every\nother rfbCloseClient() call in this file is followed by an immediate\nreturn, let's assume this was forgotton in this case.\n\nAnyway, don't forget to clean up to not leak memory.\n\nCloses #241",
+    "tree": {
+      "sha": "c4b29180428b67df23cf2e66826c44b0484af66b",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/c4b29180428b67df23cf2e66826c44b0484af66b"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCW8zLggAKCRBCG7O0XGBn\n+FCdAJ9/9epaU3I7dMxWj4+Osc9e+kHocQCgo+9Ul5XY8lIrSa937x1CPn6U42U=\n=QkhO\n-----END PGP SIGNATURE-----",
+      "payload": "tree c4b29180428b67df23cf2e66826c44b0484af66b\nparent 502821828ed00b4a2c4bef90683d0fd88ce495de\nauthor Christian Beier <dontmind@freeshell.org> 1540147924 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1540147924 +0200\n\ntightvnc-filetransfer: fix heap use-after-free\n\nOne can only guess what the intended semantics were here, but as every\nother rfbCloseClient() call in this file is followed by an immediate\nreturn, let's assume this was forgotton in this case.\n\nAnyway, don't forget to clean up to not leak memory.\n\nCloses #241\n",
+      "verified_at": "2024-11-21T14:33:33Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "502821828ed00b4a2c4bef90683d0fd88ce495de",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/502821828ed00b4a2c4bef90683d0fd88ce495de",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/502821828ed00b4a2c4bef90683d0fd88ce495de"
+    }
+  ],
+  "stats": {
+    "total": 2,
+    "additions": 2,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "0473783164f2f15d9a00383b3364a24815194d49",
+      "filename": "libvncserver/tightvnc-filetransfer/handlefiletransferrequest.c",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0,
+      "changes": 2,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b/libvncserver%2Ftightvnc-filetransfer%2Fhandlefiletransferrequest.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/ca2a5ac02fbbadd0a21fabba779c1ea69173d10b/libvncserver%2Ftightvnc-filetransfer%2Fhandlefiletransferrequest.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Ftightvnc-filetransfer%2Fhandlefiletransferrequest.c?ref=ca2a5ac02fbbadd0a21fabba779c1ea69173d10b",
+      "patch": "@@ -585,6 +585,8 @@ HandleFileDownloadCancelRequest(rfbClientPtr cl, rfbTightClientPtr rtcp)\n \t\t\t\t\t\"FileDownloadCancelMsg\\n\", __FILE__, __FUNCTION__);\n \t\t\n \t    rfbCloseClient(cl);\n+\t    free(reason);\n+\t    return;\n \t}\n \n \trfbLog(\"File [%s]: Method [%s]: File Download Cancel Request received:\""
+    }
+  ]
+}

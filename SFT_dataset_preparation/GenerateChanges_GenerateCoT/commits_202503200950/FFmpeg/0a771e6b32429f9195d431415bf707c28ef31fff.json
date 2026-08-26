@@ -1,0 +1,61 @@
+{
+    "sha": "0a771e6b32429f9195d431415bf707c28ef31fff",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTc3MWU2YjMyNDI5ZjkxOTVkNDMxNDE1YmY3MDdjMjhlZjMxZmZm",
+    "commit": {
+        "author": {
+            "name": "Rostislav Pehlivanov",
+            "email": "atomnuker@gmail.com",
+            "date": "2017-09-25T19:28:08Z"
+        },
+        "committer": {
+            "name": "Rostislav Pehlivanov",
+            "email": "atomnuker@gmail.com",
+            "date": "2017-11-09T02:56:53Z"
+        },
+        "message": "pngdec: expose gAMA and cHRM chunks as side/meta data\n\nSigned-off-by: Rostislav Pehlivanov <atomnuker@gmail.com>",
+        "tree": {
+            "sha": "45c1e517454a135102b64c72e1eacc8d47ef31ae",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/45c1e517454a135102b64c72e1eacc8d47ef31ae"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a771e6b32429f9195d431415bf707c28ef31fff",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a771e6b32429f9195d431415bf707c28ef31fff",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a771e6b32429f9195d431415bf707c28ef31fff",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a771e6b32429f9195d431415bf707c28ef31fff/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "723b6baaf8db43d0872bad504c4f4c780b53516b",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/723b6baaf8db43d0872bad504c4f4c780b53516b",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/723b6baaf8db43d0872bad504c4f4c780b53516b"
+        }
+    ],
+    "stats": {
+        "total": 39,
+        "additions": 38,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "20707f0ae586238b689fda71125c32c250830443",
+            "filename": "libavcodec/pngdec.c",
+            "status": "modified",
+            "additions": 38,
+            "deletions": 1,
+            "changes": 39,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a771e6b32429f9195d431415bf707c28ef31fff/libavcodec%2Fpngdec.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a771e6b32429f9195d431415bf707c28ef31fff/libavcodec%2Fpngdec.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fpngdec.c?ref=0a771e6b32429f9195d431415bf707c28ef31fff",
+            "patch": "@@ -25,6 +25,7 @@\n #include \"libavutil/bprint.h\"\n #include \"libavutil/imgutils.h\"\n #include \"libavutil/stereo3d.h\"\n+#include \"libavutil/mastering_display_metadata.h\"\n \n #include \"avcodec.h\"\n #include \"bytestream.h\"\n@@ -1167,7 +1168,7 @@ static int decode_frame_common(AVCodecContext *avctx, PNGDecContext *s,\n     AVDictionary **metadatap = NULL;\n     uint32_t tag, length;\n     int decode_next_dat = 0;\n-    int ret;\n+    int i, ret;\n \n     for (;;) {\n         length = bytestream2_get_bytes_left(&s->gb);\n@@ -1289,6 +1290,42 @@ static int decode_frame_common(AVCodecContext *avctx, PNGDecContext *s,\n                 goto fail;\n             break;\n         }\n+        case MKTAG('c', 'H', 'R', 'M'): {\n+            AVMasteringDisplayMetadata *mdm = av_mastering_display_metadata_create_side_data(p);\n+            if (!mdm) {\n+                ret = AVERROR(ENOMEM);\n+                goto fail;\n+            }\n+\n+            mdm->white_point[0] = av_make_q(bytestream2_get_be32(&s->gb), 100000);\n+            mdm->white_point[1] = av_make_q(bytestream2_get_be32(&s->gb), 100000);\n+\n+            /* RGB Primaries */\n+            for (i = 0; i < 3; i++) {\n+                mdm->display_primaries[i][0] = av_make_q(bytestream2_get_be32(&s->gb), 100000);\n+                mdm->display_primaries[i][1] = av_make_q(bytestream2_get_be32(&s->gb), 100000);\n+            }\n+\n+            mdm->has_primaries = 1;\n+            bytestream2_skip(&s->gb, 4); /* crc */\n+            break;\n+        }\n+        case MKTAG('g', 'A', 'M', 'A'): {\n+            AVBPrint bp;\n+            char *gamma_str;\n+            int num = bytestream2_get_be32(&s->gb);\n+\n+            av_bprint_init(&bp, 0, -1);\n+            av_bprintf(&bp, \"%i/%i\", num, 100000);\n+            av_bprint_finalize(&bp, &gamma_str);\n+            if (!gamma_str)\n+                return AVERROR(ENOMEM);\n+\n+            av_dict_set(&p->metadata, \"gamma\", gamma_str, AV_DICT_DONT_STRDUP_VAL);\n+\n+            bytestream2_skip(&s->gb, 4); /* crc */\n+            break;\n+        }\n         case MKTAG('I', 'E', 'N', 'D'):\n             if (!(s->pic_state & PNG_ALLIMAGE))\n                 av_log(avctx, AV_LOG_ERROR, \"IEND without all image\\n\");"
+        }
+    ]
+}

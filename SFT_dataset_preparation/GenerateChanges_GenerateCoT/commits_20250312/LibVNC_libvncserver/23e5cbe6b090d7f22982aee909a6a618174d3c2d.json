@@ -1,0 +1,101 @@
+{
+  "sha": "23e5cbe6b090d7f22982aee909a6a618174d3c2d",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MjNlNWNiZTZiMDkwZDdmMjI5ODJhZWU5MDlhNmE2MTgxNzRkM2MyZA==",
+  "commit": {
+    "author": {
+      "name": "Tobias Junghans",
+      "email": "tobydox@veyon.io",
+      "date": "2020-05-27T09:47:00Z"
+    },
+    "committer": {
+      "name": "Tobias Junghans",
+      "email": "tobydox@veyon.io",
+      "date": "2020-05-28T06:47:11Z"
+    },
+    "message": "libvncclient: fix pointer aliasing/alignment issue\n\nAccessing byte-aligned data through uint32_t pointers can cause crashes\non some platforms or reduce the performance. Therefore ensure a proper\nstack alignment.",
+    "tree": {
+      "sha": "eb43c71efb6855bb6b964a3e4c5182da108b4fef",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/eb43c71efb6855bb6b964a3e4c5182da108b4fef"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/23e5cbe6b090d7f22982aee909a6a618174d3c2d",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/23e5cbe6b090d7f22982aee909a6a618174d3c2d",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/23e5cbe6b090d7f22982aee909a6a618174d3c2d",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/23e5cbe6b090d7f22982aee909a6a618174d3c2d/comments",
+  "author": {
+    "login": "tobydox",
+    "id": 3300739,
+    "node_id": "MDQ6VXNlcjMzMDA3Mzk=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3300739?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tobydox",
+    "html_url": "https://github.com/tobydox",
+    "followers_url": "https://api.github.com/users/tobydox/followers",
+    "following_url": "https://api.github.com/users/tobydox/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tobydox/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tobydox/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tobydox/subscriptions",
+    "organizations_url": "https://api.github.com/users/tobydox/orgs",
+    "repos_url": "https://api.github.com/users/tobydox/repos",
+    "events_url": "https://api.github.com/users/tobydox/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tobydox/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "tobydox",
+    "id": 3300739,
+    "node_id": "MDQ6VXNlcjMzMDA3Mzk=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3300739?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tobydox",
+    "html_url": "https://github.com/tobydox",
+    "followers_url": "https://api.github.com/users/tobydox/followers",
+    "following_url": "https://api.github.com/users/tobydox/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tobydox/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tobydox/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tobydox/subscriptions",
+    "organizations_url": "https://api.github.com/users/tobydox/orgs",
+    "repos_url": "https://api.github.com/users/tobydox/repos",
+    "events_url": "https://api.github.com/users/tobydox/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tobydox/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "d79d9138568f3dda47a26633b496cce492cf8d52",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/d79d9138568f3dda47a26633b496cce492cf8d52",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/d79d9138568f3dda47a26633b496cce492cf8d52"
+    }
+  ],
+  "stats": {
+    "total": 11,
+    "additions": 7,
+    "deletions": 4
+  },
+  "files": [
+    {
+      "sha": "6f6d670499c17d6772246c493ae3211b6588e25f",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 4,
+      "changes": 11,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/23e5cbe6b090d7f22982aee909a6a618174d3c2d/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/23e5cbe6b090d7f22982aee909a6a618174d3c2d/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=23e5cbe6b090d7f22982aee909a6a618174d3c2d",
+      "patch": "@@ -1151,10 +1151,13 @@ rfbBool\n SetFormatAndEncodings(rfbClient* client)\n {\n   rfbSetPixelFormatMsg spf;\n-  char buf[sz_rfbSetEncodingsMsg + MAX_ENCODINGS * 4];\n+  union {\n+    char bytes[sz_rfbSetEncodingsMsg + MAX_ENCODINGS*4];\n+    rfbSetEncodingsMsg msg;\n+  } buf;\n \n-  rfbSetEncodingsMsg *se = (rfbSetEncodingsMsg *)buf;\n-  uint32_t *encs = (uint32_t *)(&buf[sz_rfbSetEncodingsMsg]);\n+  rfbSetEncodingsMsg *se = &buf.msg;\n+  uint32_t *encs = (uint32_t *)(&buf.bytes[sz_rfbSetEncodingsMsg]);\n   int len = 0;\n   rfbBool requestCompressLevel = FALSE;\n   rfbBool requestQualityLevel = FALSE;\n@@ -1354,7 +1357,7 @@ SetFormatAndEncodings(rfbClient* client)\n \n   se->nEncodings = rfbClientSwap16IfLE(se->nEncodings);\n \n-  if (!WriteToRFBServer(client, buf, len)) return FALSE;\n+  if (!WriteToRFBServer(client, buf.bytes, len)) return FALSE;\n \n   return TRUE;\n }"
+    }
+  ]
+}

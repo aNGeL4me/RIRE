@@ -1,0 +1,149 @@
+{
+    "sha": "0a73336d96397c80881219d080518fac6f1ecacb",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTczMzM2ZDk2Mzk3YzgwODgxMjE5ZDA4MDUxOGZhYzZmMWVjYWNi",
+    "commit": {
+        "author": {
+            "name": "Daniel P. Berrange",
+            "email": "berrange@redhat.com",
+            "date": "2016-10-07T12:18:34Z"
+        },
+        "committer": {
+            "name": "Michael S. Tsirkin",
+            "email": "mst@redhat.com",
+            "date": "2016-10-09T22:46:29Z"
+        },
+        "message": "net: don't poke at chardev internal QemuOpts\n\nThe vhost-user & colo code is poking at the QemuOpts instance\nin the CharDriverState struct, not realizing that it is valid\nfor this to be NULL. e.g. the following crash shows a codepath\nwhere it will be NULL:\n\n Program terminated with signal SIGSEGV, Segmentation fault.\n #0  0x000055baf6ab4adc in qemu_opt_foreach (opts=0x0, func=0x55baf696b650 <net_vhost_chardev_opts>, opaque=0x7ffc51368c00, errp=0x7ffc51368e48) at util/qemu-option.c:617\n 617         QTAILQ_FOREACH(opt, &opts->head, next) {\n [Current thread is 1 (Thread 0x7f1d4970bb40 (LWP 6603))]\n (gdb) bt\n #0  0x000055baf6ab4adc in qemu_opt_foreach (opts=0x0, func=0x55baf696b650 <net_vhost_chardev_opts>, opaque=0x7ffc51368c00, errp=0x7ffc51368e48) at util/qemu-option.c:617\n #1  0x000055baf696b7da in net_vhost_parse_chardev (opts=0x55baf8ff9260, errp=0x7ffc51368e48) at net/vhost-user.c:314\n #2  0x000055baf696b985 in net_init_vhost_user (netdev=0x55baf8ff9250, name=0x55baf879d270 \"hostnet2\", peer=0x0, errp=0x7ffc51368e48) at net/vhost-user.c:360\n #3  0x000055baf6960216 in net_client_init1 (object=0x55baf8ff9250, is_netdev=true, errp=0x7ffc51368e48) at net/net.c:1051\n #4  0x000055baf6960518 in net_client_init (opts=0x55baf776e7e0, is_netdev=true, errp=0x7ffc51368f00) at net/net.c:1108\n #5  0x000055baf696083f in netdev_add (opts=0x55baf776e7e0, errp=0x7ffc51368f00) at net/net.c:1186\n #6  0x000055baf69608c7 in qmp_netdev_add (qdict=0x55baf7afaf60, ret=0x7ffc51368f50, errp=0x7ffc51368f48) at net/net.c:1205\n #7  0x000055baf6622135 in handle_qmp_command (parser=0x55baf77fb590, tokens=0x7f1d24011960) at /path/to/qemu.git/monitor.c:3978\n #8  0x000055baf6a9d099 in json_message_process_token (lexer=0x55baf77fb598, input=0x55baf75acd20, type=JSON_RCURLY, x=113, y=19) at qobject/json-streamer.c:105\n #9  0x000055baf6abf7aa in json_lexer_feed_char (lexer=0x55baf77fb598, ch=125 '}', flush=false) at qobject/json-lexer.c:319\n #10 0x000055baf6abf8f2 in json_lexer_feed (lexer=0x55baf77fb598, buffer=0x7ffc51369170 \"}R\\204\\367\\272U\", size=1) at qobject/json-lexer.c:369\n #11 0x000055baf6a9d13c in json_message_parser_feed (parser=0x55baf77fb590, buffer=0x7ffc51369170 \"}R\\204\\367\\272U\", size=1) at qobject/json-streamer.c:124\n #12 0x000055baf66221f7 in monitor_qmp_read (opaque=0x55baf77fb530, buf=0x7ffc51369170 \"}R\\204\\367\\272U\", size=1) at /path/to/qemu.git/monitor.c:3994\n #13 0x000055baf6757014 in qemu_chr_be_write_impl (s=0x55baf7610a40, buf=0x7ffc51369170 \"}R\\204\\367\\272U\", len=1) at qemu-char.c:387\n #14 0x000055baf6757076 in qemu_chr_be_write (s=0x55baf7610a40, buf=0x7ffc51369170 \"}R\\204\\367\\272U\", len=1) at qemu-char.c:399\n #15 0x000055baf675b3b0 in tcp_chr_read (chan=0x55baf90244b0, cond=G_IO_IN, opaque=0x55baf7610a40) at qemu-char.c:2927\n #16 0x000055baf6a5d655 in qio_channel_fd_source_dispatch (source=0x55baf7610df0, callback=0x55baf675b25a <tcp_chr_read>, user_data=0x55baf7610a40) at io/channel-watch.c:84\n #17 0x00007f1d3e80cbbd in g_main_context_dispatch () from /usr/lib64/libglib-2.0.so.0\n #18 0x000055baf69d3720 in glib_pollfds_poll () at main-loop.c:213\n #19 0x000055baf69d37fd in os_host_main_loop_wait (timeout=126000000) at main-loop.c:258\n #20 0x000055baf69d38ad in main_loop_wait (nonblocking=0) at main-loop.c:506\n #21 0x000055baf676587b in main_loop () at vl.c:1908\n #22 0x000055baf676d3bf in main (argc=101, argv=0x7ffc5136a6c8, envp=0x7ffc5136a9f8) at vl.c:4604\n (gdb) p opts\n $1 = (QemuOpts *) 0x0\n\nThe crash occurred when attaching vhost-user net via QMP:\n\n{\n    \"execute\": \"chardev-add\",\n    \"arguments\": {\n        \"id\": \"charnet2\",\n        \"backend\": {\n            \"type\": \"socket\",\n            \"data\": {\n                \"addr\": {\n                    \"type\": \"unix\",\n                    \"data\": {\n                        \"path\": \"/var/run/openvswitch/vhost-user1\"\n                    }\n                },\n                \"wait\": false,\n                \"server\": false\n            }\n        }\n    },\n    \"id\": \"libvirt-19\"\n}\n{\n    \"return\": {\n\n    },\n    \"id\": \"libvirt-19\"\n}\n{\n    \"execute\": \"netdev_add\",\n    \"arguments\": {\n        \"type\": \"vhost-user\",\n        \"chardev\": \"charnet2\",\n        \"id\": \"hostnet2\"\n    },\n    \"id\": \"libvirt-20\"\n}\n\nCode using chardevs should not be poking at the internals of the\nCharDriverState struct. What vhost-user wants is a chardev that is\noperating as reconnectable network service, along with the ability\nto do FD passing over the connection. The colo code simply wants\na network service. Add a feature concept to the char drivers so\nthat chardev users can query the actual features they wish to have\nsupported. The QemuOpts member is removed to prevent future mistakes\nin this area.\n\nSigned-off-by: Daniel P. Berrange <berrange@redhat.com>\nReviewed-by: Marc-Andr\u00e9 Lureau <marcandre.lureau@redhat.com>\nReviewed-by: Michael S. Tsirkin <mst@redhat.com>\nSigned-off-by: Michael S. Tsirkin <mst@redhat.com>",
+        "tree": {
+            "sha": "bebe951409080b8a686944796d7953e8d8d9e032",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/bebe951409080b8a686944796d7953e8d8d9e032"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a73336d96397c80881219d080518fac6f1ecacb",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a73336d96397c80881219d080518fac6f1ecacb",
+    "html_url": "https://github.com/qemu/qemu/commit/0a73336d96397c80881219d080518fac6f1ecacb",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a73336d96397c80881219d080518fac6f1ecacb/comments",
+    "author": {
+        "login": "berrange",
+        "id": 1517315,
+        "node_id": "MDQ6VXNlcjE1MTczMTU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1517315?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/berrange",
+        "html_url": "https://github.com/berrange",
+        "followers_url": "https://api.github.com/users/berrange/followers",
+        "following_url": "https://api.github.com/users/berrange/following{/other_user}",
+        "gists_url": "https://api.github.com/users/berrange/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/berrange/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/berrange/subscriptions",
+        "organizations_url": "https://api.github.com/users/berrange/orgs",
+        "repos_url": "https://api.github.com/users/berrange/repos",
+        "events_url": "https://api.github.com/users/berrange/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/berrange/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "mstsirkin",
+        "id": 1062804,
+        "node_id": "MDQ6VXNlcjEwNjI4MDQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1062804?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mstsirkin",
+        "html_url": "https://github.com/mstsirkin",
+        "followers_url": "https://api.github.com/users/mstsirkin/followers",
+        "following_url": "https://api.github.com/users/mstsirkin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/mstsirkin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/mstsirkin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/mstsirkin/subscriptions",
+        "organizations_url": "https://api.github.com/users/mstsirkin/orgs",
+        "repos_url": "https://api.github.com/users/mstsirkin/repos",
+        "events_url": "https://api.github.com/users/mstsirkin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/mstsirkin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "ad14a46a36c6a17bd3d3445a8b0e1f6d421feac2",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/ad14a46a36c6a17bd3d3445a8b0e1f6d421feac2",
+            "html_url": "https://github.com/qemu/qemu/commit/ad14a46a36c6a17bd3d3445a8b0e1f6d421feac2"
+        }
+    ],
+    "stats": {
+        "total": 115,
+        "additions": 49,
+        "deletions": 66
+    },
+    "files": [
+        {
+            "sha": "3c421828ff31280b183069800443b61c85c39110",
+            "filename": "hmp.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a73336d96397c80881219d080518fac6f1ecacb/hmp.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a73336d96397c80881219d080518fac6f1ecacb/hmp.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hmp.c?ref=0a73336d96397c80881219d080518fac6f1ecacb",
+            "patch": "@@ -1909,6 +1909,7 @@ void hmp_chardev_add(Monitor *mon, const QDict *qdict)\n         error_setg(&err, \"Parsing chardev args failed\");\n     } else {\n         qemu_chr_new_from_opts(opts, NULL, &err);\n+        qemu_opts_del(opts);\n     }\n     hmp_handle_error(mon, &err);\n }"
+        },
+        {
+            "sha": "19dad3fb9c77b76a8866c270c72dc46cf5292513",
+            "filename": "include/sysemu/char.h",
+            "status": "modified",
+            "additions": 20,
+            "deletions": 1,
+            "changes": 21,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a73336d96397c80881219d080518fac6f1ecacb/include%2Fsysemu%2Fchar.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a73336d96397c80881219d080518fac6f1ecacb/include%2Fsysemu%2Fchar.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/include%2Fsysemu%2Fchar.h?ref=0a73336d96397c80881219d080518fac6f1ecacb",
+            "patch": "@@ -9,6 +9,7 @@\n #include \"qapi/qmp/qobject.h\"\n #include \"qapi/qmp/qstring.h\"\n #include \"qemu/main-loop.h\"\n+#include \"qemu/bitmap.h\"\n \n /* character device */\n \n@@ -58,6 +59,20 @@ struct ParallelIOArg {\n \n typedef void IOEventHandler(void *opaque, int event);\n \n+typedef enum {\n+    /* Whether the chardev peer is able to close and\n+     * reopen the data channel, thus requiring support\n+     * for qemu_chr_wait_connected() to wait for a\n+     * valid connection */\n+    QEMU_CHAR_FEATURE_RECONNECTABLE,\n+    /* Whether it is possible to send/recv file descriptors\n+     * over the data channel */\n+    QEMU_CHAR_FEATURE_FD_PASS,\n+\n+    QEMU_CHAR_FEATURE_LAST,\n+} CharDriverFeature;\n+\n+\n struct CharDriverState {\n     QemuMutex chr_write_lock;\n     void (*init)(struct CharDriverState *s);\n@@ -93,8 +108,8 @@ struct CharDriverState {\n     int avail_connections;\n     int is_mux;\n     guint fd_in_tag;\n-    QemuOpts *opts;\n     bool replay;\n+    DECLARE_BITMAP(features, QEMU_CHAR_FEATURE_LAST);\n     QTAILQ_ENTRY(CharDriverState) next;\n };\n \n@@ -437,6 +452,10 @@ int qemu_chr_add_client(CharDriverState *s, int fd);\n CharDriverState *qemu_chr_find(const char *name);\n bool chr_is_ringbuf(const CharDriverState *chr);\n \n+bool qemu_chr_has_feature(CharDriverState *chr,\n+                          CharDriverFeature feature);\n+void qemu_chr_set_feature(CharDriverState *chr,\n+                          CharDriverFeature feature);\n QemuOpts *qemu_chr_parse_compat(const char *label, const char *filename);\n \n void register_char_driver(const char *name, ChardevBackendKind kind,"
+        },
+        {
+            "sha": "47703c59bc99ee76f5fcc18e47fddf0ee654a803",
+            "filename": "net/colo-compare.c",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 28,
+            "changes": 30,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a73336d96397c80881219d080518fac6f1ecacb/net%2Fcolo-compare.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a73336d96397c80881219d080518fac6f1ecacb/net%2Fcolo-compare.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/net%2Fcolo-compare.c?ref=0a73336d96397c80881219d080518fac6f1ecacb",
+            "patch": "@@ -564,29 +564,6 @@ static void compare_sec_rs_finalize(SocketReadState *sec_rs)\n     }\n }\n \n-static int compare_chardev_opts(void *opaque,\n-                                const char *name, const char *value,\n-                                Error **errp)\n-{\n-    CompareChardevProps *props = opaque;\n-\n-    if (strcmp(name, \"backend\") == 0 &&\n-        strcmp(value, \"socket\") == 0) {\n-        props->is_socket = true;\n-        return 0;\n-    } else if (strcmp(name, \"host\") == 0 ||\n-              (strcmp(name, \"port\") == 0) ||\n-              (strcmp(name, \"server\") == 0) ||\n-              (strcmp(name, \"wait\") == 0) ||\n-              (strcmp(name, \"path\") == 0)) {\n-        return 0;\n-    } else {\n-        error_setg(errp,\n-                   \"COLO-compare does not support a chardev with option %s=%s\",\n-                   name, value);\n-        return -1;\n-    }\n-}\n \n /*\n  * Return 0 is success.\n@@ -606,12 +583,9 @@ static int find_and_check_chardev(CharDriverState **chr,\n     }\n \n     memset(&props, 0, sizeof(props));\n-    if (qemu_opt_foreach((*chr)->opts, compare_chardev_opts, &props, errp)) {\n-        return 1;\n-    }\n \n-    if (!props.is_socket) {\n-        error_setg(errp, \"chardev \\\"%s\\\" is not a tcp socket\",\n+    if (!qemu_chr_has_feature(*chr, QEMU_CHAR_FEATURE_RECONNECTABLE)) {\n+        error_setg(errp, \"chardev \\\"%s\\\" is not reconnectable\",\n                    chr_name);\n         return 1;\n     }"
+        },
+        {
+            "sha": "5b94c84541b580d26c45c7cb27681d63c465d69d",
+            "filename": "net/vhost-user.c",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 34,
+            "changes": 41,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a73336d96397c80881219d080518fac6f1ecacb/net%2Fvhost-user.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a73336d96397c80881219d080518fac6f1ecacb/net%2Fvhost-user.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/net%2Fvhost-user.c?ref=0a73336d96397c80881219d080518fac6f1ecacb",
+            "patch": "@@ -27,11 +27,6 @@ typedef struct VhostUserState {\n     bool started;\n } VhostUserState;\n \n-typedef struct VhostUserChardevProps {\n-    bool is_socket;\n-    bool is_unix;\n-} VhostUserChardevProps;\n-\n VHostNetState *vhost_user_get_vhost_net(NetClientState *nc)\n {\n     VhostUserState *s = DO_UPCAST(VhostUserState, nc, nc);\n@@ -278,45 +273,23 @@ static int net_vhost_user_init(NetClientState *peer, const char *device,\n     return 0;\n }\n \n-static int net_vhost_chardev_opts(void *opaque,\n-                                  const char *name, const char *value,\n-                                  Error **errp)\n-{\n-    VhostUserChardevProps *props = opaque;\n-\n-    if (strcmp(name, \"backend\") == 0 && strcmp(value, \"socket\") == 0) {\n-        props->is_socket = true;\n-    } else if (strcmp(name, \"path\") == 0) {\n-        props->is_unix = true;\n-    } else if (strcmp(name, \"server\") == 0) {\n-    } else {\n-        error_setg(errp,\n-                   \"vhost-user does not support a chardev with option %s=%s\",\n-                   name, value);\n-        return -1;\n-    }\n-    return 0;\n-}\n-\n-static CharDriverState *net_vhost_parse_chardev(\n+static CharDriverState *net_vhost_claim_chardev(\n     const NetdevVhostUserOptions *opts, Error **errp)\n {\n     CharDriverState *chr = qemu_chr_find(opts->chardev);\n-    VhostUserChardevProps props;\n \n     if (chr == NULL) {\n         error_setg(errp, \"chardev \\\"%s\\\" not found\", opts->chardev);\n         return NULL;\n     }\n \n-    /* inspect chardev opts */\n-    memset(&props, 0, sizeof(props));\n-    if (qemu_opt_foreach(chr->opts, net_vhost_chardev_opts, &props, errp)) {\n+    if (!qemu_chr_has_feature(chr, QEMU_CHAR_FEATURE_RECONNECTABLE)) {\n+        error_setg(errp, \"chardev \\\"%s\\\" is not reconnectable\",\n+                   opts->chardev);\n         return NULL;\n     }\n-\n-    if (!props.is_socket || !props.is_unix) {\n-        error_setg(errp, \"chardev \\\"%s\\\" is not a unix socket\",\n+    if (!qemu_chr_has_feature(chr, QEMU_CHAR_FEATURE_FD_PASS)) {\n+        error_setg(errp, \"chardev \\\"%s\\\" does not support FD passing\",\n                    opts->chardev);\n         return NULL;\n     }\n@@ -357,7 +330,7 @@ int net_init_vhost_user(const Netdev *netdev, const char *name,\n     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_USER);\n     vhost_user_opts = &netdev->u.vhost_user;\n \n-    chr = net_vhost_parse_chardev(vhost_user_opts, errp);\n+    chr = net_vhost_claim_chardev(vhost_user_opts, errp);\n     if (!chr) {\n         return -1;\n     }"
+        },
+        {
+            "sha": "768150d1f8027e9f184a72cfcbf4b4cf50feff9d",
+            "filename": "qemu-char.c",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 3,
+            "changes": 22,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a73336d96397c80881219d080518fac6f1ecacb/qemu-char.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a73336d96397c80881219d080518fac6f1ecacb/qemu-char.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qemu-char.c?ref=0a73336d96397c80881219d080518fac6f1ecacb",
+            "patch": "@@ -3996,7 +3996,6 @@ CharDriverState *qemu_chr_new_from_opts(QemuOpts *opts,\n     }\n \n     chr = qemu_chr_find(id);\n-    chr->opts = opts;\n \n qapi_out:\n     qapi_free_ChardevBackend(backend);\n@@ -4005,7 +4004,6 @@ CharDriverState *qemu_chr_new_from_opts(QemuOpts *opts,\n     return chr;\n \n err:\n-    qemu_opts_del(opts);\n     return NULL;\n }\n \n@@ -4033,6 +4031,7 @@ CharDriverState *qemu_chr_new_noreplay(const char *label, const char *filename,\n         qemu_chr_fe_claim_no_fail(chr);\n         monitor_init(chr, MONITOR_USE_READLINE);\n     }\n+    qemu_opts_del(opts);\n     return chr;\n }\n \n@@ -4132,7 +4131,6 @@ static void qemu_chr_free_common(CharDriverState *chr)\n {\n     g_free(chr->filename);\n     g_free(chr->label);\n-    qemu_opts_del(chr->opts);\n     if (chr->logfd != -1) {\n         close(chr->logfd);\n     }\n@@ -4513,6 +4511,11 @@ static CharDriverState *qmp_chardev_open_socket(const char *id,\n \n     s->addr = QAPI_CLONE(SocketAddress, sock->addr);\n \n+    qemu_chr_set_feature(chr, QEMU_CHAR_FEATURE_RECONNECTABLE);\n+    if (s->is_unix) {\n+        qemu_chr_set_feature(chr, QEMU_CHAR_FEATURE_FD_PASS);\n+    }\n+\n     chr->opaque = s;\n     chr->chr_wait_connected = tcp_chr_wait_connected;\n     chr->chr_write = tcp_chr_write;\n@@ -4596,6 +4599,19 @@ static CharDriverState *qmp_chardev_open_udp(const char *id,\n     return qemu_chr_open_udp(sioc, common, errp);\n }\n \n+\n+bool qemu_chr_has_feature(CharDriverState *chr,\n+                          CharDriverFeature feature)\n+{\n+    return test_bit(feature, chr->features);\n+}\n+\n+void qemu_chr_set_feature(CharDriverState *chr,\n+                           CharDriverFeature feature)\n+{\n+    return set_bit(feature, chr->features);\n+}\n+\n ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,\n                                Error **errp)\n {"
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+{
+  "sha": "85a778c0e45e87e35ee7199f1f25020648e8b812",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6ODVhNzc4YzBlNDVlODdlMzVlZTcxOTlmMWYyNTAyMDY0OGU4YjgxMg==",
+  "commit": {
+    "author": {
+      "name": "newsoft",
+      "email": "newsoft@MacBook-Air-de-newsoft-2.local",
+      "date": "2014-08-15T14:41:58Z"
+    },
+    "committer": {
+      "name": "newsoft",
+      "email": "newsoft@MacBook-Air-de-newsoft-2.local",
+      "date": "2014-08-15T14:41:58Z"
+    },
+    "message": "Check for MallocFrameBuffer() return value\n\nIf MallocFrameBuffer() returns FALSE, frame buffer pointer is left to\nNULL. Subsequent writes into that buffer could lead to memory\ncorruption, or even arbitrary code execution.",
+    "tree": {
+      "sha": "67f488e08d6bd6a89390c2840d96dd6ca909bcae",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/67f488e08d6bd6a89390c2840d96dd6ca909bcae"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/85a778c0e45e87e35ee7199f1f25020648e8b812",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/85a778c0e45e87e35ee7199f1f25020648e8b812",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/85a778c0e45e87e35ee7199f1f25020648e8b812",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/85a778c0e45e87e35ee7199f1f25020648e8b812/comments",
+  "author": null,
+  "committer": null,
+  "parents": [
+    {
+      "sha": "045a044e8ae79db9244593fbce154cdf6e843273",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/045a044e8ae79db9244593fbce154cdf6e843273",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/045a044e8ae79db9244593fbce154cdf6e843273"
+    }
+  ],
+  "stats": {
+    "total": 13,
+    "additions": 9,
+    "deletions": 4
+  },
+  "files": [
+    {
+      "sha": "f55c74f64ccb9efa1ab836dc818698262d7d6ea8",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 3,
+      "changes": 10,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/85a778c0e45e87e35ee7199f1f25020648e8b812/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/85a778c0e45e87e35ee7199f1f25020648e8b812/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=85a778c0e45e87e35ee7199f1f25020648e8b812",
+      "patch": "@@ -1829,7 +1829,8 @@ HandleRFBServerMessage(rfbClient* client)\n \tclient->updateRect.x = client->updateRect.y = 0;\n \tclient->updateRect.w = client->width;\n \tclient->updateRect.h = client->height;\n-\tclient->MallocFrameBuffer(client);\n+  if (!client->MallocFrameBuffer(client))\n+    return FALSE;\n \tSendFramebufferUpdateRequest(client, 0, 0, rect.r.w, rect.r.h, FALSE);\n \trfbClientLog(\"Got new framebuffer size: %dx%d\\n\", rect.r.w, rect.r.h);\n \tcontinue;\n@@ -2290,7 +2291,9 @@ HandleRFBServerMessage(rfbClient* client)\n     client->updateRect.x = client->updateRect.y = 0;\n     client->updateRect.w = client->width;\n     client->updateRect.h = client->height;\n-    client->MallocFrameBuffer(client);\n+    if (!client->MallocFrameBuffer(client))\n+      return FALSE;\n+\n     SendFramebufferUpdateRequest(client, 0, 0, client->width, client->height, FALSE);\n     rfbClientLog(\"Got new framebuffer size: %dx%d\\n\", client->width, client->height);\n     break;\n@@ -2306,7 +2309,8 @@ HandleRFBServerMessage(rfbClient* client)\n     client->updateRect.x = client->updateRect.y = 0;\n     client->updateRect.w = client->width;\n     client->updateRect.h = client->height;\n-    client->MallocFrameBuffer(client);\n+    if (!client->MallocFrameBuffer(client))\n+      return FALSE;\n     SendFramebufferUpdateRequest(client, 0, 0, client->width, client->height, FALSE);\n     rfbClientLog(\"Got new framebuffer size: %dx%d\\n\", client->width, client->height);\n     break;"
+    },
+    {
+      "sha": "65b74125472d5097f90c9890ac8a2ec1d4871f14",
+      "filename": "libvncclient/vncviewer.c",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 1,
+      "changes": 3,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/85a778c0e45e87e35ee7199f1f25020648e8b812/libvncclient%2Fvncviewer.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/85a778c0e45e87e35ee7199f1f25020648e8b812/libvncclient%2Fvncviewer.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fvncviewer.c?ref=85a778c0e45e87e35ee7199f1f25020648e8b812",
+      "patch": "@@ -250,7 +250,8 @@ static rfbBool rfbInitConnection(rfbClient* client)\n \n   client->width=client->si.framebufferWidth;\n   client->height=client->si.framebufferHeight;\n-  client->MallocFrameBuffer(client);\n+  if (!client->MallocFrameBuffer(client))\n+    return FALSE;\n \n   if (!SetFormatAndEncodings(client))\n     return FALSE;"
+    }
+  ]
+}

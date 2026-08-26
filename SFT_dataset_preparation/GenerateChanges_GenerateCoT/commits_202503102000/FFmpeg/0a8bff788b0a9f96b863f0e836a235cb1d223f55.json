@@ -1,0 +1,81 @@
+{
+    "sha": "0a8bff788b0a9f96b863f0e836a235cb1d223f55",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYThiZmY3ODhiMGE5Zjk2Yjg2M2YwZTgzNmEyMzVjYjFkMjIzZjU1",
+    "commit": {
+        "author": {
+            "name": "Andreas Cadhalpun",
+            "email": "Andreas.Cadhalpun@googlemail.com",
+            "date": "2015-11-13T20:48:27Z"
+        },
+        "committer": {
+            "name": "Vittorio Giovara",
+            "email": "vittorio.giovara@gmail.com",
+            "date": "2015-11-14T02:40:20Z"
+        },
+        "message": "dds: disable palette flag for compressed images\n\nHaving both is not valid and can cause a NULL pointer dereference of\nframe->data[1] later.\n\nSigned-off-by: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>\nSigned-off-by: Vittorio Giovara <vittorio.giovara@gmail.com>",
+        "tree": {
+            "sha": "225f4f820a1e46cca09ca96663e7956b9d397a69",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/225f4f820a1e46cca09ca96663e7956b9d397a69"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a8bff788b0a9f96b863f0e836a235cb1d223f55",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a8bff788b0a9f96b863f0e836a235cb1d223f55",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a8bff788b0a9f96b863f0e836a235cb1d223f55",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a8bff788b0a9f96b863f0e836a235cb1d223f55/comments",
+    "author": null,
+    "committer": {
+        "login": "kodawah",
+        "id": 1374357,
+        "node_id": "MDQ6VXNlcjEzNzQzNTc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1374357?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kodawah",
+        "html_url": "https://github.com/kodawah",
+        "followers_url": "https://api.github.com/users/kodawah/followers",
+        "following_url": "https://api.github.com/users/kodawah/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kodawah/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kodawah/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kodawah/subscriptions",
+        "organizations_url": "https://api.github.com/users/kodawah/orgs",
+        "repos_url": "https://api.github.com/users/kodawah/repos",
+        "events_url": "https://api.github.com/users/kodawah/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kodawah/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "2fb6e1e754f38ddd6eba0738f287e5b9ddc3777d",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/2fb6e1e754f38ddd6eba0738f287e5b9ddc3777d",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/2fb6e1e754f38ddd6eba0738f287e5b9ddc3777d"
+        }
+    ],
+    "stats": {
+        "total": 6,
+        "additions": 6,
+        "deletions": 0
+    },
+    "files": [
+        {
+            "sha": "3b7e7f67e99c6fea6924c1781194c01fea741310",
+            "filename": "libavcodec/dds.c",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a8bff788b0a9f96b863f0e836a235cb1d223f55/libavcodec%2Fdds.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a8bff788b0a9f96b863f0e836a235cb1d223f55/libavcodec%2Fdds.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fdds.c?ref=0a8bff788b0a9f96b863f0e836a235cb1d223f55",
+            "patch": "@@ -141,6 +141,12 @@ static int parse_pixel_format(AVCodecContext *avctx)\n     normal_map      = flags & DDPF_NORMALMAP;\n     fourcc = bytestream2_get_le32(gbc);\n \n+    if (ctx->compressed && ctx->paletted) {\n+        av_log(avctx, AV_LOG_WARNING,\n+               \"Disabling invalid palette flag for compressed dds.\\n\");\n+        ctx->paletted = 0;\n+    }\n+\n     bpp = bytestream2_get_le32(gbc); // rgbbitcount\n     r   = bytestream2_get_le32(gbc); // rbitmask\n     g   = bytestream2_get_le32(gbc); // gbitmask"
+        }
+    ]
+}

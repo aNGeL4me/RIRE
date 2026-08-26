@@ -1,0 +1,101 @@
+{
+    "sha": "00b8702581f312aa46f797a8b3153d9b2892d967",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGI4NzAyNTgxZjMxMmFhNDZmNzk3YThiMzE1M2Q5YjI4OTJkOTY3",
+    "commit": {
+        "author": {
+            "name": "Daniel Oram",
+            "email": "daniel.oram@gmail.com",
+            "date": "2016-11-10T12:42:07Z"
+        },
+        "committer": {
+            "name": "Eduardo Habkost",
+            "email": "ehabkost@redhat.com",
+            "date": "2016-11-15T17:50:04Z"
+        },
+        "message": "qdev: Fix assert in PCI address property when used by vfio-pci\n\nAllow the PCIHostDeviceAddress structure to work as the host property\nin vfio-pci when it has it's default value of all fields set to ~0. In\nthis form the property indicates a non-existant device but given the\nfield bit sizes gets asserted as excess (and invalid) precision\noverflows the string buffer. The BDF of an invalid device\n\"FFFF:FF:FF.F\" is returned instead.\n\nSigned-off-by: Daniel Oram <daniel.oram@gmail.com>\nReviewed-by: Alex Williamson <alex.williamson@redhat.com>\nMessage-Id: <71f06765c4ba16dcd71cbf78e877619948f04ed9.1478777270.git.daniel.oram@gmail.com>\nSigned-off-by: Eduardo Habkost <ehabkost@redhat.com>",
+        "tree": {
+            "sha": "7f57c7b7d33452535f56d5312995be72487aeb55",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/7f57c7b7d33452535f56d5312995be72487aeb55"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00b8702581f312aa46f797a8b3153d9b2892d967",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00b8702581f312aa46f797a8b3153d9b2892d967",
+    "html_url": "https://github.com/qemu/qemu/commit/00b8702581f312aa46f797a8b3153d9b2892d967",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00b8702581f312aa46f797a8b3153d9b2892d967/comments",
+    "author": {
+        "login": "DOram424",
+        "id": 54149397,
+        "node_id": "MDQ6VXNlcjU0MTQ5Mzk3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/54149397?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DOram424",
+        "html_url": "https://github.com/DOram424",
+        "followers_url": "https://api.github.com/users/DOram424/followers",
+        "following_url": "https://api.github.com/users/DOram424/following{/other_user}",
+        "gists_url": "https://api.github.com/users/DOram424/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/DOram424/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/DOram424/subscriptions",
+        "organizations_url": "https://api.github.com/users/DOram424/orgs",
+        "repos_url": "https://api.github.com/users/DOram424/repos",
+        "events_url": "https://api.github.com/users/DOram424/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/DOram424/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "ehabkost",
+        "id": 27336,
+        "node_id": "MDQ6VXNlcjI3MzM2",
+        "avatar_url": "https://avatars.githubusercontent.com/u/27336?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ehabkost",
+        "html_url": "https://github.com/ehabkost",
+        "followers_url": "https://api.github.com/users/ehabkost/followers",
+        "following_url": "https://api.github.com/users/ehabkost/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ehabkost/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ehabkost/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ehabkost/subscriptions",
+        "organizations_url": "https://api.github.com/users/ehabkost/orgs",
+        "repos_url": "https://api.github.com/users/ehabkost/repos",
+        "events_url": "https://api.github.com/users/ehabkost/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ehabkost/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "97e53cf82ca0ffa9abe2def2fabc5fc75b914d90",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/97e53cf82ca0ffa9abe2def2fabc5fc75b914d90",
+            "html_url": "https://github.com/qemu/qemu/commit/97e53cf82ca0ffa9abe2def2fabc5fc75b914d90"
+        }
+    ],
+    "stats": {
+        "total": 14,
+        "additions": 10,
+        "deletions": 4
+    },
+    "files": [
+        {
+            "sha": "2a82768067210acc7da2c76cd951225deb7bf0b3",
+            "filename": "hw/core/qdev-properties.c",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 4,
+            "changes": 14,
+            "blob_url": "https://github.com/qemu/qemu/blob/00b8702581f312aa46f797a8b3153d9b2892d967/hw%2Fcore%2Fqdev-properties.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00b8702581f312aa46f797a8b3153d9b2892d967/hw%2Fcore%2Fqdev-properties.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fcore%2Fqdev-properties.c?ref=00b8702581f312aa46f797a8b3153d9b2892d967",
+            "patch": "@@ -705,13 +705,19 @@ static void get_pci_host_devaddr(Object *obj, Visitor *v, const char *name,\n     DeviceState *dev = DEVICE(obj);\n     Property *prop = opaque;\n     PCIHostDeviceAddress *addr = qdev_get_prop_ptr(dev, prop);\n-    char buffer[] = \"xxxx:xx:xx.x\";\n+    char buffer[] = \"ffff:ff:ff.f\";\n     char *p = buffer;\n     int rc = 0;\n \n-    rc = snprintf(buffer, sizeof(buffer), \"%04x:%02x:%02x.%d\",\n-                  addr->domain, addr->bus, addr->slot, addr->function);\n-    assert(rc == sizeof(buffer) - 1);\n+    /*\n+     * Catch \"invalid\" device reference from vfio-pci and allow the\n+     * default buffer representing the non-existant device to be used.\n+     */\n+    if (~addr->domain || ~addr->bus || ~addr->slot || ~addr->function) {\n+        rc = snprintf(buffer, sizeof(buffer), \"%04x:%02x:%02x.%0d\",\n+                      addr->domain, addr->bus, addr->slot, addr->function);\n+        assert(rc == sizeof(buffer) - 1);\n+    }\n \n     visit_type_str(v, name, &p, errp);\n }"
+        }
+    ]
+}

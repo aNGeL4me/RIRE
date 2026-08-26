@@ -1,0 +1,61 @@
+{
+    "sha": "0a359cf157957f3eb37760f731fa75dd320fd659",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTM1OWNmMTU3OTU3ZjNlYjM3NzYwZjczMWZhNzVkZDMyMGZkNjU5",
+    "commit": {
+        "author": {
+            "name": "Jason Garrett-Glaser",
+            "email": "darkshikari@gmail.com",
+            "date": "2009-01-18T07:14:36Z"
+        },
+        "committer": {
+            "name": "Jason Garrett-Glaser",
+            "email": "darkshikari@gmail.com",
+            "date": "2009-01-18T07:14:36Z"
+        },
+        "message": "Faster VC-1 C loopfilter using lots of xor magic\n\nOriginally committed as revision 16670 to svn://svn.ffmpeg.org/ffmpeg/trunk",
+        "tree": {
+            "sha": "4e8aebafc03751242b163ffd40fbfb003c7c30ea",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/4e8aebafc03751242b163ffd40fbfb003c7c30ea"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a359cf157957f3eb37760f731fa75dd320fd659",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a359cf157957f3eb37760f731fa75dd320fd659",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a359cf157957f3eb37760f731fa75dd320fd659",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a359cf157957f3eb37760f731fa75dd320fd659/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "2a839eeb02243f7f3305b81623bf5df7dc5cbf43",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/2a839eeb02243f7f3305b81623bf5df7dc5cbf43",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/2a839eeb02243f7f3305b81623bf5df7dc5cbf43"
+        }
+    ],
+    "stats": {
+        "total": 45,
+        "additions": 27,
+        "deletions": 18
+    },
+    "files": [
+        {
+            "sha": "115ee717d55b79cfcd8f42661aa1631e4bbb0d2a",
+            "filename": "libavcodec/vc1.c",
+            "status": "modified",
+            "additions": 27,
+            "deletions": 18,
+            "changes": 45,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a359cf157957f3eb37760f731fa75dd320fd659/libavcodec%2Fvc1.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a359cf157957f3eb37760f731fa75dd320fd659/libavcodec%2Fvc1.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fvc1.c?ref=0a359cf157957f3eb37760f731fa75dd320fd659",
+            "patch": "@@ -314,30 +314,39 @@ static int bitplane_decoding(uint8_t* data, int *raw_flag, VC1Context *v)\n  * @return whether other 3 pairs should be filtered or not\n  * @see 8.6\n  */\n-static int vc1_filter_line(uint8_t* src, int stride, int pq){\n-    int a0, a1, a2, a3, d, clip, filt3 = 0;\n+static int av_always_inline vc1_filter_line(uint8_t* src, int stride, int pq){\n     uint8_t *cm = ff_cropTbl + MAX_NEG_CROP;\n \n-    a0     = (2*(src[-2*stride] - src[ 1*stride]) - 5*(src[-1*stride] - src[ 0*stride]) + 4) >> 3;\n-    if(FFABS(a0) < pq){\n-        a1 = (2*(src[-4*stride] - src[-1*stride]) - 5*(src[-3*stride] - src[-2*stride]) + 4) >> 3;\n-        a2 = (2*(src[ 0*stride] - src[ 3*stride]) - 5*(src[ 1*stride] - src[ 2*stride]) + 4) >> 3;\n-        a3 = FFMIN(FFABS(a1), FFABS(a2));\n-        if(a3 < FFABS(a0)){\n-            d = 5 * ((a0 >=0 ? a3 : -a3) - a0) / 8;\n-            clip = (src[-1*stride] - src[ 0*stride])/2;\n+    int a0 = (2*(src[-2*stride] - src[ 1*stride]) - 5*(src[-1*stride] - src[ 0*stride]) + 4) >> 3;\n+    int a0_sign = a0 >> 31;        /* Store sign */\n+    a0 = (a0 ^ a0_sign) - a0_sign; /* a0 = FFABS(a0); */\n+    if(a0 < pq){\n+        int a1 = FFABS((2*(src[-4*stride] - src[-1*stride]) - 5*(src[-3*stride] - src[-2*stride]) + 4) >> 3);\n+        int a2 = FFABS((2*(src[ 0*stride] - src[ 3*stride]) - 5*(src[ 1*stride] - src[ 2*stride]) + 4) >> 3);\n+        if(a1 < a0 || a2 < a0){\n+            int clip = src[-1*stride] - src[ 0*stride];\n+            int clip_sign = clip >> 31;\n+            clip = ((clip ^ clip_sign) - clip_sign)>>1;\n             if(clip){\n-                filt3 = 1;\n-                if(clip > 0)\n-                    d = av_clip(d, 0, clip);\n-                else\n-                    d = av_clip(d, clip, 0);\n-                src[-1*stride] = cm[src[-1*stride] - d];\n-                src[ 0*stride] = cm[src[ 0*stride] + d];\n+                int a3 = FFMIN(a1, a2);\n+                int d = 5 * (a3 - a0);\n+                int d_sign = (d >> 31);\n+                d = ((d ^ d_sign) - d_sign) >> 3;\n+                d_sign ^= a0_sign;\n+\n+                if( (d_sign ^ clip_sign) | ~d )\n+                    d = 0;\n+                else{\n+                    d = FFMIN(d, clip);\n+                    d = (d ^ d_sign) - d_sign;          /* Restore sign */\n+                    src[-1*stride] = cm[src[-1*stride] - d];\n+                    src[ 0*stride] = cm[src[ 0*stride] + d];\n+                }\n+                return 1;\n             }\n         }\n     }\n-    return filt3;\n+    return 0;\n }\n \n /**"
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+  "sha": "38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MzhlOThlZTYxZDc0ZjVmNWFiNGFhNGM3NzE0NmZhYWQxOTYyZDZkMA==",
+  "commit": {
+    "author": {
+      "name": "Tobias Junghans",
+      "email": "tobydox@veyon.io",
+      "date": "2020-05-27T10:16:32Z"
+    },
+    "committer": {
+      "name": "Tobias Junghans",
+      "email": "tobydox@veyon.io",
+      "date": "2020-05-28T06:40:09Z"
+    },
+    "message": "libvncserver: add missing NULL pointer checks",
+    "tree": {
+      "sha": "cfe11b406a9376ade51035b67aaa0729d5167902",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/cfe11b406a9376ade51035b67aaa0729d5167902"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0/comments",
+  "author": {
+    "login": "tobydox",
+    "id": 3300739,
+    "node_id": "MDQ6VXNlcjMzMDA3Mzk=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3300739?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tobydox",
+    "html_url": "https://github.com/tobydox",
+    "followers_url": "https://api.github.com/users/tobydox/followers",
+    "following_url": "https://api.github.com/users/tobydox/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tobydox/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tobydox/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tobydox/subscriptions",
+    "organizations_url": "https://api.github.com/users/tobydox/orgs",
+    "repos_url": "https://api.github.com/users/tobydox/repos",
+    "events_url": "https://api.github.com/users/tobydox/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tobydox/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "tobydox",
+    "id": 3300739,
+    "node_id": "MDQ6VXNlcjMzMDA3Mzk=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3300739?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/tobydox",
+    "html_url": "https://github.com/tobydox",
+    "followers_url": "https://api.github.com/users/tobydox/followers",
+    "following_url": "https://api.github.com/users/tobydox/following{/other_user}",
+    "gists_url": "https://api.github.com/users/tobydox/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/tobydox/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/tobydox/subscriptions",
+    "organizations_url": "https://api.github.com/users/tobydox/orgs",
+    "repos_url": "https://api.github.com/users/tobydox/repos",
+    "events_url": "https://api.github.com/users/tobydox/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/tobydox/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "74e8a70f2c9a5248d6718ce443e07c7ed314dfff",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/74e8a70f2c9a5248d6718ce443e07c7ed314dfff",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/74e8a70f2c9a5248d6718ce443e07c7ed314dfff"
+    }
+  ],
+  "stats": {
+    "total": 30,
+    "additions": 19,
+    "deletions": 11
+  },
+  "files": [
+    {
+      "sha": "1b470e22260c5b3ef948dc05c9a0dae111df92e6",
+      "filename": "libvncserver/rfbregion.c",
+      "status": "modified",
+      "additions": 16,
+      "deletions": 10,
+      "changes": 26,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0/libvncserver%2Frfbregion.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0/libvncserver%2Frfbregion.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbregion.c?ref=38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+      "patch": "@@ -51,24 +51,30 @@ sraSpanDup(const sraSpan *src) {\n \n static void\n sraSpanInsertAfter(sraSpan *newspan, sraSpan *after) {\n-  newspan->_next = after->_next;\n-  newspan->_prev = after;\n-  after->_next->_prev = newspan;\n-  after->_next = newspan;\n+  if(newspan && after) {\n+    newspan->_next = after->_next;\n+    newspan->_prev = after;\n+    after->_next->_prev = newspan;\n+    after->_next = newspan;\n+  }\n }\n \n static void\n sraSpanInsertBefore(sraSpan *newspan, sraSpan *before) {\n-  newspan->_next = before;\n-  newspan->_prev = before->_prev;\n-  before->_prev->_next = newspan;\n-  before->_prev = newspan;\n+  if(newspan && before) {\n+    newspan->_next = before;\n+    newspan->_prev = before->_prev;\n+    before->_prev->_next = newspan;\n+    before->_prev = newspan;\n+  }\n }\n \n static void\n sraSpanRemove(sraSpan *span) {\n-  span->_prev->_next = span->_next;\n-  span->_next->_prev = span->_prev;\n+  if(span) {\n+    span->_prev->_next = span->_next;\n+    span->_next->_prev = span->_prev;\n+  }\n }\n \n static void"
+    },
+    {
+      "sha": "9d70eb954b9a4654c5d166e8687c7d0bdcce4511",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 1,
+      "changes": 4,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/38e98ee61d74f5f5ab4aa4c77146faad1962d6d0/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=38e98ee61d74f5f5ab4aa4c77146faad1962d6d0",
+      "patch": "@@ -207,6 +207,8 @@ rfbClientIteratorHead(rfbClientIteratorPtr i)\n rfbClientPtr\n rfbClientIteratorNext(rfbClientIteratorPtr i)\n {\n+  if (!i)\n+    return NULL;\n   if(i->next == 0) {\n     LOCK(rfbClientListMutex);\n     i->next = i->screen->clientHead;\n@@ -231,7 +233,7 @@ rfbClientIteratorNext(rfbClientIteratorPtr i)\n void\n rfbReleaseClientIterator(rfbClientIteratorPtr iterator)\n {\n-  if(iterator->next) rfbDecrClientRef(iterator->next);\n+  if(iterator && iterator->next) rfbDecrClientRef(iterator->next);\n   free(iterator);\n }\n "
+    }
+  ]
+}

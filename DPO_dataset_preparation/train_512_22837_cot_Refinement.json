@@ -1,0 +1,236 @@
+[
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "running_long_enough_to_decide_unreachable(void)\n{\n  return time_of_process_start\n    + get_options()->TestingAuthDirTimeToLearnReachability < approx_time();\n}",
+        "idx": 19066,
+        "project": "AS207960_tor",
+        "commit_id": "00fffbc1a15e2696a89c721d0c94dc333ff419ef",
+        "cwe": [
+            "CWE-264"
+        ],
+        "message": "Don't give the Guard flag to relays without the CVE-2011-2768 fix",
+        "changes": [
+            {
+                "context_line_del": " {",
+                "context_line_add": " {",
+                "deletions": "  return time_of_process_start",
+                "additions": "  return (time_of_process_start"
+            },
+            {
+                "context_line_del": "",
+                "context_line_add": "     + get_options()->TestingAuthDirTimeToLearnReachability < approx_time()",
+                "deletions": "",
+                "additions": "    ) && relay_has_cve_2011_2768_fix();"
+            }
+        ],
+        "func_signature": "fbd81898837ff494e0e1fc793ef92fdff2691a5fd577d7741f5ed48766038484",
+        "target": "0",
+        "output": "Result: [Secure]\nVulnerable line: None  \nCause: None  \nSummary: The original code securely checks if the current time exceeds a calculated threshold without introducing vulnerabilities. The addition operation between `time_of_process_start` and `TestingAuthDirTimeToLearnReachability` does not risk integer overflow, assuming these values use appropriately sized types (e.g., 64-bit `time_t`). The code does not perform unsafe memory operations (e.g., no pointer dereferencing without prior validation), and all inputs (process start time, configuration value, current time) are trusted internal state values, eliminating input validation risks.  \nResult: [Secure]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static int device_notifier(struct notifier_block *nb,\n\t\t\t\t  unsigned long action, void *data)\n{\n\tstruct device *dev = data;\n\tstruct dmar_domain *domain;\n\n\tif (iommu_dummy(dev))\n\t\treturn 0;\n\n\tif (action == BUS_NOTIFY_REMOVED_DEVICE) {\n\t\tdomain = find_domain(dev);\n\t\tif (!domain)\n\t\t\treturn 0;\n\n\t\tdmar_remove_one_dev_info(dev);\n\t\tif (!domain_type_is_vm_or_si(domain) &&\n\t\t    list_empty(&domain->devices))\n\t\t\tdomain_exit(domain);\n\t} else if (action == BUS_NOTIFY_ADD_DEVICE) {\n\t\tif (iommu_should_identity_map(dev, 1))\n\t\t\tdomain_add_dev_info(si_domain, dev);\n\t}\n\n\treturn 0;\n}",
+        "idx": 19589,
+        "project": "torvalds_linux",
+        "commit_id": "d8b8591054575f33237556c32762d54e30774d28",
+        "cwe": [],
+        "message": "iommu/vt-d: Disable ATS support on untrusted devices\n\nCommit fb58fdcd295b9 (\"iommu/vt-d: Do not enable ATS for untrusted\ndevices\") disables ATS support on the devices which have been marked\nas untrusted. Unfortunately this is not enough to fix the DMA attack\nvulnerabiltiies because IOMMU driver allows translated requests as\nlong as a device advertises the ATS capability. Hence a malicious\nperipheral device could use this to bypass IOMMU.\n\nThis disables the ATS support on untrusted devices by clearing the\ninternal per-device ATS mark. As the result, IOMMU driver will block\nany translated requests from any device marked as untrusted.\n\nFixes: fb58fdcd295b9 (\"iommu/vt-d: Do not enable ATS for untrusted devices\")",
+        "changes": [
+            {
+                "context_line_del": "",
+                "context_line_add": "\t} else if (action == BUS_NOTIFY_ADD_DEVICE) {",
+                "deletions": "",
+                "additions": "\t\tint temp_flag = 0;"
+            }
+        ],
+        "func_signature": "931c71f42ac0e3c51b8be3d830ed3a4133d4c355a18a0fc36774974799d3e713",
+        "target": "0",
+        "output": "Result: [Secure]\nVulnerable line: None  \nCause: None  \nSummary: The original code ensures secure resource management by validating device and domain existence before operations, preventing null pointer dereferences. It checks if a domain is empty before exiting, avoiding premature resource release. Input validation via action types and iommu_dummy checks ensures only valid devices are processed.  \nResult: [Secure]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "  enum_field_types binlog_type() const { return MYSQL_TYPE_TIMESTAMP2; }",
+        "idx": 13046,
+        "project": "server",
+        "commit_id": "08c7ab404f69d9c4ca6ca7a9cf7eec74c804f917",
+        "cwe": [
+            "CWE-416",
+            "CWE-703"
+        ],
+        "message": "MDEV-24176 Server crashes after insert in the table with virtual\ncolumn generated using date_format() and if()\n\nvcol_info->expr is allocated on expr_arena at parsing stage. Since\nexpr item is allocated on expr_arena all its containee items must be\nallocated on expr_arena too. Otherwise fix_session_expr() will\nencounter prematurely freed item.\n\nWhen table is reopened from cache vcol_info contains stale\nexpression. We refresh expression via TABLE::vcol_fix_exprs() but\nfirst we must prepare a proper context (Vcol_expr_context) which meets\nsome requirements:\n\n1. As noted above expr update must be done on expr_arena as there may\nbe new items created. It was a bug in fix_session_expr_for_read() and\nwas just not reproduced because of no second refix. Now refix is done\nfor more cases so it does reproduce. Tests affected: vcol.binlog\n\n2. Also name resolution context must be narrowed to the single table.\nTested by: vcol.update main.default vcol.vcol_syntax gcol.gcol_bugfixes\n\n3. sql_mode must be clean and not fail expr update.\n\nsql_mode such as MODE_NO_BACKSLASH_ESCAPES, MODE_NO_ZERO_IN_DATE, etc\nmust not affect vcol expression update. If the table was created\nsuccessfully any further evaluation must not fail. Tests affected:\nmain.func_like",
+        "changes": [
+            {
+                "context_line_del": "     // Other member functions...",
+                "context_line_add": "     // Other member functions...",
+                "deletions": "    enum_field_types binlog_type() const { return MYSQL_TYPE_TIMESTAMP2; }",
+                "additions": "    enum_field_types binlog_type() const {\n        return MYSQL_TYPE_TIMESTAMP2;\n    }"
+            }
+        ],
+        "func_signature": "45668571fe95df27a29b825843b3dc062af77826731be65b58356a486eaf4267",
+        "target": "0",
+        "output": "Result: [Secure]\nVulnerable line: None  \nCause: None  \nSummary: The original code returns a constant enum value (MYSQL_TYPE_TIMESTAMP2) without involving input processing, dynamic memory, or complex logic. It avoids vulnerabilities by design: no data manipulation, pointer operations, or resource handling occurs, ensuring no exposure to memory corruption, injection, or validation flaws.  \nResult: [Secure]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static struct page *syscall_nopage(struct vm_area_struct *vma,\n\t\t\t\tunsigned long adr, int *type)\n{\n\tstruct page *p = virt_to_page(adr - vma->vm_start + syscall_page);\n\tget_page(p);\n\treturn p;\n}",
+        "idx": 27305,
+        "project": "jthornber_linux-2.6",
+        "commit_id": "7d91d531900bfa1165d445390b3b13a8013f98f7",
+        "cwe": [
+            "CWE-264"
+        ],
+        "message": "[PATCH] i386 vDSO: use install_special_mapping\n\nThis patch uses install_special_mapping for the i386 vDSO setup, consolidating\nduplicated code.",
+        "changes": [
+            {
+                "context_line_del": "{",
+                "context_line_add": "{",
+                "deletions": "\tstruct page *p = virt_to_page(adr - vma->vm_start + syscall_page);\n\tget_page(p);\n\treturn p;",
+                "additions": "\treturn install_special_mapping(vma, adr, PAGE_SIZE,\n\t\t\t\t       VM_READ|VM_EXEC|VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC,\n\t\t\t\t       &syscall_page);"
+            }
+        ],
+        "func_signature": "c624282dbfefc47997c88030d98f1fde9618fbd0fb9450b4d54032a60e0927fc",
+        "target": "1",
+        "output": "Result: [Vulnerable]\nVulnerable line: `struct page *p = virt_to_page(adr - vma->vm_start + syscall_page);`  \nCause: The original code manually calculates the page address and returns it without enforcing proper memory permissions (e.g., write access). This allows the vDSO page to inherit unintended permissions from the VMA (e.g., `VM_WRITE`), enabling potential modification of the vDSO, which should be read-only and executable.  \nSummary: The vulnerable code fails to restrict memory permissions explicitly, risking unintended writable mappings for sensitive vDSO pages.  \nResult: [Vulnerable]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "void cJSON_DeleteItemFromObject( cJSON *object, const char *string )\n{\n\tcJSON_Delete( cJSON_DetachItemFromObject( object, string ) );\n}",
+        "idx": 49613,
+        "project": "esnet_iperf",
+        "commit_id": "91f2fa59e8ed80dfbf400add0164ee0e508e412a",
+        "cwe": [
+            "CWE-120",
+            "CWE-119",
+            "CWE-787"
+        ],
+        "message": "Fix a buffer overflow / heap corruption issue that could occur if a\nmalformed JSON string was passed on the control channel.  This issue,\npresent in the cJSON library, was already fixed upstream, so was\naddressed here in iperf3 by importing a newer version of cJSON (plus\nlocal ESnet modifications).\n\nDiscovered and reported by Dave McDaniel, Cisco Talos.\n\nBased on a patch by @dopheide-esnet, with input from @DaveGamble.\n\nCross-references:  TALOS-CAN-0164, ESNET-SECADV-2016-0001,\nCVE-2016-4303\n\n(cherry picked from commit ed94082be27d971a5e1b08b666e2c217cf470a40)",
+        "changes": [
+            {
+                "context_line_del": "",
+                "context_line_add": "{",
+                "deletions": "",
+                "additions": "      len = strlen(str) + 1;\n      if (!(copy = (char*)cJSON_malloc(len))) return 0;\n      memcpy(copy,str,len);\n      return copy;\n}"
+            },
+            {
+                "context_line_del": "",
+                "context_line_add": "",
+                "deletions": "",
+                "additions": ""
+            },
+            {
+                "context_line_del": "",
+                "context_line_add": "}",
+                "deletions": "",
+                "additions": "/* Default options for cJSON_Parse */\ncJSON *cJSON_Parse(const char *value) {return cJSON_ParseWithOpts(value,0,0);}"
+            }
+        ],
+        "func_signature": "71ae802c559462e0bec649ed2107066aff63edbc5ce3f5f00f314901996cef3c",
+        "target": "1",
+        "output": "Result: [Vulnerable]\nVulnerable line: cJSON_Delete( cJSON_DetachItemFromObject( object, string ) );\nCause: The function passes the input `string` to `cJSON_DetachItemFromObject`, which, in the original unpatched code, may have unsafely handled the string (e.g., via unchecked `strcpy`). This could lead to buffer overflow or heap corruption when processing maliciously crafted strings.\nSummary: The vulnerability stems from insecure string handling in dependencies (e.g., `cJSON_DetachItemFromObject`), which lacked proper bounds checks and safe copying. The call to this unsafe dependency in the analyzed function propagates the risk of buffer overflow when manipulating the input string.\nResult: [Vulnerable]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static void nfs_set_open_stateid_locked(struct nfs4_state *state, nfs4_stateid *stateid, int open_flags)\n{\n\tif (test_bit(NFS_DELEGATED_STATE, &state->flags) == 0)\n\t\tmemcpy(state->stateid.data, stateid->data, sizeof(state->stateid.data));\n\tmemcpy(state->open_stateid.data, stateid->data, sizeof(state->open_stateid.data));\n\tswitch (open_flags) {\n\t\tcase FMODE_READ:\n\t\t\tset_bit(NFS_O_RDONLY_STATE, &state->flags);\n\t\t\tbreak;\n\t\tcase FMODE_WRITE:\n\t\t\tset_bit(NFS_O_WRONLY_STATE, &state->flags);\n\t\t\tbreak;\n\t\tcase FMODE_READ|FMODE_WRITE:\n\t\t\tset_bit(NFS_O_RDWR_STATE, &state->flags);\n\t}\n}",
+        "idx": 10161,
+        "project": "torvalds_linux",
+        "commit_id": "dc0b027dfadfcb8a5504f7d8052754bf8d501ab9",
+        "cwe": [
+            "CWE-703"
+        ],
+        "message": "NFSv4: Convert the open and close ops to use fmode",
+        "changes": [
+            {
+                "context_line_del": "}",
+                "context_line_add": "}",
+                "deletions": "static void nfs_set_open_stateid_locked(struct nfs4_state *state, nfs4_stateid *stateid, int open_flags)",
+                "additions": "static void nfs_set_open_stateid_locked(struct nfs4_state *state, nfs4_stateid *stateid, fmode_t fmode)"
+            },
+            {
+                "context_line_del": "\tmemcpy(state->open_stateid.data, stateid->data, sizeof(state->open_stateid.data));",
+                "context_line_add": "\tmemcpy(state->open_stateid.data, stateid->data, sizeof(state->open_stateid.data));",
+                "deletions": "\tswitch (open_flags) {",
+                "additions": "\tswitch (fmode) {"
+            }
+        ],
+        "func_signature": "49c60f24d304d6bf0a47e76c59c268ec904340cf59a95930f26918c4dc29dd4c",
+        "target": "1",
+        "output": "Result: [Vulnerable]\nVulnerable line: `switch (open_flags) {`  \nCause: The original function uses an `int` type for `open_flags`, which can represent values beyond the valid `FMODE_*` flags (e.g., invalid combinations or unrelated bits). The `switch` statement lacks a default case and only handles specific `FMODE_READ`/`FMODE_WRITE` values, leaving unanticipated `open_flags` unprocessed. This could result in failure to properly set the `state->flags`, leading to incorrect file access permissions (e.g., not enforcing read/write restrictions).  \nSummary: Using a general `int` type for `open_flags` allows invalid mode flags to bypass the switch cases, causing incomplete state updates and potential access control vulnerabilities.  \nResult: [Vulnerable]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static unsigned int sfq_hash(const struct sfq_sched_data *q,\n\t\t\t     const struct sk_buff *skb)\n{\n\treturn skb_get_hash_perturb(skb, q->perturbation) & (q->divisor - 1);\n}",
+        "idx": 4730,
+        "project": "torvalds_linux",
+        "commit_id": "55667441c84fa5e0911a0aac44fb059c15ba6da2",
+        "cwe": [
+            "CWE-330"
+        ],
+        "message": "net/flow_dissector: switch to siphash\n\nUDP IPv6 packets auto flowlabels are using a 32bit secret\n(static u32 hashrnd in net/core/flow_dissector.c) and\napply jhash() over fields known by the receivers.\n\nAttackers can easily infer the 32bit secret and use this information\nto identify a device and/or user, since this 32bit secret is only\nset at boot time.\n\nReally, using jhash() to generate cookies sent on the wire\nis a serious security concern.\n\nTrying to change the rol32(hash, 16) in ip6_make_flowlabel() would be\na dead end. Trying to periodically change the secret (like in sch_sfq.c)\ncould change paths taken in the network for long lived flows.\n\nLet's switch to siphash, as we did in commit df453700e8d8\n(\"inet: switch IP ID generator to siphash\")\n\nUsing a cryptographically strong pseudo random function will solve this\nprivacy issue and more generally remove other weak points in the stack.\n\nPacket schedulers using skb_get_hash_perturb() benefit from this change.\n\nFixes: b56774163f99 (\"ipv6: Enable auto flow labels by default\")\nFixes: 42240901f7c4 (\"ipv6: Implement different admin modes for automatic flow labels\")\nFixes: 67800f9b1f4e (\"ipv6: Call skb_get_hash_flowi6 to get skb->hash in ip6_make_flowlabel\")\nFixes: cb1ce2ef387b (\"ipv6: Implement automatic flow label generation on transmit\")",
+        "changes": [
+            {
+                "context_line_del": "{",
+                "context_line_add": "{",
+                "deletions": "\treturn skb_get_hash_perturb(skb, q->perturbation) & (q->divisor - 1);",
+                "additions": "\treturn skb_get_hash_perturb(skb, &q->perturbation) & (q->divisor - 1);"
+            }
+        ],
+        "func_signature": "77caf0b06e457c67db9dc565fe046422ac8cca2de83f58ca65d9f309e25bd7fa",
+        "target": "1",
+        "output": "Result: [Vulnerable]\nVulnerable line: return skb_get_hash_perturb(skb, q->perturbation) & (q->divisor - 1);\nCause: The original code passed a 32-bit `q->perturbation` value to `skb_get_hash_perturb`, which internally used a cryptographically weak hash function (jhash) with a small 32-bit secret. This made the hash outputs predictable if the secret was inferred, enabling attackers to potentially track devices/users or manipulate network flows.\nSummary: Use of a 32-bit secret with a non-cryptographic hash function (jhash) in flow label generation exposed the system to hash prediction and privacy violations.\nResult: [Vulnerable]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "f_slice(typval_T *argvars, typval_T *rettv)\n{\n    if (in_vim9script()\n\t    && ((argvars[0].v_type != VAR_STRING\n\t\t    && argvars[0].v_type != VAR_LIST\n\t\t    && argvars[0].v_type != VAR_BLOB\n\t\t    && check_for_list_arg(argvars, 0) == FAIL)\n\t\t|| check_for_number_arg(argvars, 1) == FAIL\n\t\t|| check_for_opt_number_arg(argvars, 2) == FAIL))\n\treturn;\n\n    if (check_can_index(argvars, TRUE, FALSE) == OK)\n    {\n\tcopy_tv(argvars, rettv);\n\teval_index_inner(rettv, TRUE, argvars + 1,\n\t\targvars[2].v_type == VAR_UNKNOWN ? NULL : argvars + 2,\n\t\tTRUE, NULL, 0, FALSE);\n    }\n}",
+        "idx": 10187,
+        "project": "urbie-mk2_vim",
+        "commit_id": "605ec91e5a7330d61be313637e495fa02a6dc264",
+        "cwe": [
+            "CWE-122",
+            "CWE-787"
+        ],
+        "message": "patch 8.2.3847: illegal memory access when using a lambda with an error\n\nProblem:    Illegal memory access when using a lambda with an error.\nSolution:   Avoid skipping over the NUL after a string.",
+        "changes": [],
+        "func_signature": "e2089199ba85dcfa1c38c7448a2b41905fafb6ccfa067e77013958e2b6d00ceb",
+        "target": "0",
+        "output": "Result: [Secure]\nVulnerable line: None  \nCause: None  \nSummary: The code incorporates input validation and type checks (e.g., verifying `argvars[0]` is a string, list, or blob via `check_for_list_arg`, and ensuring numeric types for subsequent arguments via `check_for_number_arg`). It also guards against invalid indexing via `check_can_index`, ensuring operations like `eval_index_inner` are only executed on indexable objects. Optional arguments are safely handled by checking `VAR_UNKNOWN` and passing `NULL` when absent, avoiding invalid pointer dereferences.  \nResult: [Secure]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static void drain_pages(unsigned int cpu)\n{\n\tstruct zone *zone;\n\n\tfor_each_populated_zone(zone) {\n\t\tdrain_pages_zone(cpu, zone);\n\t}\n}",
+        "idx": 42002,
+        "project": "torvalds_linux",
+        "commit_id": "400e22499dd92613821374c8c6c88c7225359980",
+        "cwe": [],
+        "message": "mm: don't warn about allocations which stall for too long\n\nCommit 63f53dea0c98 (\"mm: warn about allocations which stall for too\nlong\") was a great step for reducing possibility of silent hang up\nproblem caused by memory allocation stalls.  But this commit reverts it,\nfor it is possible to trigger OOM lockup and/or soft lockups when many\nthreads concurrently called warn_alloc() (in order to warn about memory\nallocation stalls) due to current implementation of printk(), and it is\ndifficult to obtain useful information due to limitation of synchronous\nwarning approach.\n\nCurrent printk() implementation flushes all pending logs using the\ncontext of a thread which called console_unlock().  printk() should be\nable to flush all pending logs eventually unless somebody continues\nappending to printk() buffer.\n\nSince warn_alloc() started appending to printk() buffer while waiting\nfor oom_kill_process() to make forward progress when oom_kill_process()\nis processing pending logs, it became possible for warn_alloc() to force\noom_kill_process() loop inside printk().  As a result, warn_alloc()\nsignificantly increased possibility of preventing oom_kill_process()\nfrom making forward progress.\n\n---------- Pseudo code start ----------\nBefore warn_alloc() was introduced:\n\n  retry:\n    if (mutex_trylock(&oom_lock)) {\n      while (atomic_read(&printk_pending_logs) > 0) {\n        atomic_dec(&printk_pending_logs);\n        print_one_log();\n      }\n      // Send SIGKILL here.\n      mutex_unlock(&oom_lock)\n    }\n    goto retry;\n\nAfter warn_alloc() was introduced:\n\n  retry:\n    if (mutex_trylock(&oom_lock)) {\n      while (atomic_read(&printk_pending_logs) > 0) {\n        atomic_dec(&printk_pending_logs);\n        print_one_log();\n      }\n      // Send SIGKILL here.\n      mutex_unlock(&oom_lock)\n    } else if (waited_for_10seconds()) {\n      atomic_inc(&printk_pending_logs);\n    }\n    goto retry;\n---------- Pseudo code end ----------\n\nAlthough waited_for_10seconds() becomes true once per 10 seconds,\nunbounded number of threads can call waited_for_10seconds() at the same\ntime.  Also, since threads doing waited_for_10seconds() keep doing\nalmost busy loop, the thread doing print_one_log() can use little CPU\nresource.  Therefore, this situation can be simplified like\n\n---------- Pseudo code start ----------\n  retry:\n    if (mutex_trylock(&oom_lock)) {\n      while (atomic_read(&printk_pending_logs) > 0) {\n        atomic_dec(&printk_pending_logs);\n        print_one_log();\n      }\n      // Send SIGKILL here.\n      mutex_unlock(&oom_lock)\n    } else {\n      atomic_inc(&printk_pending_logs);\n    }\n    goto retry;\n---------- Pseudo code end ----------\n\nwhen printk() is called faster than print_one_log() can process a log.\n\nOne of possible mitigation would be to introduce a new lock in order to\nmake sure that no other series of printk() (either oom_kill_process() or\nwarn_alloc()) can append to printk() buffer when one series of printk()\n(either oom_kill_process() or warn_alloc()) is already in progress.\n\nSuch serialization will also help obtaining kernel messages in readable\nform.\n\n---------- Pseudo code start ----------\n  retry:\n    if (mutex_trylock(&oom_lock)) {\n      mutex_lock(&oom_printk_lock);\n      while (atomic_read(&printk_pending_logs) > 0) {\n        atomic_dec(&printk_pending_logs);\n        print_one_log();\n      }\n      // Send SIGKILL here.\n      mutex_unlock(&oom_printk_lock);\n      mutex_unlock(&oom_lock)\n    } else {\n      if (mutex_trylock(&oom_printk_lock)) {\n        atomic_inc(&printk_pending_logs);\n        mutex_unlock(&oom_printk_lock);\n      }\n    }\n    goto retry;\n---------- Pseudo code end ----------\n\nBut this commit does not go that direction, for we don't want to\nintroduce a new lock dependency, and we unlikely be able to obtain\nuseful information even if we serialized oom_kill_process() and\nwarn_alloc().\n\nSynchronous approach is prone to unexpected results (e.g.  too late [1],\ntoo frequent [2], overlooked [3]).  As far as I know, warn_alloc() never\nhelped with providing information other than \"something is going wrong\".\nI want to consider asynchronous approach which can obtain information\nduring stalls with possibly relevant threads (e.g.  the owner of\noom_lock and kswapd-like threads) and serve as a trigger for actions\n(e.g.  turn on/off tracepoints, ask libvirt daemon to take a memory dump\nof stalling KVM guest for diagnostic purpose).\n\nThis commit temporarily loses ability to report e.g.  OOM lockup due to\nunable to invoke the OOM killer due to !__GFP_FS allocation request.\nBut asynchronous approach will be able to detect such situation and emit\nwarning.  Thus, let's remove warn_alloc().\n\n[1] https://bugzilla.kernel.org/show_bug.cgi?id=192981\n[2] http://lkml.kernel.org/r/CAM_iQpWuPVGc2ky8M-9yukECtS+zKjiDasNymX7rMcBjBFyM_A@mail.gmail.com\n[3] commit db73ee0d46379922 (\"mm, vmscan: do not loop on too_many_isolated for ever\"))",
+        "changes": [
+            {
+                "context_line_del": "\tfor_each_populated_zone(zone) {",
+                "context_line_add": "\tfor_each_populated_zone(zone) {",
+                "deletions": "\t\tdrain_pages_zone(cpu, zone);",
+                "additions": "\t\tdrain_pages_zone(cpu, zone); "
+            }
+        ],
+        "func_signature": "18a1746dfc6d0e2e270bb60ed4ddf70da06d14afabad710f3b3df609e86d7abe",
+        "target": "0",
+        "output": "Result: [Secure]\nVulnerable line: None  \nCause: None  \nSummary: The original code securely iterates over populated zones using a safe macro (for_each_populated_zone), ensuring valid zone processing without exposing risks like null pointer dereference or invalid memory access. The function delegates resource management to drain_pages_zone, which is assumed to handle operations safely (e.g., proper zone/cpu validation). No direct security flaws (e.g., buffer overflow, resource leaks) are present in the code.  \nResult: [Secure]"
+    },
+    {
+        "instruction": "Act as a security analyst and determine whether the following code is [Vulnerable] or [Secure]. Start your response by immediately outputting the detection result as either [Vulnerable] or [Secure], using the following strict format:\n\nResult: [Vulnerable] or [Secure]\nVulnerable line: <the specific line that is vulnerable, or 'None' if secure>\nCause: <brief explanation of the cause if vulnerable, or 'None' if secure>\nSummary: <concise summary>\nResult: [Vulnerable] or [Secure]",
+        "input": "static int vm_request_pending(void)\n\n{\n\n    return powerdown_requested ||\n\n           reset_requested ||\n\n           shutdown_requested ||\n\n           debug_requested ||\n\n           vmstop_requested;\n\n}\n",
+        "idx": 21003,
+        "project": "qemu",
+        "commit_id": "12d4536f7d911b6d87a766ad7300482ea663cea2",
+        "changes": [
+            {
+                "context_line_del": "{",
+                "context_line_add": "{",
+                "deletions": "    return powerdown_requested ||\n           reset_requested ||\n           shutdown_requested ||\n           debug_requested ||\n           vmstop_requested;",
+                "additions": "    return atomic_load(&powerdown_requested) ||\n           atomic_load(&reset_requested) ||\n           atomic_load(&shutdown_requested) ||\n           atomic_load(&debug_requested) ||\n           atomic_load(&vmstop_requested);"
+            }
+        ],
+        "message": "main: force enabling of I/O thread\n\nEnabling the I/O thread by default seems like an important part of declaring\n1.0.  Besides allowing true SMP support with KVM, the I/O thread means that the\nTCG VCPU doesn't have to multiplex itself with the I/O dispatch routines which\ncurrently requires a (racey) signal based alarm system.\n\nI know there have been concerns about performance.  I think so far the ones that\nhave come up (virtio-net) are most likely due to secondary reasons like\ndecreased batching.\n\nI think we ought to force enabling I/O thread early in 1.0 development and\ncommit to resolving any lingering issues.",
+        "func_signature": "6b1ee0db8d967a1fc9808820207b9035c4bc37ddca94bac495c7e08b55d842ab",
+        "target": "1",
+        "output": "Result: [Vulnerable]\nVulnerable line: return powerdown_requested ||\nCause: The original code directly accessed shared state variables (e.g., powerdown_requested) without atomic operations. These variables are likely modified asynchronously (e.g., by signal handlers or I/O threads), creating race conditions where stale/inconsistent values might be read. This violates thread-safety guarantees for shared memory access, potentially causing the function to miss pending requests or return outdated statuses.\nSummary: Non-atomic access to shared variables in multi-threaded contexts risks race conditions and stale state visibility.\nResult: [Vulnerable]"
+    }
+]

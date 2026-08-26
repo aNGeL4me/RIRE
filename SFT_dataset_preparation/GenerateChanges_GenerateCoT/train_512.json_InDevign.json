@@ -1,0 +1,62 @@
+[
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static int vm_request_pending(void)\n\n{\n\n    return powerdown_requested ||\n\n           reset_requested ||\n\n           shutdown_requested ||\n\n           debug_requested ||\n\n           vmstop_requested;\n\n}\n",
+        "output": "1",
+        "idx": 21003
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static void DBDMA_run (DBDMA_channel *ch)\n\n{\n\n    int channel;\n\n\n\n    for (channel = 0; channel < DBDMA_CHANNELS; channel++, ch++) {\n\n            uint32_t status = be32_to_cpu(ch->regs[DBDMA_STATUS]);\n\n            if (!ch->processing && (status & RUN) && (status & ACTIVE))\n\n                channel_run(ch);\n\n    }\n\n}\n",
+        "output": "0",
+        "idx": 29817
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "AVStream *add_av_stream1(FFStream *stream, AVCodecContext *codec)\n\n{\n\n    AVStream *fst;\n\n\n\n    fst = av_mallocz(sizeof(AVStream));\n\n    if (!fst)\n\n        return NULL;\n\n    fst->priv_data = av_mallocz(sizeof(FeedData));\n\n    memcpy(&fst->codec, codec, sizeof(AVCodecContext));\n\n\n    stream->streams[stream->nb_streams++] = fst;\n\n    return fst;\n\n}",
+        "output": "1",
+        "idx": 11469
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static int restore_sigcontext(CPUAlphaState *env,\n\n                              struct target_sigcontext *sc)\n\n{\n\n    uint64_t fpcr;\n\n    int i, err = 0;\n\n\n\n    __get_user(env->pc, &sc->sc_pc);\n\n\n\n    for (i = 0; i < 31; ++i) {\n\n        __get_user(env->ir[i], &sc->sc_regs[i]);\n\n    }\n\n    for (i = 0; i < 31; ++i) {\n\n        __get_user(env->fir[i], &sc->sc_fpregs[i]);\n\n    }\n\n\n\n    __get_user(fpcr, &sc->sc_fpcr);\n\n    cpu_alpha_store_fpcr(env, fpcr);\n\n\n\n    return err;\n\n}\n",
+        "output": "1",
+        "idx": 50257
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "void kvm_arm_register_device(MemoryRegion *mr, uint64_t devid)\n\n{\n\n    KVMDevice *kd;\n\n\n\n    if (!kvm_irqchip_in_kernel()) {\n\n        return;\n\n    }\n\n\n\n    if (QSLIST_EMPTY(&kvm_devices_head)) {\n\n        memory_listener_register(&devlistener, NULL);\n\n        qemu_add_machine_init_done_notifier(&notify);\n\n    }\n\n    kd = g_new0(KVMDevice, 1);\n\n    kd->mr = mr;\n\n    kd->kda.id = devid;\n\n    kd->kda.addr = -1;\n\n    QSLIST_INSERT_HEAD(&kvm_devices_head, kd, entries);\n\n    memory_region_ref(kd->mr);\n\n}\n",
+        "output": "0",
+        "idx": 36639
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static int add_doubles_metadata(int count,\n\n                                const char *name, const char *sep,\n\n                                TiffContext *s)\n\n{\n\n    char *ap;\n\n    int i;\n\n    double *dp;\n\n\n\n    if (count >= INT_MAX / sizeof(int64_t) || count <= 0)\n\n        return AVERROR_INVALIDDATA;\n\n    if (bytestream2_get_bytes_left(&s->gb) < count * sizeof(int64_t))\n\n        return AVERROR_INVALIDDATA;\n\n\n\n    dp = av_malloc(count * sizeof(double));\n\n    if (!dp)\n\n        return AVERROR(ENOMEM);\n\n\n\n    for (i = 0; i < count; i++)\n\n        dp[i] = tget_double(&s->gb, s->le);\n\n    ap = doubles2str(dp, count, sep);\n\n    av_freep(&dp);\n\n    if (!ap)\n\n        return AVERROR(ENOMEM);\n\n    av_dict_set(avpriv_frame_get_metadatap(&s->picture), name, ap, AV_DICT_DONT_STRDUP_VAL);\n\n    return 0;\n\n}\n",
+        "output": "1",
+        "idx": 21698
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "BlockDriverAIOCB *bdrv_aio_readv(BlockDriverState *bs, int64_t sector_num,\n                                 QEMUIOVector *iov, int nb_sectors,\n                                 BlockDriverCompletionFunc *cb, void *opaque)\n{\n    return bdrv_aio_rw_vector(bs, sector_num, iov, nb_sectors,\n                              cb, opaque, 0);\n}",
+        "output": "1",
+        "idx": 37601
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static int cpu_pre_load(void *opaque)\n\n{\n\n    CPUState *env = opaque;\n\n\n\n    cpu_synchronize_state(env);\n\n    return 0;\n\n}\n",
+        "output": "1",
+        "idx": 48608
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "void ahci_init(AHCIState *s, DeviceState *qdev, DMAContext *dma, int ports)\n\n{\n\n    qemu_irq *irqs;\n\n    int i;\n\n\n\n    s->dma = dma;\n\n    s->ports = ports;\n\n    s->dev = g_malloc0(sizeof(AHCIDevice) * ports);\n\n    ahci_reg_init(s);\n\n    /* XXX BAR size should be 1k, but that breaks, so bump it to 4k for now */\n\n    memory_region_init_io(&s->mem, &ahci_mem_ops, s, \"ahci\", AHCI_MEM_BAR_SIZE);\n\n    memory_region_init_io(&s->idp, &ahci_idp_ops, s, \"ahci-idp\", 32);\n\n\n\n    irqs = qemu_allocate_irqs(ahci_irq_set, s, s->ports);\n\n\n\n    for (i = 0; i < s->ports; i++) {\n\n        AHCIDevice *ad = &s->dev[i];\n\n\n\n        ide_bus_new(&ad->port, qdev, i);\n\n        ide_init2(&ad->port, irqs[i]);\n\n\n\n        ad->hba = s;\n\n        ad->port_no = i;\n\n        ad->port.dma = &ad->dma;\n\n        ad->port.dma->ops = &ahci_dma_ops;\n\n        ad->port_regs.cmd = PORT_CMD_SPIN_UP | PORT_CMD_POWER_ON;\n\n    }\n\n}\n",
+        "output": "1",
+        "idx": 23214
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "void OPPROTO op_set_Rc0 (void)\n\n{\n\n    env->crf[0] = T0 | xer_ov;\n\n    RETURN();\n\n}\n",
+        "output": "1",
+        "idx": 5532
+    }
+]

@@ -1,0 +1,113 @@
+{
+  "sha": "8b06f835e259652b0ff026898014fc7297ade858",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6OGIwNmY4MzVlMjU5NjUyYjBmZjAyNjg5ODAxNGZjNzI5N2FkZTg1OA==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T18:55:24Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T18:55:24Z"
+    },
+    "message": "When connecting to a repeater, only send initialised string\n\nCloses #253",
+    "tree": {
+      "sha": "2b5d584451461f43152ef28cccdc0a9ed22c528e",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/2b5d584451461f43152ef28cccdc0a9ed22c528e"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/8b06f835e259652b0ff026898014fc7297ade858",
+    "comment_count": 2,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCW6/KnAAKCRBCG7O0XGBn\n+B7/AJ4ushv07CZD+VgnpbmNb51j+raYZwCeOo6KTpdP2XLaYIe3/lvJApm8op4=\n=Qy3/\n-----END PGP SIGNATURE-----",
+      "payload": "tree 2b5d584451461f43152ef28cccdc0a9ed22c528e\nparent 5f3ea4e53d3a756864de4f6ceb6ab8068afff3c5\nauthor Christian Beier <dontmind@freeshell.org> 1538247324 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1538247324 +0200\n\nWhen connecting to a repeater, only send initialised string\n\nCloses #253\n",
+      "verified_at": "2024-11-20T19:05:02Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/8b06f835e259652b0ff026898014fc7297ade858",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/8b06f835e259652b0ff026898014fc7297ade858",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/8b06f835e259652b0ff026898014fc7297ade858/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "5f3ea4e53d3a756864de4f6ceb6ab8068afff3c5",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/5f3ea4e53d3a756864de4f6ceb6ab8068afff3c5",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/5f3ea4e53d3a756864de4f6ceb6ab8068afff3c5"
+    }
+  ],
+  "stats": {
+    "total": 18,
+    "additions": 14,
+    "deletions": 4
+  },
+  "files": [
+    {
+      "sha": "dbfa39e1d5142c18abd8f799744871606f544c42",
+      "filename": "examples/repeater.c",
+      "status": "modified",
+      "additions": 8,
+      "deletions": 2,
+      "changes": 10,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/8b06f835e259652b0ff026898014fc7297ade858/examples%2Frepeater.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/8b06f835e259652b0ff026898014fc7297ade858/examples%2Frepeater.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/examples%2Frepeater.c?ref=8b06f835e259652b0ff026898014fc7297ade858",
+      "patch": "@@ -12,6 +12,7 @@ int main(int argc,char** argv)\n   char *repeaterHost;\n   int repeaterPort, sock;\n   char id[250];\n+  int idlen;\n   rfbClientPtr cl;\n \n   int i,j;\n@@ -23,7 +24,12 @@ int main(int argc,char** argv)\n       \"Usage: %s <id> <repeater-host> [<repeater-port>]\\n\", argv[0]);\n     exit(1);\n   }\n-  snprintf(id, sizeof(id) - 1, \"ID:%s\", argv[1]);\n+  idlen = snprintf(id, sizeof(id) - 1, \"ID:%s\", argv[1]);\n+  if(idlen < 0 || idlen >= (int)sizeof(id)) {\n+      fprintf(stderr, \"Error, given ID is probably too long.\\n\");\n+      return 1;\n+  }\n+\n   repeaterHost = argv[2];\n   repeaterPort = argc < 4 ? 5500 : atoi(argv[3]);\n \n@@ -48,7 +54,7 @@ int main(int argc,char** argv)\n     perror(\"connect to repeater\");\n     return 1;\n   }\n-  if (write(sock, id, sizeof(id)) != sizeof(id)) {\n+  if (write(sock, id, idlen+1) != idlen+1) {\n     perror(\"writing id\");\n     return 1;\n   }"
+    },
+    {
+      "sha": "669e38848d156af63ce5e3550b00cc1eed3b0147",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 2,
+      "changes": 8,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/8b06f835e259652b0ff026898014fc7297ade858/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/8b06f835e259652b0ff026898014fc7297ade858/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=8b06f835e259652b0ff026898014fc7297ade858",
+      "patch": "@@ -363,6 +363,7 @@ rfbBool ConnectToRFBRepeater(rfbClient* client,const char *repeaterHost, int rep\n   rfbProtocolVersionMsg pv;\n   int major,minor;\n   char tmphost[250];\n+  int tmphostlen;\n \n #ifdef LIBVNCSERVER_IPv6\n   client->sock = ConnectClientToTcpAddr6(repeaterHost, repeaterPort);\n@@ -398,8 +399,11 @@ rfbBool ConnectToRFBRepeater(rfbClient* client,const char *repeaterHost, int rep\n \n   rfbClientLog(\"Connected to VNC repeater, using protocol version %d.%d\\n\", major, minor);\n \n-  snprintf(tmphost, sizeof(tmphost), \"%s:%d\", destHost, destPort);\n-  if (!WriteToRFBServer(client, tmphost, sizeof(tmphost)))\n+  tmphostlen = snprintf(tmphost, sizeof(tmphost), \"%s:%d\", destHost, destPort);\n+  if(tmphostlen < 0 || tmphostlen >= (int)sizeof(tmphost))\n+    return FALSE; /* snprintf error or output truncated */\n+\n+  if (!WriteToRFBServer(client, tmphost, tmphostlen + 1))\n     return FALSE;\n \n   return TRUE;"
+    }
+  ]
+}

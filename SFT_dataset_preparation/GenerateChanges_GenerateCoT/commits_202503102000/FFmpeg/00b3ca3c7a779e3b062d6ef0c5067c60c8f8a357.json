@@ -1,0 +1,61 @@
+{
+    "sha": "00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGIzY2EzYzdhNzc5ZTNiMDYyZDZlZjBjNTA2N2M2MGM4ZjhhMzU3",
+    "commit": {
+        "author": {
+            "name": "Stefano Sabatini",
+            "email": "stefano.sabatini-lala@poste.it",
+            "date": "2010-11-07T18:40:09Z"
+        },
+        "committer": {
+            "name": "Stefano Sabatini",
+            "email": "stefano.sabatini-lala@poste.it",
+            "date": "2010-11-07T18:40:09Z"
+        },
+        "message": "Add missing memory check in parse_inputs(), and fix possible (yet very unlikely) crash.\n\nOriginally committed as revision 25697 to svn://svn.ffmpeg.org/ffmpeg/trunk",
+        "tree": {
+            "sha": "b57980de88d45946bf16166b61a31b3fd2f89fd2",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/b57980de88d45946bf16166b61a31b3fd2f89fd2"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "42e7f6d781e0533505ffab53640739c7912a6753",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/42e7f6d781e0533505ffab53640739c7912a6753",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/42e7f6d781e0533505ffab53640739c7912a6753"
+        }
+    ],
+    "stats": {
+        "total": 3,
+        "additions": 2,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "3b49898ba25d7a37560c692e8b05b28c242ea606",
+            "filename": "libavfilter/graphparser.c",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357/libavfilter%2Fgraphparser.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357/libavfilter%2Fgraphparser.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavfilter%2Fgraphparser.c?ref=00b3ca3c7a779e3b062d6ef0c5067c60c8f8a357",
+            "patch": "@@ -258,7 +258,8 @@ static int parse_inputs(const char **buf, AVFilterInOut **curr_inputs,\n             av_free(name);\n         } else {\n             /* Not in the list, so add it as an input */\n-            match = av_mallocz(sizeof(AVFilterInOut));\n+            if (!(match = av_mallocz(sizeof(AVFilterInOut))))\n+                return AVERROR(ENOMEM);\n             match->name    = name;\n             match->pad_idx = pad;\n         }"
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "sha": "0a60f83075883f5d73c7f7f20d00ad31897178c2",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTYwZjgzMDc1ODgzZjVkNzNjN2Y3ZjIwZDAwYWQzMTg5NzE3OGMy",
+    "commit": {
+        "author": {
+            "name": "Michael Niedermayer",
+            "email": "michaelni@gmx.at",
+            "date": "2012-12-10T22:58:26Z"
+        },
+        "committer": {
+            "name": "Michael Niedermayer",
+            "email": "michaelni@gmx.at",
+            "date": "2012-12-10T23:03:23Z"
+        },
+        "message": "http: dont null check p, its unneeded\n\nFixes CID747740\nSigned-off-by: Michael Niedermayer <michaelni@gmx.at>",
+        "tree": {
+            "sha": "f713ab2e30055a609ef6b5a7c0258dd061fe18a7",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/f713ab2e30055a609ef6b5a7c0258dd061fe18a7"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a60f83075883f5d73c7f7f20d00ad31897178c2",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a60f83075883f5d73c7f7f20d00ad31897178c2",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a60f83075883f5d73c7f7f20d00ad31897178c2",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a60f83075883f5d73c7f7f20d00ad31897178c2/comments",
+    "author": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "b11a889055188f296bd8993883e3fdff84f17f5e",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/b11a889055188f296bd8993883e3fdff84f17f5e",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/b11a889055188f296bd8993883e3fdff84f17f5e"
+        }
+    ],
+    "stats": {
+        "total": 2,
+        "additions": 1,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "576875f43a4a3e55f1bafaf7b28c044f183c011c",
+            "filename": "libavformat/http.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a60f83075883f5d73c7f7f20d00ad31897178c2/libavformat%2Fhttp.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a60f83075883f5d73c7f7f20d00ad31897178c2/libavformat%2Fhttp.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavformat%2Fhttp.c?ref=0a60f83075883f5d73c7f7f20d00ad31897178c2",
+            "patch": "@@ -357,7 +357,7 @@ static int process_line(URLContext *h, char *line, int line_count,\n                 s->willclose = 1;\n         } else if (!av_strcasecmp (tag, \"Server\") && !av_strcasecmp (p, \"AkamaiGHost\")) {\n             s->is_akamai = 1;\n-        } else if (!av_strcasecmp (tag, \"Content-Type\") && p) {\n+        } else if (!av_strcasecmp (tag, \"Content-Type\")) {\n             av_free(s->mime_type); s->mime_type = av_strdup(p);\n         }\n     }"
+        }
+    ]
+}

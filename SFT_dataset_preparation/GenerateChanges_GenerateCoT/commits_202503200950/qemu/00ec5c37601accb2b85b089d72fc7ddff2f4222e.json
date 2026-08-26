@@ -1,0 +1,85 @@
+{
+    "sha": "00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGVjNWMzNzYwMWFjY2IyYjg1YjA4OWQ3MmZjN2RkZmYyZjQyMjJl",
+    "commit": {
+        "author": {
+            "name": "Venkateswararao Jujjuri (JV)",
+            "email": "jvrao@linux.vnet.ibm.com",
+            "date": "2010-06-14T20:34:46Z"
+        },
+        "committer": {
+            "name": "Anthony Liguori",
+            "email": "aliguori@us.ibm.com",
+            "date": "2010-06-22T20:15:51Z"
+        },
+        "message": "virtio-9p: Security model for mkdir\n\nSigned-off-by: Venkateswararao Jujjuri <jvrao@linux.vnet.ibm.com>\nSigned-off-by: Anthony Liguori <aliguori@us.ibm.com>",
+        "tree": {
+            "sha": "a36bb07705c0045bc2db955115274e32071dae7c",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/a36bb07705c0045bc2db955115274e32071dae7c"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+    "html_url": "https://github.com/qemu/qemu/commit/00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00ec5c37601accb2b85b089d72fc7ddff2f4222e/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "4750a96f6baf8949cc04a0c5b7167606544a4401",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/4750a96f6baf8949cc04a0c5b7167606544a4401",
+            "html_url": "https://github.com/qemu/qemu/commit/4750a96f6baf8949cc04a0c5b7167606544a4401"
+        }
+    ],
+    "stats": {
+        "total": 49,
+        "additions": 43,
+        "deletions": 6
+    },
+    "files": [
+        {
+            "sha": "12223dec20ce8c32812b0539fc4f084cf69f0ac9",
+            "filename": "hw/file-op-9p.h",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/qemu/qemu/blob/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Ffile-op-9p.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Ffile-op-9p.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Ffile-op-9p.h?ref=00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+            "patch": "@@ -70,7 +70,7 @@ typedef struct FileOperations\n     ssize_t (*readv)(FsContext *, int, const struct iovec *, int);\n     ssize_t (*writev)(FsContext *, int, const struct iovec *, int);\n     off_t (*lseek)(FsContext *, int, off_t, int);\n-    int (*mkdir)(FsContext *, const char *, mode_t);\n+    int (*mkdir)(FsContext *, const char *, FsCred *);\n     int (*fstat)(FsContext *, int, struct stat *);\n     int (*rename)(FsContext *, const char *, const char *);\n     int (*truncate)(FsContext *, const char *, off_t);"
+        },
+        {
+            "sha": "e99eff9639af7afee1bb07ebf812880ffcd6a2bd",
+            "filename": "hw/virtio-9p-local.c",
+            "status": "modified",
+            "additions": 33,
+            "deletions": 2,
+            "changes": 35,
+            "blob_url": "https://github.com/qemu/qemu/blob/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Fvirtio-9p-local.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Fvirtio-9p-local.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fvirtio-9p-local.c?ref=00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+            "patch": "@@ -207,9 +207,40 @@ static int local_mksock(FsContext *ctx2, const char *path)\n     return 0;\n }\n \n-static int local_mkdir(FsContext *ctx, const char *path, mode_t mode)\n+static int local_mkdir(FsContext *fs_ctx, const char *path, FsCred *credp)\n {\n-    return mkdir(rpath(ctx, path), mode);\n+    int err = -1;\n+    int serrno = 0;\n+\n+    /* Determine the security model */\n+    if (fs_ctx->fs_sm == SM_MAPPED) {\n+        err = mkdir(rpath(fs_ctx, path), SM_LOCAL_DIR_MODE_BITS);\n+        if (err == -1) {\n+            return err;\n+        }\n+        credp->fc_mode = credp->fc_mode|S_IFDIR;\n+        err = local_set_xattr(rpath(fs_ctx, path), credp);\n+        if (err == -1) {\n+            serrno = errno;\n+            goto err_end;\n+        }\n+    } else if (fs_ctx->fs_sm == SM_PASSTHROUGH) {\n+        err = mkdir(rpath(fs_ctx, path), credp->fc_mode);\n+        if (err == -1) {\n+            return err;\n+        }\n+        err = local_post_create_passthrough(fs_ctx, path, credp);\n+        if (err == -1) {\n+            serrno = errno;\n+            goto err_end;\n+        }\n+    }\n+    return err;\n+\n+err_end:\n+    remove(rpath(fs_ctx, path));\n+    errno = serrno;\n+    return err;\n }\n \n static int local_fstat(FsContext *fs_ctx, int fd, struct stat *stbuf)"
+        },
+        {
+            "sha": "005f725a4743cff15f74a69b206ee4eb501e77b9",
+            "filename": "hw/virtio-9p.c",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 3,
+            "changes": 12,
+            "blob_url": "https://github.com/qemu/qemu/blob/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Fvirtio-9p.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00ec5c37601accb2b85b089d72fc7ddff2f4222e/hw%2Fvirtio-9p.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fvirtio-9p.c?ref=00ec5c37601accb2b85b089d72fc7ddff2f4222e",
+            "patch": "@@ -170,9 +170,15 @@ static int v9fs_do_mksock(V9fsState *s, V9fsString *path)\n     return s->ops->mksock(&s->ctx, path->data);\n }\n \n-static int v9fs_do_mkdir(V9fsState *s, V9fsString *path, mode_t mode)\n+static int v9fs_do_mkdir(V9fsState *s, V9fsCreateState *vs)\n {\n-    return s->ops->mkdir(&s->ctx, path->data, mode);\n+    FsCred cred;\n+\n+    cred_init(&cred);\n+    cred.fc_uid = vs->fidp->uid;\n+    cred.fc_mode = vs->perm & 0777;\n+\n+    return s->ops->mkdir(&s->ctx, vs->fullname.data, &cred);\n }\n \n static int v9fs_do_fstat(V9fsState *s, int fd, struct stat *stbuf)\n@@ -1776,7 +1782,7 @@ static void v9fs_create_post_lstat(V9fsState *s, V9fsCreateState *vs, int err)\n     }\n \n     if (vs->perm & P9_STAT_MODE_DIR) {\n-        err = v9fs_do_mkdir(s, &vs->fullname, vs->perm & 0777);\n+        err = v9fs_do_mkdir(s, vs);\n         v9fs_create_post_mkdir(s, vs, err);\n     } else if (vs->perm & P9_STAT_MODE_SYMLINK) {\n         err = v9fs_do_symlink(s, &vs->extension, &vs->fullname);"
+        }
+    ]
+}

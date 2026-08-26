@@ -1,0 +1,101 @@
+{
+    "sha": "0a27af918b9cfb7fc1605c66dfc70700be16fab5",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTI3YWY5MThiOWNmYjdmYzE2MDVjNjZkZmM3MDcwMGJlMTZmYWI1",
+    "commit": {
+        "author": {
+            "name": "Daniel P. Berrange",
+            "email": "berrange@redhat.com",
+            "date": "2016-03-08T11:39:36Z"
+        },
+        "committer": {
+            "name": "Daniel P. Berrange",
+            "email": "berrange@redhat.com",
+            "date": "2016-03-10T17:10:18Z"
+        },
+        "message": "io: use bind() to check for IPv4/6 availability\n\nCurrently the test-io-channel-socket.c test uses getifaddrs\nto see if an IPv4/6 address is present on any host NIC, as\na way to determine if IPv4/6 sockets can be used. This is\nproblematic because getifaddrs is not available on Win32.\n\nRather than testing indirectly via getifaddrs, just create\na socket and try to bind() to the loopback address instead.\n\nReviewed-by: Paolo Bonzini <pbonzini@redhat.com>\nSigned-off-by: Daniel P. Berrange <berrange@redhat.com>",
+        "tree": {
+            "sha": "3c361913d997f0c634e031d98f491587e00ef08f",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/3c361913d997f0c634e031d98f491587e00ef08f"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a27af918b9cfb7fc1605c66dfc70700be16fab5",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a27af918b9cfb7fc1605c66dfc70700be16fab5",
+    "html_url": "https://github.com/qemu/qemu/commit/0a27af918b9cfb7fc1605c66dfc70700be16fab5",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a27af918b9cfb7fc1605c66dfc70700be16fab5/comments",
+    "author": {
+        "login": "berrange",
+        "id": 1517315,
+        "node_id": "MDQ6VXNlcjE1MTczMTU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1517315?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/berrange",
+        "html_url": "https://github.com/berrange",
+        "followers_url": "https://api.github.com/users/berrange/followers",
+        "following_url": "https://api.github.com/users/berrange/following{/other_user}",
+        "gists_url": "https://api.github.com/users/berrange/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/berrange/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/berrange/subscriptions",
+        "organizations_url": "https://api.github.com/users/berrange/orgs",
+        "repos_url": "https://api.github.com/users/berrange/repos",
+        "events_url": "https://api.github.com/users/berrange/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/berrange/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "berrange",
+        "id": 1517315,
+        "node_id": "MDQ6VXNlcjE1MTczMTU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1517315?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/berrange",
+        "html_url": "https://github.com/berrange",
+        "followers_url": "https://api.github.com/users/berrange/followers",
+        "following_url": "https://api.github.com/users/berrange/following{/other_user}",
+        "gists_url": "https://api.github.com/users/berrange/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/berrange/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/berrange/subscriptions",
+        "organizations_url": "https://api.github.com/users/berrange/orgs",
+        "repos_url": "https://api.github.com/users/berrange/repos",
+        "events_url": "https://api.github.com/users/berrange/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/berrange/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "c619644067f98098dcdbc951e2dda79e97560afa",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/c619644067f98098dcdbc951e2dda79e97560afa",
+            "html_url": "https://github.com/qemu/qemu/commit/c619644067f98098dcdbc951e2dda79e97560afa"
+        }
+    ],
+    "stats": {
+        "total": 79,
+        "additions": 31,
+        "deletions": 48
+    },
+    "files": [
+        {
+            "sha": "6098fee9c20af26b6c7ef15d654be6ec5aec169a",
+            "filename": "tests/test-io-channel-socket.c",
+            "status": "modified",
+            "additions": 31,
+            "deletions": 48,
+            "changes": 79,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a27af918b9cfb7fc1605c66dfc70700be16fab5/tests%2Ftest-io-channel-socket.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a27af918b9cfb7fc1605c66dfc70700be16fab5/tests%2Ftest-io-channel-socket.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/tests%2Ftest-io-channel-socket.c?ref=0a27af918b9cfb7fc1605c66dfc70700be16fab5",
+            "patch": "@@ -22,66 +22,49 @@\n #include \"io/channel-socket.h\"\n #include \"io/channel-util.h\"\n #include \"io-channel-helpers.h\"\n-#ifdef HAVE_IFADDRS_H\n-#include <ifaddrs.h>\n-#endif\n \n-static int check_protocol_support(bool *has_ipv4, bool *has_ipv6)\n+static int check_bind(struct sockaddr *sa, socklen_t salen, bool *has_proto)\n {\n-#ifdef HAVE_IFADDRS_H\n-    struct ifaddrs *ifaddr = NULL, *ifa;\n-    struct addrinfo hints = { 0 };\n-    struct addrinfo *ai = NULL;\n-    int gaierr;\n-\n-    *has_ipv4 = *has_ipv6 = false;\n+    int fd;\n \n-    if (getifaddrs(&ifaddr) < 0) {\n-        g_printerr(\"Failed to lookup interface addresses: %s\\n\",\n-                   strerror(errno));\n+    fd = socket(sa->sa_family, SOCK_STREAM, 0);\n+    if (fd < 0) {\n         return -1;\n     }\n \n-    for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {\n-        if (!ifa->ifa_addr) {\n-            continue;\n-        }\n-\n-        if (ifa->ifa_addr->sa_family == AF_INET) {\n-            *has_ipv4 = true;\n-        }\n-        if (ifa->ifa_addr->sa_family == AF_INET6) {\n-            *has_ipv6 = true;\n+    if (bind(fd, sa, salen) < 0) {\n+        close(fd);\n+        if (errno == EADDRNOTAVAIL) {\n+            *has_proto = false;\n+            return 0;\n         }\n+        return -1;\n     }\n \n-    freeifaddrs(ifaddr);\n-\n-    hints.ai_flags = AI_PASSIVE | AI_ADDRCONFIG;\n-    hints.ai_family = AF_INET6;\n-    hints.ai_socktype = SOCK_STREAM;\n-\n-    gaierr = getaddrinfo(\"::1\", NULL, &hints, &ai);\n-    if (gaierr != 0) {\n-        if (gaierr == EAI_ADDRFAMILY ||\n-            gaierr == EAI_FAMILY ||\n-            gaierr == EAI_NONAME) {\n-            *has_ipv6 = false;\n-        } else {\n-            g_printerr(\"Failed to resolve ::1 address: %s\\n\",\n-                       gai_strerror(gaierr));\n-            return -1;\n-        }\n-    }\n+    close(fd);\n+    *has_proto = true;\n+    return 0;\n+}\n \n-    freeaddrinfo(ai);\n+static int check_protocol_support(bool *has_ipv4, bool *has_ipv6)\n+{\n+    struct sockaddr_in sin = {\n+        .sin_family = AF_INET,\n+        .sin_addr = { .s_addr = htonl(INADDR_LOOPBACK) },\n+    };\n+    struct sockaddr_in6 sin6 = {\n+        .sin6_family = AF_INET6,\n+        .sin6_addr = IN6ADDR_LOOPBACK_INIT,\n+    };\n \n-    return 0;\n-#else\n-    *has_ipv4 = *has_ipv6 = false;\n+    if (check_bind((struct sockaddr *)&sin, sizeof(sin), has_ipv4) < 0) {\n+        return -1;\n+    }\n+    if (check_bind((struct sockaddr *)&sin6, sizeof(sin6), has_ipv6) < 0) {\n+        return -1;\n+    }\n \n-    return -1;\n-#endif\n+    return 0;\n }\n \n "
+        }
+    ]
+}

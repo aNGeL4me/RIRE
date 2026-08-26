@@ -1,0 +1,101 @@
+{
+  "sha": "6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6NjAzN2E5MDc0ZDUyYjE5NjNjOTdjYjI4ZWExMDk2YzdjMTRjYmYyOA==",
+  "commit": {
+    "author": {
+      "name": "Nicolas Ruff",
+      "email": "nruff@google.com",
+      "date": "2014-08-18T13:16:16Z"
+    },
+    "committer": {
+      "name": "Nicolas Ruff",
+      "email": "nruff@google.com",
+      "date": "2014-08-18T13:16:16Z"
+    },
+    "message": "Check malloc() return value on client->server ClientCutText message. Client can send up to 2**32-1 bytes of text, and such a large allocation is likely to fail in case of high memory pressure. This would in a server crash (write at address 0).",
+    "tree": {
+      "sha": "06fc40f0c264b9f811439ef62fb1f2a8eec328b2",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/06fc40f0c264b9f811439ef62fb1f2a8eec328b2"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/6037a9074d52b1963c97cb28ea1096c7c14cbf28/comments",
+  "author": {
+    "login": "newsoft",
+    "id": 587059,
+    "node_id": "MDQ6VXNlcjU4NzA1OQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/587059?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/newsoft",
+    "html_url": "https://github.com/newsoft",
+    "followers_url": "https://api.github.com/users/newsoft/followers",
+    "following_url": "https://api.github.com/users/newsoft/following{/other_user}",
+    "gists_url": "https://api.github.com/users/newsoft/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/newsoft/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/newsoft/subscriptions",
+    "organizations_url": "https://api.github.com/users/newsoft/orgs",
+    "repos_url": "https://api.github.com/users/newsoft/repos",
+    "events_url": "https://api.github.com/users/newsoft/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/newsoft/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "newsoft",
+    "id": 587059,
+    "node_id": "MDQ6VXNlcjU4NzA1OQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/587059?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/newsoft",
+    "html_url": "https://github.com/newsoft",
+    "followers_url": "https://api.github.com/users/newsoft/followers",
+    "following_url": "https://api.github.com/users/newsoft/following{/other_user}",
+    "gists_url": "https://api.github.com/users/newsoft/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/newsoft/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/newsoft/subscriptions",
+    "organizations_url": "https://api.github.com/users/newsoft/orgs",
+    "repos_url": "https://api.github.com/users/newsoft/repos",
+    "events_url": "https://api.github.com/users/newsoft/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/newsoft/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "7c9ef6372d3ce2942fe78e853c611e269f68eb69",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/7c9ef6372d3ce2942fe78e853c611e269f68eb69",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/7c9ef6372d3ce2942fe78e853c611e269f68eb69"
+    }
+  ],
+  "stats": {
+    "total": 5,
+    "additions": 5,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "7e43fe3f9c7b639a1d919664b5c483bb771d95ce",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 0,
+      "changes": 5,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/6037a9074d52b1963c97cb28ea1096c7c14cbf28/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/6037a9074d52b1963c97cb28ea1096c7c14cbf28/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+      "patch": "@@ -2461,6 +2461,11 @@ rfbProcessClientNormalMessage(rfbClientPtr cl)\n \tmsg.cct.length = Swap32IfLE(msg.cct.length);\n \n \tstr = (char *)malloc(msg.cct.length);\n+\tif (str == NULL) {\n+\t\trfbLogPerror(\"rfbProcessClientNormalMessage: not enough memory\");\n+\t\trfbCloseClient(cl);\n+\t\treturn;\n+\t}\n \n \tif ((n = rfbReadExact(cl, str, msg.cct.length)) <= 0) {\n \t    if (n != 0)"
+    }
+  ]
+}

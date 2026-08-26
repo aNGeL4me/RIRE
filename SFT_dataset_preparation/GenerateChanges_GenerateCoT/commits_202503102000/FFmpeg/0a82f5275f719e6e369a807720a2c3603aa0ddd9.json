@@ -1,0 +1,113 @@
+{
+    "sha": "0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTgyZjUyNzVmNzE5ZTZlMzY5YTgwNzcyMGEyYzM2MDNhYTBkZGQ5",
+    "commit": {
+        "author": {
+            "name": "Ronald S. Bultje",
+            "email": "rsbultje@gmail.com",
+            "date": "2012-03-27T19:26:46Z"
+        },
+        "committer": {
+            "name": "Ronald S. Bultje",
+            "email": "rsbultje@gmail.com",
+            "date": "2012-03-28T14:06:47Z"
+        },
+        "message": "lagarith: fix buffer overreads.\n\nFound-by: Mateusz \"j00ru\" Jurczyk and Gynvael Coldwind\nCC: libav-stable@libav.org",
+        "tree": {
+            "sha": "8a1cf45648efac926d991465905e073601cde5ca",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/8a1cf45648efac926d991465905e073601cde5ca"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a82f5275f719e6e369a807720a2c3603aa0ddd9/comments",
+    "author": {
+        "login": "rbultje",
+        "id": 283893,
+        "node_id": "MDQ6VXNlcjI4Mzg5Mw==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/283893?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rbultje",
+        "html_url": "https://github.com/rbultje",
+        "followers_url": "https://api.github.com/users/rbultje/followers",
+        "following_url": "https://api.github.com/users/rbultje/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rbultje/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rbultje/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rbultje/subscriptions",
+        "organizations_url": "https://api.github.com/users/rbultje/orgs",
+        "repos_url": "https://api.github.com/users/rbultje/repos",
+        "events_url": "https://api.github.com/users/rbultje/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rbultje/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "rbultje",
+        "id": 283893,
+        "node_id": "MDQ6VXNlcjI4Mzg5Mw==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/283893?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rbultje",
+        "html_url": "https://github.com/rbultje",
+        "followers_url": "https://api.github.com/users/rbultje/followers",
+        "following_url": "https://api.github.com/users/rbultje/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rbultje/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rbultje/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rbultje/subscriptions",
+        "organizations_url": "https://api.github.com/users/rbultje/orgs",
+        "repos_url": "https://api.github.com/users/rbultje/repos",
+        "events_url": "https://api.github.com/users/rbultje/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rbultje/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "c0b34e61483aa08524dd9c0383419d11d09b0181",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/c0b34e61483aa08524dd9c0383419d11d09b0181",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/c0b34e61483aa08524dd9c0383419d11d09b0181"
+        }
+    ],
+    "stats": {
+        "total": 79,
+        "additions": 54,
+        "deletions": 25
+    },
+    "files": [
+        {
+            "sha": "201f77dda378c650564a95c7cbace266b7bb42a5",
+            "filename": "libavcodec/lagarith.c",
+            "status": "modified",
+            "additions": 51,
+            "deletions": 23,
+            "changes": 74,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a82f5275f719e6e369a807720a2c3603aa0ddd9/libavcodec%2Flagarith.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a82f5275f719e6e369a807720a2c3603aa0ddd9/libavcodec%2Flagarith.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Flagarith.c?ref=0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+            "patch": "@@ -247,24 +247,26 @@ static void lag_pred_line(LagarithContext *l, uint8_t *buf,\n {\n     int L, TL;\n \n-    /* Left pixel is actually prev_row[width] */\n-    L = buf[width - stride - 1];\n     if (!line) {\n         /* Left prediction only for first line */\n         L = l->dsp.add_hfyu_left_prediction(buf + 1, buf + 1,\n                                             width - 1, buf[0]);\n-        return;\n-    } else if (line == 1) {\n-        /* Second line, left predict first pixel, the rest of the line is median predicted\n-         * NOTE: In the case of RGB this pixel is top predicted */\n-        TL = l->avctx->pix_fmt == PIX_FMT_YUV420P ? buf[-stride] : L;\n     } else {\n-        /* Top left is 2 rows back, last pixel */\n-        TL = buf[width - (2 * stride) - 1];\n-    }\n+        /* Left pixel is actually prev_row[width] */\n+        L = buf[width - stride - 1];\n+\n+        if (line == 1) {\n+            /* Second line, left predict first pixel, the rest of the line is median predicted\n+             * NOTE: In the case of RGB this pixel is top predicted */\n+            TL = l->avctx->pix_fmt == PIX_FMT_YUV420P ? buf[-stride] : L;\n+        } else {\n+            /* Top left is 2 rows back, last pixel */\n+            TL = buf[width - (2 * stride) - 1];\n+        }\n \n-    add_lag_median_prediction(buf, buf - stride, buf,\n-                              width, &L, &TL);\n+        add_lag_median_prediction(buf, buf - stride, buf,\n+                                  width, &L, &TL);\n+    }\n }\n \n static int lag_decode_line(LagarithContext *l, lag_rac *rac,\n@@ -310,13 +312,13 @@ static int lag_decode_line(LagarithContext *l, lag_rac *rac,\n }\n \n static int lag_decode_zero_run_line(LagarithContext *l, uint8_t *dst,\n-                                    const uint8_t *src, int width,\n-                                    int esc_count)\n+                                    const uint8_t *src, const uint8_t *src_end,\n+                                    int width, int esc_count)\n {\n     int i = 0;\n     int count;\n     uint8_t zero_run = 0;\n-    const uint8_t *start = src;\n+    const uint8_t *src_start = src;\n     uint8_t mask1 = -(esc_count < 2);\n     uint8_t mask2 = -(esc_count < 3);\n     uint8_t *end = dst + (width - 2);\n@@ -333,6 +335,8 @@ static int lag_decode_zero_run_line(LagarithContext *l, uint8_t *dst,\n         i = 0;\n         while (!zero_run && dst + i < end) {\n             i++;\n+            if (src + i >= src_end)\n+                return AVERROR_INVALIDDATA;\n             zero_run =\n                 !(src[i] | (src[i + 1] & mask1) | (src[i + 2] & mask2));\n         }\n@@ -348,9 +352,10 @@ static int lag_decode_zero_run_line(LagarithContext *l, uint8_t *dst,\n         } else {\n             memcpy(dst, src, i);\n             src += i;\n+            dst += i;\n         }\n     }\n-    return start - src;\n+    return src_start - src;\n }\n \n \n@@ -366,6 +371,7 @@ static int lag_decode_arith_plane(LagarithContext *l, uint8_t *dst,\n     int esc_count = src[0];\n     GetBitContext gb;\n     lag_rac rac;\n+    const uint8_t *src_end = src + src_size;\n \n     rac.avctx = l->avctx;\n     l->zeros = 0;\n@@ -396,10 +402,16 @@ static int lag_decode_arith_plane(LagarithContext *l, uint8_t *dst,\n         esc_count -= 4;\n         if (esc_count > 0) {\n             /* Zero run coding only, no range coding. */\n-            for (i = 0; i < height; i++)\n-                src += lag_decode_zero_run_line(l, dst + (i * stride), src,\n-                                                width, esc_count);\n+            for (i = 0; i < height; i++) {\n+                int res = lag_decode_zero_run_line(l, dst + (i * stride), src,\n+                                                   src_end, width, esc_count);\n+                if (res < 0)\n+                    return res;\n+                src += res;\n+            }\n         } else {\n+            if (src_size < width * height)\n+                return AVERROR_INVALIDDATA; // buffer not big enough\n             /* Plane is stored uncompressed */\n             for (i = 0; i < height; i++) {\n                 memcpy(dst + (i * stride), src, width);\n@@ -506,11 +518,19 @@ static int lag_decode_frame(AVCodecContext *avctx,\n         }\n         for (i = 0; i < planes; i++)\n             srcs[i] = l->rgb_planes + (i + 1) * l->rgb_stride * avctx->height - l->rgb_stride;\n+        if (offset_ry >= buf_size ||\n+            offset_gu >= buf_size ||\n+            offset_bv >= buf_size ||\n+            (planes == 4 && offs[3] >= buf_size)) {\n+            av_log(avctx, AV_LOG_ERROR,\n+                    \"Invalid frame offsets\\n\");\n+            return AVERROR_INVALIDDATA;\n+        }\n         for (i = 0; i < planes; i++)\n             lag_decode_arith_plane(l, srcs[i],\n                                    avctx->width, avctx->height,\n                                    -l->rgb_stride, buf + offs[i],\n-                                   buf_size);\n+                                   buf_size - offs[i]);\n         dst = p->data[0];\n         for (i = 0; i < planes; i++)\n             srcs[i] = l->rgb_planes + i * l->rgb_stride * avctx->height;\n@@ -544,15 +564,23 @@ static int lag_decode_frame(AVCodecContext *avctx,\n             return -1;\n         }\n \n+        if (offset_ry >= buf_size ||\n+            offset_gu >= buf_size ||\n+            offset_bv >= buf_size) {\n+            av_log(avctx, AV_LOG_ERROR,\n+                   \"Invalid frame offsets\\n\");\n+            return AVERROR_INVALIDDATA;\n+        }\n+\n         lag_decode_arith_plane(l, p->data[0], avctx->width, avctx->height,\n                                p->linesize[0], buf + offset_ry,\n-                               buf_size);\n+                               buf_size - offset_ry);\n         lag_decode_arith_plane(l, p->data[2], avctx->width / 2,\n                                avctx->height / 2, p->linesize[2],\n-                               buf + offset_gu, buf_size);\n+                               buf + offset_gu, buf_size - offset_gu);\n         lag_decode_arith_plane(l, p->data[1], avctx->width / 2,\n                                avctx->height / 2, p->linesize[1],\n-                               buf + offset_bv, buf_size);\n+                               buf + offset_bv, buf_size - offset_bv);\n         break;\n     default:\n         av_log(avctx, AV_LOG_ERROR,"
+        },
+        {
+            "sha": "edfb18fb746851f4c7dc83ee937976ef6de48535",
+            "filename": "libavcodec/lagarithrac.c",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a82f5275f719e6e369a807720a2c3603aa0ddd9/libavcodec%2Flagarithrac.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a82f5275f719e6e369a807720a2c3603aa0ddd9/libavcodec%2Flagarithrac.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Flagarithrac.c?ref=0a82f5275f719e6e369a807720a2c3603aa0ddd9",
+            "patch": "@@ -32,15 +32,16 @@\n \n void ff_lag_rac_init(lag_rac *l, GetBitContext *gb, int length)\n {\n-    int i, j;\n+    int i, j, left;\n \n     /* According to reference decoder \"1st byte is garbage\",\n      * however, it gets skipped by the call to align_get_bits()\n      */\n     align_get_bits(gb);\n+    left                = get_bits_left(gb) >> 3;\n     l->bytestream_start =\n     l->bytestream       = gb->buffer + get_bits_count(gb) / 8;\n-    l->bytestream_end   = l->bytestream_start + length;\n+    l->bytestream_end   = l->bytestream_start + FFMIN(length, left);\n \n     l->range        = 0x80;\n     l->low          = *l->bytestream >> 1;"
+        }
+    ]
+}

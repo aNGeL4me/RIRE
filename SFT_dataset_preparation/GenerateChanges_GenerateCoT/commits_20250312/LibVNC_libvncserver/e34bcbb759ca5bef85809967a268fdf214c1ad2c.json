@@ -1,0 +1,101 @@
+{
+  "sha": "e34bcbb759ca5bef85809967a268fdf214c1ad2c",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6ZTM0YmNiYjc1OWNhNWJlZjg1ODA5OTY3YTI2OGZkZjIxNGMxYWQyYw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-12-29T13:40:53Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-12-29T13:40:53Z"
+    },
+    "message": "LibVNCClient: ignore server-sent reason strings longer than 1MB\n\nFixes #273",
+    "tree": {
+      "sha": "db949b4c386bb5ffb293a8e26f472e0a3516edeb",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/db949b4c386bb5ffb293a8e26f472e0a3516edeb"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/e34bcbb759ca5bef85809967a268fdf214c1ad2c",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXCd5hgAKCRBCG7O0XGBn\n+F3DAJ9fByJCr4QPjK+i7/foyHzJGyQFYQCghxyfqWqJ0Yeo4qX7Jv3kTDarXSs=\n=lzAh\n-----END PGP SIGNATURE-----",
+      "payload": "tree db949b4c386bb5ffb293a8e26f472e0a3516edeb\nparent c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a\nauthor Christian Beier <dontmind@freeshell.org> 1546090853 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1546090853 +0100\n\nLibVNCClient: ignore server-sent reason strings longer than 1MB\n\nFixes #273\n",
+      "verified_at": "2024-11-13T11:30:48Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/e34bcbb759ca5bef85809967a268fdf214c1ad2c",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/e34bcbb759ca5bef85809967a268fdf214c1ad2c",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/e34bcbb759ca5bef85809967a268fdf214c1ad2c/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a"
+    }
+  ],
+  "stats": {
+    "total": 45,
+    "additions": 21,
+    "deletions": 24
+  },
+  "files": [
+    {
+      "sha": "ba7d70a71575056cc533778ef79fa318df227dec",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 21,
+      "deletions": 24,
+      "changes": 45,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/e34bcbb759ca5bef85809967a268fdf214c1ad2c/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/e34bcbb759ca5bef85809967a268fdf214c1ad2c/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=e34bcbb759ca5bef85809967a268fdf214c1ad2c",
+      "patch": "@@ -412,11 +412,29 @@ rfbBool ConnectToRFBRepeater(rfbClient* client,const char *repeaterHost, int rep\n extern void rfbClientEncryptBytes(unsigned char* bytes, char* passwd);\n extern void rfbClientEncryptBytes2(unsigned char *where, const int length, unsigned char *key);\n \n+static void\n+ReadReason(rfbClient* client)\n+{\n+    uint32_t reasonLen;\n+    char *reason;\n+\n+    if (!ReadFromRFBServer(client, (char *)&reasonLen, 4)) return;\n+    reasonLen = rfbClientSwap32IfLE(reasonLen);\n+    if(reasonLen > 1<<20) {\n+      rfbClientLog(\"VNC connection failed, but sent reason length of %u exceeds limit of 1MB\",(unsigned int)reasonLen);\n+      return;\n+    }\n+    reason = malloc(reasonLen+1);\n+    if (!ReadFromRFBServer(client, reason, reasonLen)) { free(reason); return; }\n+    reason[reasonLen]=0;\n+    rfbClientLog(\"VNC connection failed: %s\\n\",reason);\n+    free(reason);\n+}\n+\n rfbBool\n rfbHandleAuthResult(rfbClient* client)\n {\n-    uint32_t authResult=0, reasonLen=0;\n-    char *reason=NULL;\n+    uint32_t authResult=0;\n \n     if (!ReadFromRFBServer(client, (char *)&authResult, 4)) return FALSE;\n \n@@ -431,13 +449,7 @@ rfbHandleAuthResult(rfbClient* client)\n       if (client->major==3 && client->minor>7)\n       {\n         /* we have an error following */\n-        if (!ReadFromRFBServer(client, (char *)&reasonLen, 4)) return FALSE;\n-        reasonLen = rfbClientSwap32IfLE(reasonLen);\n-        reason = malloc((uint64_t)reasonLen+1);\n-        if (!ReadFromRFBServer(client, reason, reasonLen)) { free(reason); return FALSE; }\n-        reason[reasonLen]=0;\n-        rfbClientLog(\"VNC connection failed: %s\\n\",reason);\n-        free(reason);\n+        ReadReason(client);\n         return FALSE;\n       }\n       rfbClientLog(\"VNC authentication failed\\n\");\n@@ -452,21 +464,6 @@ rfbHandleAuthResult(rfbClient* client)\n     return FALSE;\n }\n \n-static void\n-ReadReason(rfbClient* client)\n-{\n-    uint32_t reasonLen;\n-    char *reason;\n-\n-    /* we have an error following */\n-    if (!ReadFromRFBServer(client, (char *)&reasonLen, 4)) return;\n-    reasonLen = rfbClientSwap32IfLE(reasonLen);\n-    reason = malloc((uint64_t)reasonLen+1);\n-    if (!ReadFromRFBServer(client, reason, reasonLen)) { free(reason); return; }\n-    reason[reasonLen]=0;\n-    rfbClientLog(\"VNC connection failed: %s\\n\",reason);\n-    free(reason);\n-}\n \n static rfbBool\n ReadSupportedSecurityType(rfbClient* client, uint32_t *result, rfbBool subAuth)"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+    "sha": "0a608a6e132abffa8fd9455e2354a47acb95847e",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTYwOGE2ZTEzMmFiZmZhOGZkOTQ1NWUyMzU0YTQ3YWNiOTU4NDdl",
+    "commit": {
+        "author": {
+            "name": "Yi Min Zhao",
+            "email": "zyimin@linux.vnet.ibm.com",
+            "date": "2016-06-15T09:09:10Z"
+        },
+        "committer": {
+            "name": "Cornelia Huck",
+            "email": "cornelia.huck@de.ibm.com",
+            "date": "2016-07-11T07:48:05Z"
+        },
+        "message": "s390x/pci: fix stpcifc_service_call\n\nFirstly the function misses dmaas checking. This patch adds it.\n\nSecondly the function uses s390_pci_find_dev_by_fh() to look up the\nzpci device. This may fail if the guest provides a valid and disabled\nfh but fh of the associated zpci device is enabled. Thus we use\ns390_pci_find_dev_by_idx() instead.\n\nSigned-off-by: Yi Min Zhao <zyimin@linux.vnet.ibm.com>\nReviewed-by: Pierre Morel <pmorel@linux.vnet.ibm.com>\nSigned-off-by: Cornelia Huck <cornelia.huck@de.ibm.com>",
+        "tree": {
+            "sha": "611a414b0c2fcc75f0ae5a5ffcd29319d852ee70",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/611a414b0c2fcc75f0ae5a5ffcd29319d852ee70"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a608a6e132abffa8fd9455e2354a47acb95847e",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a608a6e132abffa8fd9455e2354a47acb95847e",
+    "html_url": "https://github.com/qemu/qemu/commit/0a608a6e132abffa8fd9455e2354a47acb95847e",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a608a6e132abffa8fd9455e2354a47acb95847e/comments",
+    "author": null,
+    "committer": {
+        "login": "cohuck",
+        "id": 3774234,
+        "node_id": "MDQ6VXNlcjM3NzQyMzQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3774234?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cohuck",
+        "html_url": "https://github.com/cohuck",
+        "followers_url": "https://api.github.com/users/cohuck/followers",
+        "following_url": "https://api.github.com/users/cohuck/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cohuck/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cohuck/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cohuck/subscriptions",
+        "organizations_url": "https://api.github.com/users/cohuck/orgs",
+        "repos_url": "https://api.github.com/users/cohuck/repos",
+        "events_url": "https://api.github.com/users/cohuck/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cohuck/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "4e3bfc167d9cc9c9e3c26eb15cb06439547f0533",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/4e3bfc167d9cc9c9e3c26eb15cb06439547f0533",
+            "html_url": "https://github.com/qemu/qemu/commit/4e3bfc167d9cc9c9e3c26eb15cb06439547f0533"
+        }
+    ],
+    "stats": {
+        "total": 10,
+        "additions": 9,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "37572df821dab3adb66bccece0264442b2754ad4",
+            "filename": "hw/s390x/s390-pci-inst.c",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 1,
+            "changes": 10,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a608a6e132abffa8fd9455e2354a47acb95847e/hw%2Fs390x%2Fs390-pci-inst.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a608a6e132abffa8fd9455e2354a47acb95847e/hw%2Fs390x%2Fs390-pci-inst.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fs390x%2Fs390-pci-inst.c?ref=0a608a6e132abffa8fd9455e2354a47acb95847e",
+            "patch": "@@ -944,6 +944,7 @@ int mpcifc_service_call(S390CPU *cpu, uint8_t r1, uint64_t fiba, uint8_t ar)\n int stpcifc_service_call(S390CPU *cpu, uint8_t r1, uint64_t fiba, uint8_t ar)\n {\n     CPUS390XState *env = &cpu->env;\n+    uint8_t dmaas;\n     uint32_t fh;\n     ZpciFib fib;\n     S390PCIBusDevice *pbdev;\n@@ -956,13 +957,20 @@ int stpcifc_service_call(S390CPU *cpu, uint8_t r1, uint64_t fiba, uint8_t ar)\n     }\n \n     fh = env->regs[r1] >> 32;\n+    dmaas = (env->regs[r1] >> 16) & 0xff;\n+\n+    if (dmaas) {\n+        setcc(cpu, ZPCI_PCI_LS_ERR);\n+        s390_set_status_code(env, r1, ZPCI_STPCIFC_ST_INVAL_DMAAS);\n+        return 0;\n+    }\n \n     if (fiba & 0x7) {\n         program_interrupt(env, PGM_SPECIFICATION, 6);\n         return 0;\n     }\n \n-    pbdev = s390_pci_find_dev_by_fh(fh);\n+    pbdev = s390_pci_find_dev_by_idx(fh & FH_MASK_INDEX);\n     if (!pbdev) {\n         setcc(cpu, ZPCI_PCI_LS_INVAL_HANDLE);\n         return 0;"
+        }
+    ]
+}

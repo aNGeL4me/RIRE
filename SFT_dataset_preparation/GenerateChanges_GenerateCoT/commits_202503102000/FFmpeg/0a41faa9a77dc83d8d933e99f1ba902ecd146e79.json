@@ -1,0 +1,73 @@
+{
+    "sha": "0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTQxZmFhOWE3N2RjODNkOGQ5MzNlOTlmMWJhOTAyZWNkMTQ2ZTc5",
+    "commit": {
+        "author": {
+            "name": "Vitor Sessak",
+            "email": "vitor1001@gmail.com",
+            "date": "2010-03-03T17:24:32Z"
+        },
+        "committer": {
+            "name": "Vitor Sessak",
+            "email": "vitor1001@gmail.com",
+            "date": "2010-03-03T17:24:32Z"
+        },
+        "message": "Plug some memory leaks in the VP6 decoder\n\nOriginally committed as revision 22172 to svn://svn.ffmpeg.org/ffmpeg/trunk",
+        "tree": {
+            "sha": "0e0b15179b6f3b6686789f58049878b58912549a",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/0e0b15179b6f3b6686789f58049878b58912549a"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a41faa9a77dc83d8d933e99f1ba902ecd146e79/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "d7f5e520bf18cfe0f288bee6c1004b715c32365e",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/d7f5e520bf18cfe0f288bee6c1004b715c32365e",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/d7f5e520bf18cfe0f288bee6c1004b715c32365e"
+        }
+    ],
+    "stats": {
+        "total": 13,
+        "additions": 13,
+        "deletions": 0
+    },
+    "files": [
+        {
+            "sha": "dd8f05a8c3c270dc575cc24a55e3fc3e595155d4",
+            "filename": "libavcodec/vp56.c",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a41faa9a77dc83d8d933e99f1ba902ecd146e79/libavcodec%2Fvp56.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a41faa9a77dc83d8d933e99f1ba902ecd146e79/libavcodec%2Fvp56.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fvp56.c?ref=0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+            "patch": "@@ -26,6 +26,7 @@\n \n #include \"vp56.h\"\n #include \"vp56data.h\"\n+#include \"get_bits.h\"\n \n \n void vp56_init_dequant(VP56Context *s, int quantizer)\n@@ -695,6 +696,7 @@ av_cold void vp56_init(AVCodecContext *avctx, int flip, int has_alpha)\n av_cold int vp56_free(AVCodecContext *avctx)\n {\n     VP56Context *s = avctx->priv_data;\n+    int pt;\n \n     av_freep(&s->qscale_table);\n     av_freep(&s->above_blocks);\n@@ -706,5 +708,15 @@ av_cold int vp56_free(AVCodecContext *avctx)\n         avctx->release_buffer(avctx, s->framep[VP56_FRAME_GOLDEN2]);\n     if (s->framep[VP56_FRAME_PREVIOUS]->data[0])\n         avctx->release_buffer(avctx, s->framep[VP56_FRAME_PREVIOUS]);\n+\n+    for (pt=0; pt < 2; pt++) {\n+        int ct, cg;\n+        free_vlc(&s->dccv_vlc[pt]);\n+        free_vlc(&s->runv_vlc[pt]);\n+        for (ct=0; ct<3; ct++)\n+            for (cg = 0; cg < 6; cg++)\n+                free_vlc(&s->ract_vlc[pt][ct][cg]);\n+    }\n+\n     return 0;\n }"
+        },
+        {
+            "sha": "8bb60ede277e758fe8a039d7ffb635d2bd4017a0",
+            "filename": "libavcodec/vp6.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a41faa9a77dc83d8d933e99f1ba902ecd146e79/libavcodec%2Fvp6.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a41faa9a77dc83d8d933e99f1ba902ecd146e79/libavcodec%2Fvp6.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fvp6.c?ref=0a41faa9a77dc83d8d933e99f1ba902ecd146e79",
+            "patch": "@@ -227,6 +227,7 @@ static void vp6_build_huff_tree(VP56Context *s, uint8_t coeff_model[],\n         nodes[map[2*i+1]].count = b + !b;\n     }\n \n+    free_vlc(vlc);\n     /* then build the huffman tree accodring to probabilities */\n     ff_huff_build_tree(s->avctx, vlc, size, nodes, vp6_huff_cmp,\n                        FF_HUFFMAN_FLAG_HNODE_FIRST);"
+        }
+    ]
+}

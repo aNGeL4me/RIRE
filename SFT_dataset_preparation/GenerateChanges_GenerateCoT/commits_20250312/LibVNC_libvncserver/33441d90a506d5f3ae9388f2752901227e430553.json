@@ -1,0 +1,101 @@
+{
+  "sha": "33441d90a506d5f3ae9388f2752901227e430553",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MzM0NDFkOTBhNTA2ZDVmM2FlOTM4OGYyNzUyOTAxMjI3ZTQzMDU1Mw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2020-03-06T16:37:57Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2020-03-06T16:37:57Z"
+    },
+    "message": "libvncclient/tls_openssl: do not deref a NULL pointer\n\nHappens in anonTLS mode where cred is NULL.\n\nre #347",
+    "tree": {
+      "sha": "a90eb05254f4a4d7a19ac2487ec95600779558a6",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/a90eb05254f4a4d7a19ac2487ec95600779558a6"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/33441d90a506d5f3ae9388f2752901227e430553",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXmJ8ZQAKCRBCG7O0XGBn\n+NeoAKCxJcfzyYmQsmT9ErIhwPXHFS1P0gCfQ2en68Gkx1HVullm5JeTK/C7zpE=\n=I1H4\n-----END PGP SIGNATURE-----",
+      "payload": "tree a90eb05254f4a4d7a19ac2487ec95600779558a6\nparent 49880e33ee430d50804f46c307bcadce5b3e3be2\nauthor Christian Beier <dontmind@freeshell.org> 1583512677 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1583512677 +0100\n\nlibvncclient/tls_openssl: do not deref a NULL pointer\n\nHappens in anonTLS mode where cred is NULL.\n\nre #347\n",
+      "verified_at": "2024-11-12T16:51:43Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/33441d90a506d5f3ae9388f2752901227e430553",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/33441d90a506d5f3ae9388f2752901227e430553",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/33441d90a506d5f3ae9388f2752901227e430553/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "49880e33ee430d50804f46c307bcadce5b3e3be2",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/49880e33ee430d50804f46c307bcadce5b3e3be2",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/49880e33ee430d50804f46c307bcadce5b3e3be2"
+    }
+  ],
+  "stats": {
+    "total": 3,
+    "additions": 2,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "fcef1bc3e869dbc3de642ecce24007f05d2dd252",
+      "filename": "libvncclient/tls_openssl.c",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 1,
+      "changes": 3,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/33441d90a506d5f3ae9388f2752901227e430553/libvncclient%2Ftls_openssl.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/33441d90a506d5f3ae9388f2752901227e430553/libvncclient%2Ftls_openssl.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Ftls_openssl.c?ref=33441d90a506d5f3ae9388f2752901227e430553",
+      "patch": "@@ -268,7 +268,7 @@ open_ssl_connection (rfbClient *client, int sockfd, rfbBool anonTLS, rfbCredenti\n   SSL *ssl = NULL;\n   int n, finished = 0;\n   X509_VERIFY_PARAM *param;\n-  uint8_t verify_crls = cred->x509Credential.x509CrlVerifyMode;\n+  uint8_t verify_crls;\n \n   if (!(ssl_ctx = SSL_CTX_new(SSLv23_client_method())))\n   {\n@@ -281,6 +281,7 @@ open_ssl_connection (rfbClient *client, int sockfd, rfbBool anonTLS, rfbCredenti\n   /* Setup verification if not anonymous */\n   if (!anonTLS)\n   {\n+    verify_crls = cred->x509Credential.x509CrlVerifyMode;\n     if (cred->x509Credential.x509CACertFile)\n     {\n       if (!SSL_CTX_load_verify_locations(ssl_ctx, cred->x509Credential.x509CACertFile, NULL))"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+    "sha": "00e2ceae6c55bef40f5128a3e606f5c44351e0f9",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGUyY2VhZTZjNTViZWY0MGY1MTI4YTNlNjA2ZjVjNDQzNTFlMGY5",
+    "commit": {
+        "author": {
+            "name": "Peter Crosthwaite",
+            "email": "peter.crosthwaite@xilinx.com",
+            "date": "2013-02-19T04:02:10Z"
+        },
+        "committer": {
+            "name": "Anthony Liguori",
+            "email": "aliguori@us.ibm.com",
+            "date": "2013-02-21T22:34:10Z"
+        },
+        "message": "qom/object.c: Allow itf cast with num_itfs = 0\n\nnum_interfaces only tells you how many interfaces the concrete child class has\n(as defined in the TypeInfo). This means if you have a child class which defines\nno interfaces of its own, but its parent has interfaces you cannot cast to those\nparent interfaces.\n\nFixed changing the guard to check the class->interfaces list instead (which is\na complete flattened list of implemented interfaces).\n\nSigned-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>\nMessage-id: a8c2db3b9b1f3c4bb81aca352b69e33260f36545.1361246206.git.peter.crosthwaite@xilinx.com\nSigned-off-by: Anthony Liguori <aliguori@us.ibm.com>",
+        "tree": {
+            "sha": "1f217dd1869cf332df015067a33f3494815619ca",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/1f217dd1869cf332df015067a33f3494815619ca"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00e2ceae6c55bef40f5128a3e606f5c44351e0f9",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00e2ceae6c55bef40f5128a3e606f5c44351e0f9",
+    "html_url": "https://github.com/qemu/qemu/commit/00e2ceae6c55bef40f5128a3e606f5c44351e0f9",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00e2ceae6c55bef40f5128a3e606f5c44351e0f9/comments",
+    "author": {
+        "login": "pete128",
+        "id": 1028936,
+        "node_id": "MDQ6VXNlcjEwMjg5MzY=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1028936?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/pete128",
+        "html_url": "https://github.com/pete128",
+        "followers_url": "https://api.github.com/users/pete128/followers",
+        "following_url": "https://api.github.com/users/pete128/following{/other_user}",
+        "gists_url": "https://api.github.com/users/pete128/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/pete128/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/pete128/subscriptions",
+        "organizations_url": "https://api.github.com/users/pete128/orgs",
+        "repos_url": "https://api.github.com/users/pete128/repos",
+        "events_url": "https://api.github.com/users/pete128/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/pete128/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+        {
+            "sha": "3e407de47700cce4babbe0f3ac35677e7b852cf6",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/3e407de47700cce4babbe0f3ac35677e7b852cf6",
+            "html_url": "https://github.com/qemu/qemu/commit/3e407de47700cce4babbe0f3ac35677e7b852cf6"
+        }
+    ],
+    "stats": {
+        "total": 3,
+        "additions": 2,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "3d638ff273e80464ab7d06b890d92dee7a91a3c8",
+            "filename": "qom/object.c",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3,
+            "blob_url": "https://github.com/qemu/qemu/blob/00e2ceae6c55bef40f5128a3e606f5c44351e0f9/qom%2Fobject.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00e2ceae6c55bef40f5128a3e606f5c44351e0f9/qom%2Fobject.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qom%2Fobject.c?ref=00e2ceae6c55bef40f5128a3e606f5c44351e0f9",
+            "patch": "@@ -449,7 +449,8 @@ ObjectClass *object_class_dynamic_cast(ObjectClass *class,\n     TypeImpl *type = class->type;\n     ObjectClass *ret = NULL;\n \n-    if (type->num_interfaces && type_is_ancestor(target_type, type_interface)) {\n+    if (type->class->interfaces &&\n+            type_is_ancestor(target_type, type_interface)) {\n         int found = 0;\n         GSList *i;\n "
+        }
+    ]
+}

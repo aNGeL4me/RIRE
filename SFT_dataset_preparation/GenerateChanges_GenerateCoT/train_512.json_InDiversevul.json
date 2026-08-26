@@ -1,0 +1,62 @@
+[
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "running_long_enough_to_decide_unreachable(void)\n{\n  return time_of_process_start\n    + get_options()->TestingAuthDirTimeToLearnReachability < approx_time();\n}",
+        "output": "0",
+        "idx": 19066
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static int device_notifier(struct notifier_block *nb,\n\t\t\t\t  unsigned long action, void *data)\n{\n\tstruct device *dev = data;\n\tstruct dmar_domain *domain;\n\n\tif (iommu_dummy(dev))\n\t\treturn 0;\n\n\tif (action == BUS_NOTIFY_REMOVED_DEVICE) {\n\t\tdomain = find_domain(dev);\n\t\tif (!domain)\n\t\t\treturn 0;\n\n\t\tdmar_remove_one_dev_info(dev);\n\t\tif (!domain_type_is_vm_or_si(domain) &&\n\t\t    list_empty(&domain->devices))\n\t\t\tdomain_exit(domain);\n\t} else if (action == BUS_NOTIFY_ADD_DEVICE) {\n\t\tif (iommu_should_identity_map(dev, 1))\n\t\t\tdomain_add_dev_info(si_domain, dev);\n\t}\n\n\treturn 0;\n}",
+        "output": "0",
+        "idx": 19589
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "  enum_field_types binlog_type() const { return MYSQL_TYPE_TIMESTAMP2; }",
+        "output": "0",
+        "idx": 13046
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static struct page *syscall_nopage(struct vm_area_struct *vma,\n\t\t\t\tunsigned long adr, int *type)\n{\n\tstruct page *p = virt_to_page(adr - vma->vm_start + syscall_page);\n\tget_page(p);\n\treturn p;\n}",
+        "output": "1",
+        "idx": 27305
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "Value_source::Warn_filter::Warn_filter(const THD *thd)\n :m_want_warning_edom(!thd->no_errors),\n  m_want_note_truncated_spaces(!thd->no_errors)\n{ }",
+        "output": "0",
+        "idx": 39920
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "void cJSON_DeleteItemFromObject( cJSON *object, const char *string )\n{\n\tcJSON_Delete( cJSON_DetachItemFromObject( object, string ) );\n}",
+        "output": "1",
+        "idx": 49613
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static void nfs_set_open_stateid_locked(struct nfs4_state *state, nfs4_stateid *stateid, int open_flags)\n{\n\tif (test_bit(NFS_DELEGATED_STATE, &state->flags) == 0)\n\t\tmemcpy(state->stateid.data, stateid->data, sizeof(state->stateid.data));\n\tmemcpy(state->open_stateid.data, stateid->data, sizeof(state->open_stateid.data));\n\tswitch (open_flags) {\n\t\tcase FMODE_READ:\n\t\t\tset_bit(NFS_O_RDONLY_STATE, &state->flags);\n\t\t\tbreak;\n\t\tcase FMODE_WRITE:\n\t\t\tset_bit(NFS_O_WRONLY_STATE, &state->flags);\n\t\t\tbreak;\n\t\tcase FMODE_READ|FMODE_WRITE:\n\t\t\tset_bit(NFS_O_RDWR_STATE, &state->flags);\n\t}\n}",
+        "output": "1",
+        "idx": 10161
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static unsigned int sfq_hash(const struct sfq_sched_data *q,\n\t\t\t     const struct sk_buff *skb)\n{\n\treturn skb_get_hash_perturb(skb, q->perturbation) & (q->divisor - 1);\n}",
+        "output": "1",
+        "idx": 4730
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "f_slice(typval_T *argvars, typval_T *rettv)\n{\n    if (in_vim9script()\n\t    && ((argvars[0].v_type != VAR_STRING\n\t\t    && argvars[0].v_type != VAR_LIST\n\t\t    && argvars[0].v_type != VAR_BLOB\n\t\t    && check_for_list_arg(argvars, 0) == FAIL)\n\t\t|| check_for_number_arg(argvars, 1) == FAIL\n\t\t|| check_for_opt_number_arg(argvars, 2) == FAIL))\n\treturn;\n\n    if (check_can_index(argvars, TRUE, FALSE) == OK)\n    {\n\tcopy_tv(argvars, rettv);\n\teval_index_inner(rettv, TRUE, argvars + 1,\n\t\targvars[2].v_type == VAR_UNKNOWN ? NULL : argvars + 2,\n\t\tTRUE, NULL, 0, FALSE);\n    }\n}",
+        "output": "0",
+        "idx": 10187
+    },
+    {
+        "instruction": "Detect whether the following code contains vulnerabilities.",
+        "input": "static void drain_pages(unsigned int cpu)\n{\n\tstruct zone *zone;\n\n\tfor_each_populated_zone(zone) {\n\t\tdrain_pages_zone(cpu, zone);\n\t}\n}",
+        "output": "0",
+        "idx": 42002
+    }
+]

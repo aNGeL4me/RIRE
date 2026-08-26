@@ -1,0 +1,149 @@
+{
+    "sha": "0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTk4MmIxYmYzOTUzZGM4NjQwYzRkNmU2MTlmYjExMzJlYmJlYmMz",
+    "commit": {
+        "author": {
+            "name": "Eric Blake",
+            "email": "eblake@redhat.com",
+            "date": "2015-11-25T17:37:15Z"
+        },
+        "committer": {
+            "name": "Michael Roth",
+            "email": "mdroth@linux.vnet.ibm.com",
+            "date": "2015-11-25T23:56:45Z"
+        },
+        "message": "qga: Better mapping of SEEK_* in guest-file-seek\n\nExposing OS-specific SEEK_ constants in our qapi was a mistake\n(if the host has SEEK_CUR as 1, but the guest has it as 2, then\nthe semantics are unclear what should happen); if we had a time\nmachine, we would instead expose only a symbolic enum.  It's too\nlate to change the fact that we have an integer in qapi, but we\ncan at least document what mapping we want to enforce for all\nqga clients (and luckily, it happens to be the mapping that both\nLinux and Windows use); then fix the code to match that mapping.\nIt also helps us filter out unsupported SEEK_DATA and SEEK_HOLE.\n\nIn the future, we may wish to move our QGA_SEEK_* constants into\nqga/qapi-schema.json, along with updating the schema to take an\nalternate type (either the integer, or the string value of the\nenum name) - but that's too much risk during hard freeze.\n\nSigned-off-by: Eric Blake <eblake@redhat.com>\nSigned-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>",
+        "tree": {
+            "sha": "5ae9613662b1e89c3da1bb78c74b1e1253802406",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/5ae9613662b1e89c3da1bb78c74b1e1253802406"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+    "html_url": "https://github.com/qemu/qemu/commit/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/comments",
+    "author": {
+        "login": "ebblake",
+        "id": 32933908,
+        "node_id": "MDQ6VXNlcjMyOTMzOTA4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32933908?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ebblake",
+        "html_url": "https://github.com/ebblake",
+        "followers_url": "https://api.github.com/users/ebblake/followers",
+        "following_url": "https://api.github.com/users/ebblake/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ebblake/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ebblake/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ebblake/subscriptions",
+        "organizations_url": "https://api.github.com/users/ebblake/orgs",
+        "repos_url": "https://api.github.com/users/ebblake/repos",
+        "events_url": "https://api.github.com/users/ebblake/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ebblake/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "mdroth",
+        "id": 733328,
+        "node_id": "MDQ6VXNlcjczMzMyOA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/733328?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mdroth",
+        "html_url": "https://github.com/mdroth",
+        "followers_url": "https://api.github.com/users/mdroth/followers",
+        "following_url": "https://api.github.com/users/mdroth/following{/other_user}",
+        "gists_url": "https://api.github.com/users/mdroth/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/mdroth/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/mdroth/subscriptions",
+        "organizations_url": "https://api.github.com/users/mdroth/orgs",
+        "repos_url": "https://api.github.com/users/mdroth/repos",
+        "events_url": "https://api.github.com/users/mdroth/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/mdroth/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "4eaab85cb1c1ba9c575d29921df81d63c7aa35df",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/4eaab85cb1c1ba9c575d29921df81d63c7aa35df",
+            "html_url": "https://github.com/qemu/qemu/commit/4eaab85cb1c1ba9c575d29921df81d63c7aa35df"
+        }
+    ],
+    "stats": {
+        "total": 55,
+        "additions": 49,
+        "deletions": 6
+    },
+    "files": [
+        {
+            "sha": "c2ff97021ff55c31a6f38f31bf6465f736a4999f",
+            "filename": "qga/commands-posix.c",
+            "status": "modified",
+            "additions": 18,
+            "deletions": 1,
+            "changes": 19,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fcommands-posix.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fcommands-posix.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qga%2Fcommands-posix.c?ref=0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+            "patch": "@@ -553,17 +553,34 @@ GuestFileWrite *qmp_guest_file_write(int64_t handle, const char *buf_b64,\n }\n \n struct GuestFileSeek *qmp_guest_file_seek(int64_t handle, int64_t offset,\n-                                          int64_t whence, Error **errp)\n+                                          int64_t whence_code, Error **errp)\n {\n     GuestFileHandle *gfh = guest_file_handle_find(handle, errp);\n     GuestFileSeek *seek_data = NULL;\n     FILE *fh;\n     int ret;\n+    int whence;\n \n     if (!gfh) {\n         return NULL;\n     }\n \n+    /* We stupidly exposed 'whence':'int' in our qapi */\n+    switch (whence_code) {\n+    case QGA_SEEK_SET:\n+        whence = SEEK_SET;\n+        break;\n+    case QGA_SEEK_CUR:\n+        whence = SEEK_CUR;\n+        break;\n+    case QGA_SEEK_END:\n+        whence = SEEK_END;\n+        break;\n+    default:\n+        error_setg(errp, \"invalid whence code %\"PRId64, whence_code);\n+        return NULL;\n+    }\n+\n     fh = gfh->fh;\n     ret = fseek(fh, offset, whence);\n     if (ret == -1) {"
+        },
+        {
+            "sha": "0654fe4fe70c7c3e971a7de2f2f72edd9bb67e83",
+            "filename": "qga/commands-win32.c",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 1,
+            "changes": 20,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fcommands-win32.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fcommands-win32.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qga%2Fcommands-win32.c?ref=0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+            "patch": "@@ -382,19 +382,37 @@ GuestFileWrite *qmp_guest_file_write(int64_t handle, const char *buf_b64,\n }\n \n GuestFileSeek *qmp_guest_file_seek(int64_t handle, int64_t offset,\n-                                   int64_t whence, Error **errp)\n+                                   int64_t whence_code, Error **errp)\n {\n     GuestFileHandle *gfh;\n     GuestFileSeek *seek_data;\n     HANDLE fh;\n     LARGE_INTEGER new_pos, off_pos;\n     off_pos.QuadPart = offset;\n     BOOL res;\n+    int whence;\n+\n     gfh = guest_file_handle_find(handle, errp);\n     if (!gfh) {\n         return NULL;\n     }\n \n+    /* We stupidly exposed 'whence':'int' in our qapi */\n+    switch (whence_code) {\n+    case QGA_SEEK_SET:\n+        whence = SEEK_SET;\n+        break;\n+    case QGA_SEEK_CUR:\n+        whence = SEEK_CUR;\n+        break;\n+    case QGA_SEEK_END:\n+        whence = SEEK_END;\n+        break;\n+    default:\n+        error_setg(errp, \"invalid whence code %\"PRId64, whence_code);\n+        return NULL;\n+    }\n+\n     fh = gfh->fh;\n     res = SetFilePointerEx(fh, off_pos, &new_pos, whence);\n     if (!res) {"
+        },
+        {
+            "sha": "238dc6b08df793c3a71cc78308805beb96714157",
+            "filename": "qga/guest-agent-core.h",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fguest-agent-core.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fguest-agent-core.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qga%2Fguest-agent-core.h?ref=0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+            "patch": "@@ -15,6 +15,13 @@\n \n #define QGA_READ_COUNT_DEFAULT 4096\n \n+/* Mapping of whence codes used by guest-file-seek. */\n+enum {\n+    QGA_SEEK_SET = 0,\n+    QGA_SEEK_CUR = 1,\n+    QGA_SEEK_END = 2,\n+};\n+\n typedef struct GAState GAState;\n typedef struct GACommandState GACommandState;\n extern GAState *ga_state;"
+        },
+        {
+            "sha": "01c9ee48d86a35dd4db1c557d6896160d118d910",
+            "filename": "qga/qapi-schema.json",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fqapi-schema.json",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/qga%2Fqapi-schema.json",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qga%2Fqapi-schema.json?ref=0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+            "patch": "@@ -318,13 +318,13 @@\n #\n # Seek to a position in the file, as with fseek(), and return the\n # current file position afterward. Also encapsulates ftell()'s\n-# functionality, just Set offset=0, whence=SEEK_CUR.\n+# functionality, with offset=0 and whence=1.\n #\n # @handle: filehandle returned by guest-file-open\n #\n # @offset: bytes to skip over in the file stream\n #\n-# @whence: SEEK_SET, SEEK_CUR, or SEEK_END, as with fseek()\n+# @whence: 0 for SEEK_SET, 1 for SEEK_CUR, or 2 for SEEK_END\n #\n # Returns: @GuestFileSeek on success.\n #"
+        },
+        {
+            "sha": "e6a84d17f0626e0521ce5e252be0c393fb438dfb",
+            "filename": "tests/test-qga.c",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/tests%2Ftest-qga.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a982b1bf3953dc8640c4d6e619fb1132ebbebc3/tests%2Ftest-qga.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/tests%2Ftest-qga.c?ref=0a982b1bf3953dc8640c4d6e619fb1132ebbebc3",
+            "patch": "@@ -13,6 +13,7 @@\n \n #include \"libqtest.h\"\n #include \"config-host.h\"\n+#include \"qga/guest-agent-core.h\"\n \n typedef struct {\n     char *test_dir;\n@@ -457,7 +458,7 @@ static void test_qga_file_ops(gconstpointer fix)\n     cmd = g_strdup_printf(\"{'execute': 'guest-file-seek',\"\n                           \" 'arguments': { 'handle': %\" PRId64 \", \"\n                           \" 'offset': %d, 'whence': %d } }\",\n-                          id, 6, SEEK_SET);\n+                          id, 6, QGA_SEEK_SET);\n     ret = qmp_fd(fixture->fd, cmd);\n     qmp_assert_no_error(ret);\n     val = qdict_get_qdict(ret, \"return\");\n@@ -550,7 +551,7 @@ static void test_qga_file_write_read(gconstpointer fix)\n     cmd = g_strdup_printf(\"{'execute': 'guest-file-seek',\"\n                           \" 'arguments': { 'handle': %\" PRId64 \", \"\n                           \" 'offset': %d, 'whence': %d } }\",\n-                          id, 0, SEEK_SET);\n+                          id, 0, QGA_SEEK_SET);\n     ret = qmp_fd(fixture->fd, cmd);\n     qmp_assert_no_error(ret);\n     val = qdict_get_qdict(ret, \"return\");"
+        }
+    ]
+}

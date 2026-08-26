@@ -1,0 +1,101 @@
+{
+  "sha": "a83439b9fbe0f03c48eb94ed05729cb016f8b72f",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6YTgzNDM5YjlmYmUwZjAzYzQ4ZWI5NGVkMDU3MjljYjAxNmY4YjcyZg==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T20:28:57Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-09-29T20:29:06Z"
+    },
+    "message": "LibVNCClient: fix three possible heap buffer overflows\n\nAn attacker could feed `0xffffffff`, causing a `malloc(0)` for the\nbuffers which are subsequently written to.\n\nCloses #247",
+    "tree": {
+      "sha": "b457de79ba584556a3160b3fc5ff9b3452e5de9d",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/b457de79ba584556a3160b3fc5ff9b3452e5de9d"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/a83439b9fbe0f03c48eb94ed05729cb016f8b72f",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCW6/gwQAKCRBCG7O0XGBn\n+GHJAKCCRP4chEVqcCVjq/TNRmrvsGdmIwCeN6vb8rtTacIwdEgJ3MdkcvJcu58=\n=WZog\n-----END PGP SIGNATURE-----",
+      "payload": "tree b457de79ba584556a3160b3fc5ff9b3452e5de9d\nparent 09f2f3fb6a5a163e453e5c2979054670c39694bc\nauthor Christian Beier <dontmind@freeshell.org> 1538252937 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1538252946 +0200\n\nLibVNCClient: fix three possible heap buffer overflows\n\nAn attacker could feed `0xffffffff`, causing a `malloc(0)` for the\nbuffers which are subsequently written to.\n\nCloses #247\n",
+      "verified_at": "2024-11-21T15:37:02Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/a83439b9fbe0f03c48eb94ed05729cb016f8b72f",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/a83439b9fbe0f03c48eb94ed05729cb016f8b72f",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/a83439b9fbe0f03c48eb94ed05729cb016f8b72f/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "09f2f3fb6a5a163e453e5c2979054670c39694bc",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/09f2f3fb6a5a163e453e5c2979054670c39694bc",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/09f2f3fb6a5a163e453e5c2979054670c39694bc"
+    }
+  ],
+  "stats": {
+    "total": 10,
+    "additions": 6,
+    "deletions": 4
+  },
+  "files": [
+    {
+      "sha": "ac2a983597e4d3ec3e1f7f0adfc13d6a0d997e69",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 4,
+      "changes": 10,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/a83439b9fbe0f03c48eb94ed05729cb016f8b72f/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/a83439b9fbe0f03c48eb94ed05729cb016f8b72f/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=a83439b9fbe0f03c48eb94ed05729cb016f8b72f",
+      "patch": "@@ -433,7 +433,7 @@ rfbHandleAuthResult(rfbClient* client)\n         /* we have an error following */\n         if (!ReadFromRFBServer(client, (char *)&reasonLen, 4)) return FALSE;\n         reasonLen = rfbClientSwap32IfLE(reasonLen);\n-        reason = malloc(reasonLen+1);\n+        reason = malloc((uint64_t)reasonLen+1);\n         if (!ReadFromRFBServer(client, reason, reasonLen)) { free(reason); return FALSE; }\n         reason[reasonLen]=0;\n         rfbClientLog(\"VNC connection failed: %s\\n\",reason);\n@@ -461,7 +461,7 @@ ReadReason(rfbClient* client)\n     /* we have an error following */\n     if (!ReadFromRFBServer(client, (char *)&reasonLen, 4)) return;\n     reasonLen = rfbClientSwap32IfLE(reasonLen);\n-    reason = malloc(reasonLen+1);\n+    reason = malloc((uint64_t)reasonLen+1);\n     if (!ReadFromRFBServer(client, reason, reasonLen)) { free(reason); return; }\n     reason[reasonLen]=0;\n     rfbClientLog(\"VNC connection failed: %s\\n\",reason);\n@@ -2187,10 +2187,12 @@ HandleRFBServerMessage(rfbClient* client)\n \n     msg.sct.length = rfbClientSwap32IfLE(msg.sct.length);\n \n-    buffer = malloc(msg.sct.length+1);\n+    buffer = malloc((uint64_t)msg.sct.length+1);\n \n-    if (!ReadFromRFBServer(client, buffer, msg.sct.length))\n+    if (!ReadFromRFBServer(client, buffer, msg.sct.length)) {\n+      free(buffer);\n       return FALSE;\n+    }\n \n     buffer[msg.sct.length] = 0;\n "
+    }
+  ]
+}

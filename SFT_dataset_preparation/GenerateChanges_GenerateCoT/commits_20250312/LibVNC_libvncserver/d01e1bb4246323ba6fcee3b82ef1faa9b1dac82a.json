@@ -1,0 +1,101 @@
+{
+  "sha": "d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6ZDAxZTFiYjQyNDYzMjNiYTZmY2VlM2I4MmVmMWZhYTliMWRhYzgyYQ==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-08-19T20:32:25Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-08-19T20:32:25Z"
+    },
+    "message": "rfbserver: don't leak stack memory to the remote\n\nThanks go to Pavel Cheremushkin of Kaspersky for reporting.",
+    "tree": {
+      "sha": "0a32ddc6b96722eebf4bcdbd0cd023b4d2e406c7",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/0a32ddc6b96722eebf4bcdbd0cd023b4d2e406c7"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXVsIGQAKCRBCG7O0XGBn\n+OX4AKC7Y+YvJ+DguW/lmpDzY6nU9Xc0CACgsdyQtPXKF85eD3IMaCehUxfBy7k=\n=1uXH\n-----END PGP SIGNATURE-----",
+      "payload": "tree 0a32ddc6b96722eebf4bcdbd0cd023b4d2e406c7\nparent e0a9d96d56f1cbb99f71d97491102192d2ee4ee4\nauthor Christian Beier <dontmind@freeshell.org> 1566246745 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1566246745 +0200\n\nrfbserver: don't leak stack memory to the remote\n\nThanks go to Pavel Cheremushkin of Kaspersky for reporting.\n",
+      "verified_at": "2024-11-12T16:16:32Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "e0a9d96d56f1cbb99f71d97491102192d2ee4ee4",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/e0a9d96d56f1cbb99f71d97491102192d2ee4ee4",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/e0a9d96d56f1cbb99f71d97491102192d2ee4ee4"
+    }
+  ],
+  "stats": {
+    "total": 2,
+    "additions": 2,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "310e5487e6dc31a0f0548d158896d025976ee2aa",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0,
+      "changes": 2,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=d01e1bb4246323ba6fcee3b82ef1faa9b1dac82a",
+      "patch": "@@ -3724,6 +3724,8 @@ rfbSendServerCutText(rfbScreenInfoPtr rfbScreen,char *str, int len)\n     rfbServerCutTextMsg sct;\n     rfbClientIteratorPtr iterator;\n \n+    memset((char *)&sct, 0, sizeof(sct));\n+\n     iterator = rfbGetClientIterator(rfbScreen);\n     while ((cl = rfbClientIteratorNext(iterator)) != NULL) {\n         sct.type = rfbServerCutText;"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+    "sha": "0ab07c623c629acfbc792e5a174129c19faefbb7",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYWIwN2M2MjNjNjI5YWNmYmM3OTJlNWExNzQxMjljMTlmYWVmYmI3",
+    "commit": {
+        "author": {
+            "name": "Jan Kiszka",
+            "email": "jan.kiszka@siemens.com",
+            "date": "2011-02-07T11:19:14Z"
+        },
+        "committer": {
+            "name": "Marcelo Tosatti",
+            "email": "mtosatti@redhat.com",
+            "date": "2011-02-14T14:39:46Z"
+        },
+        "message": "Fix a few coding style violations in cpus.c\n\nNo functional changes.\n\nSigned-off-by: Jan Kiszka <jan.kiszka@siemens.com>\nSigned-off-by: Marcelo Tosatti <mtosatti@redhat.com>",
+        "tree": {
+            "sha": "0138b8abcb948dabd68c54fce3a0b42b5851d5d5",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/0138b8abcb948dabd68c54fce3a0b42b5851d5d5"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0ab07c623c629acfbc792e5a174129c19faefbb7",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0ab07c623c629acfbc792e5a174129c19faefbb7",
+    "html_url": "https://github.com/qemu/qemu/commit/0ab07c623c629acfbc792e5a174129c19faefbb7",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0ab07c623c629acfbc792e5a174129c19faefbb7/comments",
+    "author": {
+        "login": "jan-kiszka",
+        "id": 1571330,
+        "node_id": "MDQ6VXNlcjE1NzEzMzA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1571330?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jan-kiszka",
+        "html_url": "https://github.com/jan-kiszka",
+        "followers_url": "https://api.github.com/users/jan-kiszka/followers",
+        "following_url": "https://api.github.com/users/jan-kiszka/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jan-kiszka/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jan-kiszka/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jan-kiszka/subscriptions",
+        "organizations_url": "https://api.github.com/users/jan-kiszka/orgs",
+        "repos_url": "https://api.github.com/users/jan-kiszka/repos",
+        "events_url": "https://api.github.com/users/jan-kiszka/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jan-kiszka/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "matosatti",
+        "id": 59877361,
+        "node_id": "MDQ6VXNlcjU5ODc3MzYx",
+        "avatar_url": "https://avatars.githubusercontent.com/u/59877361?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/matosatti",
+        "html_url": "https://github.com/matosatti",
+        "followers_url": "https://api.github.com/users/matosatti/followers",
+        "following_url": "https://api.github.com/users/matosatti/following{/other_user}",
+        "gists_url": "https://api.github.com/users/matosatti/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/matosatti/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/matosatti/subscriptions",
+        "organizations_url": "https://api.github.com/users/matosatti/orgs",
+        "repos_url": "https://api.github.com/users/matosatti/repos",
+        "events_url": "https://api.github.com/users/matosatti/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/matosatti/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "164003228347eb0c27ab6c0e80e2753df55cdbc5",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/164003228347eb0c27ab6c0e80e2753df55cdbc5",
+            "html_url": "https://github.com/qemu/qemu/commit/164003228347eb0c27ab6c0e80e2753df55cdbc5"
+        }
+    ],
+    "stats": {
+        "total": 71,
+        "additions": 44,
+        "deletions": 27
+    },
+    "files": [
+        {
+            "sha": "802d15a977e63e0243824a3bea2f72728f919352",
+            "filename": "cpus.c",
+            "status": "modified",
+            "additions": 44,
+            "deletions": 27,
+            "changes": 71,
+            "blob_url": "https://github.com/qemu/qemu/blob/0ab07c623c629acfbc792e5a174129c19faefbb7/cpus.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0ab07c623c629acfbc792e5a174129c19faefbb7/cpus.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/cpus.c?ref=0ab07c623c629acfbc792e5a174129c19faefbb7",
+            "patch": "@@ -130,10 +130,12 @@ static void do_vm_stop(int reason)\n \n static int cpu_can_run(CPUState *env)\n {\n-    if (env->stop)\n+    if (env->stop) {\n         return 0;\n-    if (env->stopped || !vm_running)\n+    }\n+    if (env->stopped || !vm_running) {\n         return 0;\n+    }\n     return 1;\n }\n \n@@ -225,9 +227,9 @@ static void qemu_event_increment(void)\n     static const uint64_t val = 1;\n     ssize_t ret;\n \n-    if (io_thread_fd == -1)\n+    if (io_thread_fd == -1) {\n         return;\n-\n+    }\n     do {\n         ret = write(io_thread_fd, &val, sizeof(val));\n     } while (ret < 0 && errno == EINTR);\n@@ -258,17 +260,17 @@ static int qemu_event_init(void)\n     int fds[2];\n \n     err = qemu_eventfd(fds);\n-    if (err == -1)\n+    if (err == -1) {\n         return -errno;\n-\n+    }\n     err = fcntl_setfl(fds[0], O_NONBLOCK);\n-    if (err < 0)\n+    if (err < 0) {\n         goto fail;\n-\n+    }\n     err = fcntl_setfl(fds[1], O_NONBLOCK);\n-    if (err < 0)\n+    if (err < 0) {\n         goto fail;\n-\n+    }\n     qemu_set_fd_handler2(fds[0], NULL, qemu_event_read, NULL,\n                          (void *)(unsigned long)fds[0]);\n \n@@ -527,7 +529,6 @@ void pause_all_vcpus(void)\n \n void qemu_cpu_kick(void *env)\n {\n-    return;\n }\n \n void qemu_cpu_kick_self(void)\n@@ -660,13 +661,15 @@ int qemu_init_main_loop(void)\n     blocked_signals = block_io_signals();\n \n     ret = qemu_signalfd_init(blocked_signals);\n-    if (ret)\n+    if (ret) {\n         return ret;\n+    }\n \n     /* Note eventfd must be drained before signalfd handlers run */\n     ret = qemu_event_init();\n-    if (ret)\n+    if (ret) {\n         return ret;\n+    }\n \n     qemu_cond_init(&qemu_pause_cond);\n     qemu_cond_init(&qemu_system_cond);\n@@ -696,10 +699,11 @@ void run_on_cpu(CPUState *env, void (*func)(void *data), void *data)\n \n     wi.func = func;\n     wi.data = data;\n-    if (!env->queued_work_first)\n+    if (!env->queued_work_first) {\n         env->queued_work_first = &wi;\n-    else\n+    } else {\n         env->queued_work_last->next = &wi;\n+    }\n     env->queued_work_last = &wi;\n     wi.next = NULL;\n     wi.done = false;\n@@ -717,8 +721,9 @@ static void flush_queued_work(CPUState *env)\n {\n     struct qemu_work_item *wi;\n \n-    if (!env->queued_work_first)\n+    if (!env->queued_work_first) {\n         return;\n+    }\n \n     while ((wi = env->queued_work_first)) {\n         env->queued_work_first = wi->next;\n@@ -798,12 +803,14 @@ static void *qemu_kvm_cpu_thread_fn(void *arg)\n     qemu_cond_signal(&qemu_cpu_cond);\n \n     /* and wait for machine initialization */\n-    while (!qemu_system_ready)\n+    while (!qemu_system_ready) {\n         qemu_cond_timedwait(&qemu_system_cond, &qemu_global_mutex, 100);\n+    }\n \n     while (1) {\n-        if (cpu_can_run(env))\n+        if (cpu_can_run(env)) {\n             qemu_cpu_exec(env);\n+        }\n         qemu_kvm_wait_io_event(env);\n     }\n \n@@ -819,13 +826,15 @@ static void *qemu_tcg_cpu_thread_fn(void *arg)\n \n     /* signal CPU creation */\n     qemu_mutex_lock(&qemu_global_mutex);\n-    for (env = first_cpu; env != NULL; env = env->next_cpu)\n+    for (env = first_cpu; env != NULL; env = env->next_cpu) {\n         env->created = 1;\n+    }\n     qemu_cond_signal(&qemu_cpu_cond);\n \n     /* and wait for machine initialization */\n-    while (!qemu_system_ready)\n+    while (!qemu_system_ready) {\n         qemu_cond_timedwait(&qemu_system_cond, &qemu_global_mutex, 100);\n+    }\n \n     while (1) {\n         cpu_exec_all();\n@@ -838,6 +847,7 @@ static void *qemu_tcg_cpu_thread_fn(void *arg)\n void qemu_cpu_kick(void *_env)\n {\n     CPUState *env = _env;\n+\n     qemu_cond_broadcast(env->halt_cond);\n     if (!env->thread_kicked) {\n         qemu_thread_signal(env->thread, SIG_IPI);\n@@ -889,8 +899,9 @@ static int all_vcpus_paused(void)\n     CPUState *penv = first_cpu;\n \n     while (penv) {\n-        if (!penv->stopped)\n+        if (!penv->stopped) {\n             return 0;\n+        }\n         penv = (CPUState *)penv->next_cpu;\n     }\n \n@@ -932,14 +943,16 @@ void resume_all_vcpus(void)\n static void qemu_tcg_init_vcpu(void *_env)\n {\n     CPUState *env = _env;\n+\n     /* share a single thread for all cpus with TCG */\n     if (!tcg_cpu_thread) {\n         env->thread = qemu_mallocz(sizeof(QemuThread));\n         env->halt_cond = qemu_mallocz(sizeof(QemuCond));\n         qemu_cond_init(env->halt_cond);\n         qemu_thread_create(env->thread, qemu_tcg_cpu_thread_fn, env);\n-        while (env->created == 0)\n+        while (env->created == 0) {\n             qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);\n+        }\n         tcg_cpu_thread = env->thread;\n         tcg_halt_cond = env->halt_cond;\n     } else {\n@@ -954,8 +967,9 @@ static void qemu_kvm_start_vcpu(CPUState *env)\n     env->halt_cond = qemu_mallocz(sizeof(QemuCond));\n     qemu_cond_init(env->halt_cond);\n     qemu_thread_create(env->thread, qemu_kvm_cpu_thread_fn, env);\n-    while (env->created == 0)\n+    while (env->created == 0) {\n         qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);\n+    }\n }\n \n void qemu_init_vcpu(void *_env)\n@@ -964,10 +978,11 @@ void qemu_init_vcpu(void *_env)\n \n     env->nr_cores = smp_cores;\n     env->nr_threads = smp_threads;\n-    if (kvm_enabled())\n+    if (kvm_enabled()) {\n         qemu_kvm_start_vcpu(env);\n-    else\n+    } else {\n         qemu_tcg_init_vcpu(env);\n+    }\n }\n \n void qemu_notify_event(void)\n@@ -1050,16 +1065,18 @@ bool cpu_exec_all(void)\n {\n     int r;\n \n-    if (next_cpu == NULL)\n+    if (next_cpu == NULL) {\n         next_cpu = first_cpu;\n+    }\n     for (; next_cpu != NULL && !exit_request; next_cpu = next_cpu->next_cpu) {\n         CPUState *env = next_cpu;\n \n         qemu_clock_enable(vm_clock,\n                           (env->singlestep_enabled & SSTEP_NOTIMER) == 0);\n \n-        if (qemu_alarm_pending())\n+        if (qemu_alarm_pending()) {\n             break;\n+        }\n         if (cpu_can_run(env)) {\n             r = qemu_cpu_exec(env);\n             if (kvm_enabled()) {"
+        }
+    ]
+}

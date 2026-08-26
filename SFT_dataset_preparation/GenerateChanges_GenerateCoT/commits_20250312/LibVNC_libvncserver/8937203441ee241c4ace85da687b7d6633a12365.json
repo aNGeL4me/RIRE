@@ -1,0 +1,101 @@
+{
+  "sha": "8937203441ee241c4ace85da687b7d6633a12365",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6ODkzNzIwMzQ0MWVlMjQxYzRhY2U4NWRhNjg3YjdkNjYzM2ExMjM2NQ==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2020-04-10T17:07:12Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2020-04-10T17:07:12Z"
+    },
+    "message": "libvncclient/rfbproto: limit max textchat size\n\nAddresses GitHub Security Lab (GHSL) Vulnerability Report\n`GHSL-2020-063`.\n\nRe #275",
+    "tree": {
+      "sha": "6e863643fc01dcdf0896e401d49889a1be017d8a",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/6e863643fc01dcdf0896e401d49889a1be017d8a"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/8937203441ee241c4ace85da687b7d6633a12365",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXpCoOAAKCRBCG7O0XGBn\n+NIvAKDODBp2eXXMznA2lVxBh+f+9VGcFgCgman7LmEW9vnI7wTIJJRdQqdPanQ=\n=MXpE\n-----END PGP SIGNATURE-----",
+      "payload": "tree 6e863643fc01dcdf0896e401d49889a1be017d8a\nparent 7c092e53f34c2096811b717778693a9077b54536\nauthor Christian Beier <dontmind@freeshell.org> 1586538432 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1586538432 +0200\n\nlibvncclient/rfbproto: limit max textchat size\n\nAddresses GitHub Security Lab (GHSL) Vulnerability Report\n`GHSL-2020-063`.\n\nRe #275\n",
+      "verified_at": "2024-11-12T16:51:43Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/8937203441ee241c4ace85da687b7d6633a12365",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/8937203441ee241c4ace85da687b7d6633a12365",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/8937203441ee241c4ace85da687b7d6633a12365/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "7c092e53f34c2096811b717778693a9077b54536",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/7c092e53f34c2096811b717778693a9077b54536",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/7c092e53f34c2096811b717778693a9077b54536"
+    }
+  ],
+  "stats": {
+    "total": 3,
+    "additions": 3,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "26430c77e104ca81a51fe3fa3b71775de2a4fad5",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 0,
+      "changes": 3,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/8937203441ee241c4ace85da687b7d6633a12365/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/8937203441ee241c4ace85da687b7d6633a12365/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=8937203441ee241c4ace85da687b7d6633a12365",
+      "patch": "@@ -65,6 +65,7 @@\n #endif\n #include \"tls.h\"\n \n+#define MAX_TEXTCHAT_SIZE 10485760 /* 10MB */\n \n /*\n  * rfbClientLog prints a time-stamped message to the log file (stderr).\n@@ -2159,6 +2160,8 @@ HandleRFBServerMessage(rfbClient* client)\n               client->HandleTextChat(client, (int)rfbTextChatFinished, NULL);\n           break;\n       default:\n+\t  if(msg.tc.length > MAX_TEXTCHAT_SIZE)\n+\t      return FALSE;\n           buffer=malloc(msg.tc.length+1);\n           if (!ReadFromRFBServer(client, buffer, msg.tc.length))\n           {"
+    }
+  ]
+}

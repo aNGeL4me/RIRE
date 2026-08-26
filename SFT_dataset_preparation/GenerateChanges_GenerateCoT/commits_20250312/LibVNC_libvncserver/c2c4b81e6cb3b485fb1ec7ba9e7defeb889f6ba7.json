@@ -1,0 +1,101 @@
+{
+  "sha": "c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6YzJjNGI4MWU2Y2IzYjQ4NWZiMWVjN2JhOWU3ZGVmZWI4ODlmNmJhNw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-01-06T13:20:37Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-01-06T13:20:37Z"
+    },
+    "message": "LibVNCClient: fail on server-sent desktop name lengths longer than 1MB\n\nre #273",
+    "tree": {
+      "sha": "b83beae8b70463cad9001c42ada8cf548de0c1d5",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/b83beae8b70463cad9001c42ada8cf548de0c1d5"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXDIApQAKCRBCG7O0XGBn\n+LhjAKC4T3CNBhBeIvKc/wZcccahG0aPsgCeKGSUQMokiYIRK5jUT1b/e2HVBmw=\n=sKVa\n-----END PGP SIGNATURE-----",
+      "payload": "tree b83beae8b70463cad9001c42ada8cf548de0c1d5\nparent 9998deee9c2c633e6aa93c01fb37b46137533528\nauthor Christian Beier <dontmind@freeshell.org> 1546780837 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1546780837 +0100\n\nLibVNCClient: fail on server-sent desktop name lengths longer than 1MB\n\nre #273\n",
+      "verified_at": "2024-11-19T06:58:26Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "9998deee9c2c633e6aa93c01fb37b46137533528",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/9998deee9c2c633e6aa93c01fb37b46137533528",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/9998deee9c2c633e6aa93c01fb37b46137533528"
+    }
+  ],
+  "stats": {
+    "total": 8,
+    "additions": 6,
+    "deletions": 2
+  },
+  "files": [
+    {
+      "sha": "6af21a54f07b79c00c6ebd7b9705590b2e709cd8",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 2,
+      "changes": 8,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=c2c4b81e6cb3b485fb1ec7ba9e7defeb889f6ba7",
+      "patch": "@@ -1224,8 +1224,12 @@ InitialiseRFBConnection(rfbClient* client)\n   client->si.format.blueMax = rfbClientSwap16IfLE(client->si.format.blueMax);\n   client->si.nameLength = rfbClientSwap32IfLE(client->si.nameLength);\n \n-  /* To guard against integer wrap-around, si.nameLength is cast to 64 bit */\n-  client->desktopName = malloc((uint64_t)client->si.nameLength + 1);\n+  if (client->si.nameLength > 1<<20) {\n+      rfbClientErr(\"Too big desktop name length sent by server: %u B > 1 MB\\n\", (unsigned int)client->si.nameLength);\n+      return FALSE;\n+  }\n+\n+  client->desktopName = malloc(client->si.nameLength + 1);\n   if (!client->desktopName) {\n     rfbClientLog(\"Error allocating memory for desktop name, %lu bytes\\n\",\n             (unsigned long)client->si.nameLength);"
+    }
+  ]
+}

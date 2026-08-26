@@ -1,0 +1,73 @@
+{
+    "sha": "000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMDBjYWNmNmY5ZGNlN2Q3MWY4OGFhZGY3ZTliMzY4OGVhYTNhYjY5",
+    "commit": {
+        "author": {
+            "name": "balrog",
+            "email": "balrog@c046a42c-6fe2-441c-8c8c-71466251a162",
+            "date": "2008-10-04T11:33:52Z"
+        },
+        "committer": {
+            "name": "balrog",
+            "email": "balrog@c046a42c-6fe2-441c-8c8c-71466251a162",
+            "date": "2008-10-04T11:33:52Z"
+        },
+        "message": "Fix crc32w decoding, fix a constant width in blendvpd.\n\nForced the constant's width to long long so that it doesn't overflow,\nproblem spotted by C. W. Betts.\n\n\ngit-svn-id: svn://svn.savannah.nongnu.org/qemu/trunk@5417 c046a42c-6fe2-441c-8c8c-71466251a162",
+        "tree": {
+            "sha": "1251548122e5b9104facc48e228db900d0b738f9",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/1251548122e5b9104facc48e228db900d0b738f9"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+    "html_url": "https://github.com/qemu/qemu/commit/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "9dc63a1efd50ab6f792b165dffe176547350bfcc",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/9dc63a1efd50ab6f792b165dffe176547350bfcc",
+            "html_url": "https://github.com/qemu/qemu/commit/9dc63a1efd50ab6f792b165dffe176547350bfcc"
+        }
+    ],
+    "stats": {
+        "total": 9,
+        "additions": 4,
+        "deletions": 5
+    },
+    "files": [
+        {
+            "sha": "7d7834fe6fe9f141e94473846ab7b03451a07019",
+            "filename": "target-i386/ops_sse.h",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/qemu/qemu/blob/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69/target-i386%2Fops_sse.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69/target-i386%2Fops_sse.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target-i386%2Fops_sse.h?ref=000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+            "patch": "@@ -1481,7 +1481,7 @@ void glue(name, SUFFIX) (Reg *d, Reg *s, uint32_t imm)\\\n /* SSE4.1 op helpers */\n #define FBLENDVB(d, s, m) (m & 0x80) ? s : d\n #define FBLENDVPS(d, s, m) (m & 0x80000000) ? s : d\n-#define FBLENDVPD(d, s, m) (m & 0x8000000000000000) ? s : d\n+#define FBLENDVPD(d, s, m) (m & 0x8000000000000000LL) ? s : d\n SSE_HELPER_V(helper_pblendvb, B, 16, FBLENDVB)\n SSE_HELPER_V(helper_blendvps, L, 4, FBLENDVPS)\n SSE_HELPER_V(helper_blendvpd, Q, 2, FBLENDVPD)"
+        },
+        {
+            "sha": "598c6f9c6c6ed666f3257d700d853d30dfe63148",
+            "filename": "target-i386/translate.c",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 4,
+            "changes": 7,
+            "blob_url": "https://github.com/qemu/qemu/blob/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69/target-i386%2Ftranslate.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69/target-i386%2Ftranslate.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target-i386%2Ftranslate.c?ref=000cacf6f9dce7d71f88aadf7e9b3688eaa3ab69",
+            "patch": "@@ -3568,17 +3568,16 @@ static void gen_sse(DisasContext *s, int b, target_ulong pc_start, int rex_r)\n             reg = ((modrm >> 3) & 7) | rex_r;\n             gen_op_mov_reg_T0(OT_LONG, reg);\n             break;\n-        case 0x038:\n         case 0x138:\n+            if (s->prefix & PREFIX_REPNZ)\n+                goto crc32;\n+        case 0x038:\n             b = modrm;\n             modrm = ldub_code(s->pc++);\n             rm = modrm & 7;\n             reg = ((modrm >> 3) & 7) | rex_r;\n             mod = (modrm >> 6) & 3;\n \n-            if (s->prefix & PREFIX_REPNZ)\n-                goto crc32;\n-\n             sse_op2 = sse_op_table6[b].op[b1];\n             if (!sse_op2)\n                 goto illegal_op;"
+        }
+    ]
+}

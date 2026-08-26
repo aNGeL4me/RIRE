@@ -1,0 +1,101 @@
+{
+    "sha": "0abe740f1de899737242bcba1fb4a9857f7a3087",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYWJlNzQwZjFkZTg5OTczNzI0MmJjYmExZmI0YTk4NTdmN2EzMDg3",
+    "commit": {
+        "author": {
+            "name": "Kevin Wolf",
+            "email": "kwolf@redhat.com",
+            "date": "2014-03-26T12:05:52Z"
+        },
+        "committer": {
+            "name": "Stefan Hajnoczi",
+            "email": "stefanha@redhat.com",
+            "date": "2014-04-01T13:22:35Z"
+        },
+        "message": "qcow2: Protect against some integer overflows in bdrv_check\n\nSigned-off-by: Kevin Wolf <kwolf@redhat.com>\nReviewed-by: Max Reitz <mreitz@redhat.com>\nSigned-off-by: Stefan Hajnoczi <stefanha@redhat.com>",
+        "tree": {
+            "sha": "782b63858caae14f3d40e70eddd23c7d0f754bf0",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/782b63858caae14f3d40e70eddd23c7d0f754bf0"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0abe740f1de899737242bcba1fb4a9857f7a3087",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0abe740f1de899737242bcba1fb4a9857f7a3087",
+    "html_url": "https://github.com/qemu/qemu/commit/0abe740f1de899737242bcba1fb4a9857f7a3087",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0abe740f1de899737242bcba1fb4a9857f7a3087/comments",
+    "author": {
+        "login": "kevmw",
+        "id": 166709685,
+        "node_id": "U_kgDOCe_JtQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/166709685?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kevmw",
+        "html_url": "https://github.com/kevmw",
+        "followers_url": "https://api.github.com/users/kevmw/followers",
+        "following_url": "https://api.github.com/users/kevmw/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kevmw/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kevmw/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kevmw/subscriptions",
+        "organizations_url": "https://api.github.com/users/kevmw/orgs",
+        "repos_url": "https://api.github.com/users/kevmw/repos",
+        "events_url": "https://api.github.com/users/kevmw/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kevmw/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "stefanhaRH",
+        "id": 162364839,
+        "node_id": "U_kgDOCa19pw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/162364839?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/stefanhaRH",
+        "html_url": "https://github.com/stefanhaRH",
+        "followers_url": "https://api.github.com/users/stefanhaRH/followers",
+        "following_url": "https://api.github.com/users/stefanhaRH/following{/other_user}",
+        "gists_url": "https://api.github.com/users/stefanhaRH/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/stefanhaRH/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/stefanhaRH/subscriptions",
+        "organizations_url": "https://api.github.com/users/stefanhaRH/orgs",
+        "repos_url": "https://api.github.com/users/stefanhaRH/repos",
+        "events_url": "https://api.github.com/users/stefanhaRH/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/stefanhaRH/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "bb572aefbdac290363bfa5ca0e810ccce0a14ed6",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/bb572aefbdac290363bfa5ca0e810ccce0a14ed6",
+            "html_url": "https://github.com/qemu/qemu/commit/bb572aefbdac290363bfa5ca0e810ccce0a14ed6"
+        }
+    ],
+    "stats": {
+        "total": 18,
+        "additions": 9,
+        "deletions": 9
+    },
+    "files": [
+        {
+            "sha": "a37ee45016f680862f83895a66a48aba5faf27ec",
+            "filename": "block/qcow2-refcount.c",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 9,
+            "changes": 18,
+            "blob_url": "https://github.com/qemu/qemu/blob/0abe740f1de899737242bcba1fb4a9857f7a3087/block%2Fqcow2-refcount.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0abe740f1de899737242bcba1fb4a9857f7a3087/block%2Fqcow2-refcount.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/block%2Fqcow2-refcount.c?ref=0abe740f1de899737242bcba1fb4a9857f7a3087",
+            "patch": "@@ -1020,8 +1020,7 @@ static void inc_refcounts(BlockDriverState *bs,\n                           int64_t offset, int64_t size)\n {\n     BDRVQcowState *s = bs->opaque;\n-    int64_t start, last, cluster_offset;\n-    int k;\n+    uint64_t start, last, cluster_offset, k;\n \n     if (size <= 0)\n         return;\n@@ -1031,11 +1030,7 @@ static void inc_refcounts(BlockDriverState *bs,\n     for(cluster_offset = start; cluster_offset <= last;\n         cluster_offset += s->cluster_size) {\n         k = cluster_offset >> s->cluster_bits;\n-        if (k < 0) {\n-            fprintf(stderr, \"ERROR: invalid cluster offset=0x%\" PRIx64 \"\\n\",\n-                cluster_offset);\n-            res->corruptions++;\n-        } else if (k >= refcount_table_size) {\n+        if (k >= refcount_table_size) {\n             fprintf(stderr, \"Warning: cluster offset=0x%\" PRIx64 \" is after \"\n                 \"the end of the image file, can't properly check refcounts.\\n\",\n                 cluster_offset);\n@@ -1478,14 +1473,19 @@ int qcow2_check_refcounts(BlockDriverState *bs, BdrvCheckResult *res,\n                           BdrvCheckMode fix)\n {\n     BDRVQcowState *s = bs->opaque;\n-    int64_t size, i, highest_cluster;\n-    int nb_clusters, refcount1, refcount2;\n+    int64_t size, i, highest_cluster, nb_clusters;\n+    int refcount1, refcount2;\n     QCowSnapshot *sn;\n     uint16_t *refcount_table;\n     int ret;\n \n     size = bdrv_getlength(bs->file);\n     nb_clusters = size_to_clusters(s, size);\n+    if (nb_clusters > INT_MAX) {\n+        res->check_errors++;\n+        return -EFBIG;\n+    }\n+\n     refcount_table = g_malloc0(nb_clusters * sizeof(uint16_t));\n \n     res->bfi.total_clusters ="
+        }
+    ]
+}

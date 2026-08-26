@@ -1,0 +1,113 @@
+{
+    "sha": "0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTEyZjZmODBlZWViZWViZDQ5MmRiN2Q4YzQyMzdmZTVjNzEyZjY4",
+    "commit": {
+        "author": {
+            "name": "Daniel P. Berrange",
+            "email": "berrange@redhat.com",
+            "date": "2017-06-23T16:24:18Z"
+        },
+        "committer": {
+            "name": "Max Reitz",
+            "email": "mreitz@redhat.com",
+            "date": "2017-07-11T15:44:57Z"
+        },
+        "message": "qcow2: report encryption specific image information\n\nCurrently 'qemu-img info' reports a simple \"encrypted: yes\"\nfield. This is not very useful now that qcow2 can support\nmultiple encryption formats. Users want to know which format\nis in use and some data related to it.\n\nWire up usage of the qcrypto_block_get_info() method so that\n'qemu-img info' can report about the encryption format\nand parameters in use\n\n  $ qemu-img create \\\n      --object secret,id=sec0,data=123456 \\\n      -o encrypt.format=luks,encrypt.key-secret=sec0 \\\n      -f qcow2 demo.qcow2 1G\n  Formatting 'demo.qcow2', fmt=qcow2 size=1073741824 \\\n  encryption=off encrypt.format=luks encrypt.key-secret=sec0 \\\n  cluster_size=65536 lazy_refcounts=off refcount_bits=16\n\n  $ qemu-img info demo.qcow2\n  image: demo.qcow2\n  file format: qcow2\n  virtual size: 1.0G (1073741824 bytes)\n  disk size: 480K\n  encrypted: yes\n  cluster_size: 65536\n  Format specific information:\n      compat: 1.1\n      lazy refcounts: false\n      refcount bits: 16\n      encrypt:\n          ivgen alg: plain64\n          hash alg: sha256\n          cipher alg: aes-256\n          uuid: 3fa930c4-58c8-4ef7-b3c5-314bb5af21f3\n          format: luks\n          cipher mode: xts\n          slots:\n              [0]:\n                  active: true\n                  iters: 1839058\n                  key offset: 4096\n                  stripes: 4000\n              [1]:\n                  active: false\n                  key offset: 262144\n              [2]:\n                  active: false\n                  key offset: 520192\n              [3]:\n                  active: false\n                  key offset: 778240\n              [4]:\n                  active: false\n                  key offset: 1036288\n              [5]:\n                  active: false\n                  key offset: 1294336\n              [6]:\n                  active: false\n                  key offset: 1552384\n              [7]:\n                  active: false\n                  key offset: 1810432\n          payload offset: 2068480\n          master key iters: 438487\n      corrupt: false\n\nWith the legacy \"AES\" encryption we just report the format\nname\n\n  $ qemu-img create \\\n      --object secret,id=sec0,data=123456 \\\n      -o encrypt.format=aes,encrypt.key-secret=sec0 \\\n      -f qcow2 demo.qcow2 1G\n  Formatting 'demo.qcow2', fmt=qcow2 size=1073741824 \\\n  encryption=off encrypt.format=aes encrypt.key-secret=sec0 \\\n  cluster_size=65536 lazy_refcounts=off refcount_bits=16\n\n  $ ./qemu-img info demo.qcow2\n  image: demo.qcow2\n  file format: qcow2\n  virtual size: 1.0G (1073741824 bytes)\n  disk size: 196K\n  encrypted: yes\n  cluster_size: 65536\n  Format specific information:\n      compat: 1.1\n      lazy refcounts: false\n      refcount bits: 16\n      encrypt:\n          format: aes\n      corrupt: false\n\nReviewed-by: Alberto Garcia <berto@igalia.com>\nReviewed-by: Max Reitz <mreitz@redhat.com>\nReviewed-by: Eric Blake <eblake@redhat.com>\nSigned-off-by: Daniel P. Berrange <berrange@redhat.com>\nMessage-id: 20170623162419.26068-20-berrange@redhat.com\nSigned-off-by: Max Reitz <mreitz@redhat.com>",
+        "tree": {
+            "sha": "0d23905a0d962e5502c4d226a116b8df5281ea2c",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/0d23905a0d962e5502c4d226a116b8df5281ea2c"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+    "html_url": "https://github.com/qemu/qemu/commit/0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a12f6f80eeebeebd492db7d8c4237fe5c712f68/comments",
+    "author": {
+        "login": "berrange",
+        "id": 1517315,
+        "node_id": "MDQ6VXNlcjE1MTczMTU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1517315?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/berrange",
+        "html_url": "https://github.com/berrange",
+        "followers_url": "https://api.github.com/users/berrange/followers",
+        "following_url": "https://api.github.com/users/berrange/following{/other_user}",
+        "gists_url": "https://api.github.com/users/berrange/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/berrange/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/berrange/subscriptions",
+        "organizations_url": "https://api.github.com/users/berrange/orgs",
+        "repos_url": "https://api.github.com/users/berrange/repos",
+        "events_url": "https://api.github.com/users/berrange/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/berrange/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "XanClic",
+        "id": 3393978,
+        "node_id": "MDQ6VXNlcjMzOTM5Nzg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3393978?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/XanClic",
+        "html_url": "https://github.com/XanClic",
+        "followers_url": "https://api.github.com/users/XanClic/followers",
+        "following_url": "https://api.github.com/users/XanClic/following{/other_user}",
+        "gists_url": "https://api.github.com/users/XanClic/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/XanClic/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/XanClic/subscriptions",
+        "organizations_url": "https://api.github.com/users/XanClic/orgs",
+        "repos_url": "https://api.github.com/users/XanClic/repos",
+        "events_url": "https://api.github.com/users/XanClic/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/XanClic/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "1cd9a787a2ee519665d914193e1022791397d621",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/1cd9a787a2ee519665d914193e1022791397d621",
+            "html_url": "https://github.com/qemu/qemu/commit/1cd9a787a2ee519665d914193e1022791397d621"
+        }
+    ],
+    "stats": {
+        "total": 59,
+        "additions": 57,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "5339aa0cb17e4f64a55c0b96878fa99ddb32cc99",
+            "filename": "block/qcow2.c",
+            "status": "modified",
+            "additions": 31,
+            "deletions": 1,
+            "changes": 32,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a12f6f80eeebeebd492db7d8c4237fe5c712f68/block%2Fqcow2.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a12f6f80eeebeebd492db7d8c4237fe5c712f68/block%2Fqcow2.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/block%2Fqcow2.c?ref=0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+            "patch": "@@ -3241,8 +3241,14 @@ static int qcow2_get_info(BlockDriverState *bs, BlockDriverInfo *bdi)\n static ImageInfoSpecific *qcow2_get_specific_info(BlockDriverState *bs)\n {\n     BDRVQcow2State *s = bs->opaque;\n-    ImageInfoSpecific *spec_info = g_new(ImageInfoSpecific, 1);\n+    ImageInfoSpecific *spec_info;\n+    QCryptoBlockInfo *encrypt_info = NULL;\n \n+    if (s->crypto != NULL) {\n+        encrypt_info = qcrypto_block_get_info(s->crypto, &error_abort);\n+    }\n+\n+    spec_info = g_new(ImageInfoSpecific, 1);\n     *spec_info = (ImageInfoSpecific){\n         .type  = IMAGE_INFO_SPECIFIC_KIND_QCOW2,\n         .u.qcow2.data = g_new(ImageInfoSpecificQCow2, 1),\n@@ -3269,6 +3275,30 @@ static ImageInfoSpecific *qcow2_get_specific_info(BlockDriverState *bs)\n         assert(false);\n     }\n \n+    if (encrypt_info) {\n+        ImageInfoSpecificQCow2Encryption *qencrypt =\n+            g_new(ImageInfoSpecificQCow2Encryption, 1);\n+        switch (encrypt_info->format) {\n+        case Q_CRYPTO_BLOCK_FORMAT_QCOW:\n+            qencrypt->format = BLOCKDEV_QCOW2_ENCRYPTION_FORMAT_AES;\n+            qencrypt->u.aes = encrypt_info->u.qcow;\n+            break;\n+        case Q_CRYPTO_BLOCK_FORMAT_LUKS:\n+            qencrypt->format = BLOCKDEV_QCOW2_ENCRYPTION_FORMAT_LUKS;\n+            qencrypt->u.luks = encrypt_info->u.luks;\n+            break;\n+        default:\n+            abort();\n+        }\n+        /* Since we did shallow copy above, erase any pointers\n+         * in the original info */\n+        memset(&encrypt_info->u, 0, sizeof(encrypt_info->u));\n+        qapi_free_QCryptoBlockInfo(encrypt_info);\n+\n+        spec_info->u.qcow2.data->has_encrypt = true;\n+        spec_info->u.qcow2.data->encrypt = qencrypt;\n+    }\n+\n     return spec_info;\n }\n "
+        },
+        {
+            "sha": "957096395a3b3ccfa55c9898111c8a426932881b",
+            "filename": "qapi/block-core.json",
+            "status": "modified",
+            "additions": 26,
+            "deletions": 1,
+            "changes": 27,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a12f6f80eeebeebd492db7d8c4237fe5c712f68/qapi%2Fblock-core.json",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a12f6f80eeebeebd492db7d8c4237fe5c712f68/qapi%2Fblock-core.json",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qapi%2Fblock-core.json?ref=0a12f6f80eeebeebd492db7d8c4237fe5c712f68",
+            "patch": "@@ -32,6 +32,27 @@\n             'date-sec': 'int', 'date-nsec': 'int',\n             'vm-clock-sec': 'int', 'vm-clock-nsec': 'int' } }\n \n+##\n+# @ImageInfoSpecificQCow2EncryptionBase:\n+#\n+# @format: The encryption format\n+#\n+# Since: 2.10\n+##\n+{ 'struct': 'ImageInfoSpecificQCow2EncryptionBase',\n+  'data': { 'format': 'BlockdevQcow2EncryptionFormat'}}\n+\n+##\n+# @ImageInfoSpecificQCow2Encryption:\n+#\n+# Since: 2.10\n+##\n+{ 'union': 'ImageInfoSpecificQCow2Encryption',\n+  'base': 'ImageInfoSpecificQCow2EncryptionBase',\n+  'discriminator': 'format',\n+  'data': { 'aes': 'QCryptoBlockInfoQCow',\n+            'luks': 'QCryptoBlockInfoLUKS' } }\n+\n ##\n # @ImageInfoSpecificQCow2:\n #\n@@ -44,14 +65,18 @@\n #\n # @refcount-bits: width of a refcount entry in bits (since 2.3)\n #\n+# @encrypt: details about encryption parameters; only set if image\n+#           is encrypted (since 2.10)\n+#\n # Since: 1.7\n ##\n { 'struct': 'ImageInfoSpecificQCow2',\n   'data': {\n       'compat': 'str',\n       '*lazy-refcounts': 'bool',\n       '*corrupt': 'bool',\n-      'refcount-bits': 'int'\n+      'refcount-bits': 'int',\n+      '*encrypt': 'ImageInfoSpecificQCow2Encryption'\n   } }\n \n ##"
+        }
+    ]
+}

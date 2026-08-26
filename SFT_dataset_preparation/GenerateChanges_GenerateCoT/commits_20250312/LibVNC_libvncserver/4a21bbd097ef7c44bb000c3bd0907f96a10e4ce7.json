@@ -1,0 +1,101 @@
+{
+  "sha": "4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6NGEyMWJiZDA5N2VmN2M0NGJiMDAwYzNiZDA5MDdmOTZhMTBlNGNlNw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-10-01T17:38:33Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-10-01T17:38:33Z"
+    },
+    "message": "LibVNCClient: make sure Ultra decoding cannot dereference a null pointer\n\nCloses #254",
+    "tree": {
+      "sha": "7f1d765c0fd71bc2d1db865319268d2516f179b9",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/7f1d765c0fd71bc2d1db865319268d2516f179b9"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCW7JbmQAKCRBCG7O0XGBn\n+CMYAJ0Sm8BmJ49GZwOgAExawPMS22JSJQCgxbGPH249xQAzKNiU1pLvTvAA22Q=\n=FY0m\n-----END PGP SIGNATURE-----",
+      "payload": "tree 7f1d765c0fd71bc2d1db865319268d2516f179b9\nparent 6566ba5f0261ad350d8371b17b380174926495d6\nauthor Christian Beier <dontmind@freeshell.org> 1538415513 +0200\ncommitter Christian Beier <dontmind@freeshell.org> 1538415513 +0200\n\nLibVNCClient: make sure Ultra decoding cannot dereference a null pointer\n\nCloses #254\n",
+      "verified_at": "2024-11-21T21:25:23Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "6566ba5f0261ad350d8371b17b380174926495d6",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/6566ba5f0261ad350d8371b17b380174926495d6",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/6566ba5f0261ad350d8371b17b380174926495d6"
+    }
+  ],
+  "stats": {
+    "total": 4,
+    "additions": 4,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "a2875267e790f26db5ce52ec08f3763017920b97",
+      "filename": "libvncclient/ultra.c",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 0,
+      "changes": 4,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7/libvncclient%2Fultra.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7/libvncclient%2Fultra.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fultra.c?ref=4a21bbd097ef7c44bb000c3bd0907f96a10e4ce7",
+      "patch": "@@ -66,6 +66,8 @@ HandleUltraBPP (rfbClient* client, int rx, int ry, int rw, int rh)\n     if ((client->raw_buffer_size % 4)!=0)\n       client->raw_buffer_size += (4-(client->raw_buffer_size % 4));\n     client->raw_buffer = (char*) malloc( client->raw_buffer_size );\n+    if(client->raw_buffer == NULL)\n+      return FALSE;\n   }\n   \n   /* allocate enough space to store the incoming compressed packet */\n@@ -150,6 +152,8 @@ HandleUltraZipBPP (rfbClient* client, int rx, int ry, int rw, int rh)\n     if ((client->raw_buffer_size % 4)!=0)\n       client->raw_buffer_size += (4-(client->raw_buffer_size % 4));\n     client->raw_buffer = (char*) malloc( client->raw_buffer_size );\n+    if(client->raw_buffer == NULL)\n+\treturn FALSE;\n   }\n \n  "
+    }
+  ]
+}

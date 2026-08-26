@@ -1,0 +1,101 @@
+{
+  "sha": "c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6YzViYTNmZWU4NWE3ZWNiYmNhMWRmNWZmZDQ2ZDMyYjkyNzU3YmMyYQ==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-12-29T13:16:58Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2018-12-29T13:16:58Z"
+    },
+    "message": "LibVNCClient: ignore server-sent cut text longer than 1MB\n\nThis is in line with how LibVNCServer does it\n(28afb6c537dc82ba04d5f245b15ca7205c6dbb9c) and fixes part of #273.",
+    "tree": {
+      "sha": "dcdef62bb09272feef686d8669d0a27fa2cccc67",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/dcdef62bb09272feef686d8669d0a27fa2cccc67"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXCdz1QAKCRBCG7O0XGBn\n+CPxAJ9LjlPFm6AB78wcZZNySTfW4BWZtgCeLFyiW8c8TaEYbM6iqk/3AAUfCGY=\n=pUDt\n-----END PGP SIGNATURE-----",
+      "payload": "tree dcdef62bb09272feef686d8669d0a27fa2cccc67\nparent 5d84ade49223b7f8f7667152677e8642b4608c57\nauthor Christian Beier <dontmind@freeshell.org> 1546089418 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1546089418 +0100\n\nLibVNCClient: ignore server-sent cut text longer than 1MB\n\nThis is in line with how LibVNCServer does it\n(28afb6c537dc82ba04d5f245b15ca7205c6dbb9c) and fixes part of #273.\n",
+      "verified_at": "2024-11-13T11:30:48Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "5d84ade49223b7f8f7667152677e8642b4608c57",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/5d84ade49223b7f8f7667152677e8642b4608c57",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/5d84ade49223b7f8f7667152677e8642b4608c57"
+    }
+  ],
+  "stats": {
+    "total": 5,
+    "additions": 5,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "8792dbf67c48ea7d9305ec1278d517cb89a0cdf5",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 0,
+      "changes": 5,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=c5ba3fee85a7ecbbca1df5ffd46d32b92757bc2a",
+      "patch": "@@ -2217,6 +2217,11 @@ HandleRFBServerMessage(rfbClient* client)\n \n     msg.sct.length = rfbClientSwap32IfLE(msg.sct.length);\n \n+    if (msg.sct.length > 1<<20) {\n+\t    rfbClientErr(\"Ignoring too big cut text length sent by server: %u B > 1 MB\\n\", (unsigned int)msg.sct.length);\n+\t    return FALSE;\n+    }  \n+\n     buffer = malloc((uint64_t)msg.sct.length+1);\n \n     if (!ReadFromRFBServer(client, buffer, msg.sct.length)) {"
+    }
+  ]
+}

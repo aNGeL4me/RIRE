@@ -1,0 +1,61 @@
+{
+  "sha": "045a044e8ae79db9244593fbce154cdf6e843273",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MDQ1YTA0NGU4YWU3OWRiOTI0NDU5M2ZiY2UxNTRjZGY2ZTg0MzI3Mw==",
+  "commit": {
+    "author": {
+      "name": "newsoft",
+      "email": "newsoft@MacBook-Air-de-newsoft-2.local",
+      "date": "2014-08-15T14:31:13Z"
+    },
+    "committer": {
+      "name": "newsoft",
+      "email": "newsoft@MacBook-Air-de-newsoft-2.local",
+      "date": "2014-08-15T14:31:13Z"
+    },
+    "message": "Fix integer overflow in MallocFrameBuffer()\n\nPromote integers to uint64_t to avoid integer overflow issue during\nframe buffer allocation for very large screen sizes",
+    "tree": {
+      "sha": "da1bb23725b360ade28dd657f47eb8c517e92980",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/da1bb23725b360ade28dd657f47eb8c517e92980"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/045a044e8ae79db9244593fbce154cdf6e843273",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/045a044e8ae79db9244593fbce154cdf6e843273",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/045a044e8ae79db9244593fbce154cdf6e843273",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/045a044e8ae79db9244593fbce154cdf6e843273/comments",
+  "author": null,
+  "committer": null,
+  "parents": [
+    {
+      "sha": "9453be42014b6b9eaa6ab6f8c2e8b6f4f01d15aa",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/9453be42014b6b9eaa6ab6f8c2e8b6f4f01d15aa",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/9453be42014b6b9eaa6ab6f8c2e8b6f4f01d15aa"
+    }
+  ],
+  "stats": {
+    "total": 20,
+    "additions": 19,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "24bc6f8938d065105956ca79dcf87d59ab6cf351",
+      "filename": "libvncclient/vncviewer.c",
+      "status": "modified",
+      "additions": 19,
+      "deletions": 1,
+      "changes": 20,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/045a044e8ae79db9244593fbce154cdf6e843273/libvncclient%2Fvncviewer.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/045a044e8ae79db9244593fbce154cdf6e843273/libvncclient%2Fvncviewer.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fvncviewer.c?ref=045a044e8ae79db9244593fbce154cdf6e843273",
+      "patch": "@@ -82,9 +82,27 @@ static char* ReadPassword(rfbClient* client) {\n #endif\n }\n static rfbBool MallocFrameBuffer(rfbClient* client) {\n+uint64_t allocSize;\n+\n   if(client->frameBuffer)\n     free(client->frameBuffer);\n-  client->frameBuffer=malloc(client->width*client->height*client->format.bitsPerPixel/8);\n+\n+  /* SECURITY: promote 'width' into uint64_t so that the multiplication does not overflow\n+     'width' and 'height' are 16-bit integers per RFB protocol design\n+     SIZE_MAX is the maximum value that can fit into size_t\n+  */\n+  allocSize = (uint64_t)client->width * client->height * client->format.bitsPerPixel/8;\n+\n+  if (allocSize >= SIZE_MAX) {\n+    rfbClientErr(\"CRITICAL: cannot allocate frameBuffer, requested size is too large\\n\");\n+    return FALSE;\n+  }\n+\n+  client->frameBuffer=malloc( (size_t)allocSize );\n+\n+  if (client->frameBuffer == NULL)\n+    rfbClientErr(\"CRITICAL: frameBuffer allocation failed, requested size too large or not enough memory?\\n\");\n+\n   return client->frameBuffer?TRUE:FALSE;\n }\n "
+    }
+  ]
+}

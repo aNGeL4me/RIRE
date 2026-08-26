@@ -1,0 +1,101 @@
+{
+    "sha": "00e1bf8a587e26029f8fb20a35c65b99fe14196b",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGUxYmY4YTU4N2UyNjAyOWY4ZmIyMGEzNWM2NWI5OWZlMTQxOTZi",
+    "commit": {
+        "author": {
+            "name": "Paul B Mahol",
+            "email": "onemda@gmail.com",
+            "date": "2013-09-10T19:57:54Z"
+        },
+        "committer": {
+            "name": "Paul B Mahol",
+            "email": "onemda@gmail.com",
+            "date": "2013-09-11T11:06:44Z"
+        },
+        "message": "avformat/flic: check for memory allocation failures\n\nSigned-off-by: Paul B Mahol <onemda@gmail.com>",
+        "tree": {
+            "sha": "a3147aa1a9f5fafa9d8b64fc1b2ff54e7a838ce3",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/a3147aa1a9f5fafa9d8b64fc1b2ff54e7a838ce3"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00e1bf8a587e26029f8fb20a35c65b99fe14196b",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00e1bf8a587e26029f8fb20a35c65b99fe14196b",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00e1bf8a587e26029f8fb20a35c65b99fe14196b",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00e1bf8a587e26029f8fb20a35c65b99fe14196b/comments",
+    "author": {
+        "login": "richardpl",
+        "id": 469155,
+        "node_id": "MDQ6VXNlcjQ2OTE1NQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/469155?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/richardpl",
+        "html_url": "https://github.com/richardpl",
+        "followers_url": "https://api.github.com/users/richardpl/followers",
+        "following_url": "https://api.github.com/users/richardpl/following{/other_user}",
+        "gists_url": "https://api.github.com/users/richardpl/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/richardpl/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/richardpl/subscriptions",
+        "organizations_url": "https://api.github.com/users/richardpl/orgs",
+        "repos_url": "https://api.github.com/users/richardpl/repos",
+        "events_url": "https://api.github.com/users/richardpl/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/richardpl/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "richardpl",
+        "id": 469155,
+        "node_id": "MDQ6VXNlcjQ2OTE1NQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/469155?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/richardpl",
+        "html_url": "https://github.com/richardpl",
+        "followers_url": "https://api.github.com/users/richardpl/followers",
+        "following_url": "https://api.github.com/users/richardpl/following{/other_user}",
+        "gists_url": "https://api.github.com/users/richardpl/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/richardpl/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/richardpl/subscriptions",
+        "organizations_url": "https://api.github.com/users/richardpl/orgs",
+        "repos_url": "https://api.github.com/users/richardpl/repos",
+        "events_url": "https://api.github.com/users/richardpl/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/richardpl/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "803445e02c773fc29040629abdc297534ab6c3f3",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/803445e02c773fc29040629abdc297534ab6c3f3",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/803445e02c773fc29040629abdc297534ab6c3f3"
+        }
+    ],
+    "stats": {
+        "total": 8,
+        "additions": 6,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "e04e2778c9ca007090cd3e48bc3ec77bfc71b83b",
+            "filename": "libavformat/flic.c",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 2,
+            "changes": 8,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00e1bf8a587e26029f8fb20a35c65b99fe14196b/libavformat%2Fflic.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00e1bf8a587e26029f8fb20a35c65b99fe14196b/libavformat%2Fflic.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavformat%2Fflic.c?ref=00e1bf8a587e26029f8fb20a35c65b99fe14196b",
+            "patch": "@@ -125,8 +125,10 @@ static int flic_read_header(AVFormatContext *s)\n     }\n \n     /* send over the whole 128-byte FLIC header */\n-    st->codec->extradata_size = FLIC_HEADER_SIZE;\n     st->codec->extradata = av_malloc(FLIC_HEADER_SIZE);\n+    if (!st->codec->extradata)\n+        return AVERROR(ENOMEM);\n+    st->codec->extradata_size = FLIC_HEADER_SIZE;\n     memcpy(st->codec->extradata, header, FLIC_HEADER_SIZE);\n \n     /* peek at the preamble to detect TFTD videos - they seem to always start with an audio chunk */\n@@ -176,8 +178,10 @@ static int flic_read_header(AVFormatContext *s)\n \n         /* send over abbreviated FLIC header chunk */\n         av_free(st->codec->extradata);\n-        st->codec->extradata_size = 12;\n         st->codec->extradata = av_malloc(12);\n+        if (!st->codec->extradata)\n+            return AVERROR(ENOMEM);\n+        st->codec->extradata_size = 12;\n         memcpy(st->codec->extradata, header, 12);\n \n     } else if (magic_number == FLIC_FILE_MAGIC_1) {"
+        }
+    ]
+}

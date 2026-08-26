@@ -1,0 +1,101 @@
+{
+  "sha": "15bb719c03cc70f14c36a843dcb16ed69b405707",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MTViYjcxOWMwM2NjNzBmMTRjMzZhODQzZGNiMTZlZDY5YjQwNTcwNw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-01-06T14:13:56Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-01-06T14:13:56Z"
+    },
+    "message": "Error out in rfbProcessFileTransferReadBuffer if length can not be allocated\n\nre #273",
+    "tree": {
+      "sha": "d8aab6805181a9b7bf41124d157f050b0010cc31",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/d8aab6805181a9b7bf41124d157f050b0010cc31"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/15bb719c03cc70f14c36a843dcb16ed69b405707",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXDINJAAKCRBCG7O0XGBn\n+IDAAKDSgvu081Lu1St7Hv3VWsgbfbM+7gCgq+yek4ju/6kWheGWekUz2FHHmUk=\n=pXjr\n-----END PGP SIGNATURE-----",
+      "payload": "tree d8aab6805181a9b7bf41124d157f050b0010cc31\nparent a64c3b37af9a6c8f8009d7516874b8d266b42bae\nauthor Christian Beier <dontmind@freeshell.org> 1546784036 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1546784036 +0100\n\nError out in rfbProcessFileTransferReadBuffer if length can not be allocated\n\nre #273\n",
+      "verified_at": "2024-11-13T11:30:40Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/15bb719c03cc70f14c36a843dcb16ed69b405707",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/15bb719c03cc70f14c36a843dcb16ed69b405707",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/15bb719c03cc70f14c36a843dcb16ed69b405707/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "a64c3b37af9a6c8f8009d7516874b8d266b42bae",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/a64c3b37af9a6c8f8009d7516874b8d266b42bae",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/a64c3b37af9a6c8f8009d7516874b8d266b42bae"
+    }
+  ],
+  "stats": {
+    "total": 14,
+    "additions": 12,
+    "deletions": 2
+  },
+  "files": [
+    {
+      "sha": "e210a32f5c45268fad8c594adbd1d7098cd66dd1",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 2,
+      "changes": 14,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/15bb719c03cc70f14c36a843dcb16ed69b405707/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/15bb719c03cc70f14c36a843dcb16ed69b405707/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=15bb719c03cc70f14c36a843dcb16ed69b405707",
+      "patch": "@@ -1461,11 +1461,21 @@ char *rfbProcessFileTransferReadBuffer(rfbClientPtr cl, uint32_t length)\n     int   n=0;\n \n     FILEXFER_ALLOWED_OR_CLOSE_AND_RETURN(\"\", cl, NULL);\n+\n     /*\n-    rfbLog(\"rfbProcessFileTransferReadBuffer(%dlen)\\n\", length);\n+       We later alloc length+1, which might wrap around on 32-bit systems if length equals\n+       0XFFFFFFFF, i.e. SIZE_MAX for 32-bit systems. On 64-bit systems, a length of 0XFFFFFFFF\n+       will safely be allocated since this check will never trigger and malloc() can digest length+1\n+       without problems as length is a uint32_t.\n     */\n+    if(length == SIZE_MAX) {\n+\trfbErr(\"rfbProcessFileTransferReadBuffer: too big file transfer length requested: %u\", (unsigned int)length);\n+\trfbCloseClient(cl);\n+\treturn NULL;\n+    }\n+\n     if (length>0) {\n-        buffer=malloc((uint64_t)length+1);\n+        buffer=malloc((size_t)length+1);\n         if (buffer!=NULL) {\n             if ((n = rfbReadExact(cl, (char *)buffer, length)) <= 0) {\n                 if (n != 0)"
+    }
+  ]
+}

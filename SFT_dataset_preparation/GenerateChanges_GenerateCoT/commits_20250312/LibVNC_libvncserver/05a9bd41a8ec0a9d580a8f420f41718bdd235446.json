@@ -1,0 +1,101 @@
+{
+  "sha": "05a9bd41a8ec0a9d580a8f420f41718bdd235446",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MDVhOWJkNDFhOGVjMGE5ZDU4MGE4ZjQyMGY0MTcxOGJkZDIzNTQ0Ng==",
+  "commit": {
+    "author": {
+      "name": "Nicolas Ruff",
+      "email": "nruff@google.com",
+      "date": "2014-08-18T13:22:48Z"
+    },
+    "committer": {
+      "name": "Nicolas Ruff",
+      "email": "nruff@google.com",
+      "date": "2014-08-18T13:22:48Z"
+    },
+    "message": "Do not accept a scaling factor of zero on PalmVNCSetScaleFactor and SetScale client->server messages. This would cause a division by zero and crash the server.",
+    "tree": {
+      "sha": "359ac608feab381bd58953717521d1c98e87a2df",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/359ac608feab381bd58953717521d1c98e87a2df"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/05a9bd41a8ec0a9d580a8f420f41718bdd235446",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/05a9bd41a8ec0a9d580a8f420f41718bdd235446",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/05a9bd41a8ec0a9d580a8f420f41718bdd235446",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/05a9bd41a8ec0a9d580a8f420f41718bdd235446/comments",
+  "author": {
+    "login": "newsoft",
+    "id": 587059,
+    "node_id": "MDQ6VXNlcjU4NzA1OQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/587059?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/newsoft",
+    "html_url": "https://github.com/newsoft",
+    "followers_url": "https://api.github.com/users/newsoft/followers",
+    "following_url": "https://api.github.com/users/newsoft/following{/other_user}",
+    "gists_url": "https://api.github.com/users/newsoft/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/newsoft/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/newsoft/subscriptions",
+    "organizations_url": "https://api.github.com/users/newsoft/orgs",
+    "repos_url": "https://api.github.com/users/newsoft/repos",
+    "events_url": "https://api.github.com/users/newsoft/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/newsoft/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "newsoft",
+    "id": 587059,
+    "node_id": "MDQ6VXNlcjU4NzA1OQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/587059?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/newsoft",
+    "html_url": "https://github.com/newsoft",
+    "followers_url": "https://api.github.com/users/newsoft/followers",
+    "following_url": "https://api.github.com/users/newsoft/following{/other_user}",
+    "gists_url": "https://api.github.com/users/newsoft/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/newsoft/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/newsoft/subscriptions",
+    "organizations_url": "https://api.github.com/users/newsoft/orgs",
+    "repos_url": "https://api.github.com/users/newsoft/repos",
+    "events_url": "https://api.github.com/users/newsoft/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/newsoft/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/6037a9074d52b1963c97cb28ea1096c7c14cbf28",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/6037a9074d52b1963c97cb28ea1096c7c14cbf28"
+    }
+  ],
+  "stats": {
+    "total": 14,
+    "additions": 14,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "df7d74c760031f65186e1e8affcfa95ef4397bc3",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 14,
+      "deletions": 0,
+      "changes": 14,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/05a9bd41a8ec0a9d580a8f420f41718bdd235446/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/05a9bd41a8ec0a9d580a8f420f41718bdd235446/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=05a9bd41a8ec0a9d580a8f420f41718bdd235446",
+      "patch": "@@ -2491,6 +2491,13 @@ rfbProcessClientNormalMessage(rfbClientPtr cl)\n           rfbCloseClient(cl);\n           return;\n       }\n+\n+      if (msg.ssc.scale == 0) {\n+          rfbLogPerror(\"rfbProcessClientNormalMessage: will not accept a scale factor of zero\");\n+          rfbCloseClient(cl);\n+          return;\n+      }\n+\n       rfbStatRecordMessageRcvd(cl, msg.type, sz_rfbSetScaleMsg, sz_rfbSetScaleMsg);\n       rfbLog(\"rfbSetScale(%d)\\n\", msg.ssc.scale);\n       rfbScalingSetup(cl,cl->screen->width/msg.ssc.scale, cl->screen->height/msg.ssc.scale);\n@@ -2507,6 +2514,13 @@ rfbProcessClientNormalMessage(rfbClientPtr cl)\n           rfbCloseClient(cl);\n           return;\n       }\n+\n+      if (msg.ssc.scale == 0) {\n+          rfbLogPerror(\"rfbProcessClientNormalMessage: will not accept a scale factor of zero\");\n+          rfbCloseClient(cl);\n+          return;\n+      }\n+\n       rfbStatRecordMessageRcvd(cl, msg.type, sz_rfbSetScaleMsg, sz_rfbSetScaleMsg);\n       rfbLog(\"rfbSetScale(%d)\\n\", msg.ssc.scale);\n       rfbScalingSetup(cl,cl->screen->width/msg.ssc.scale, cl->screen->height/msg.ssc.scale);"
+    }
+  ]
+}

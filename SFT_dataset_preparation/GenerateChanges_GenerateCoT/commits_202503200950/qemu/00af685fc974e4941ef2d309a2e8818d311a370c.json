@@ -1,0 +1,109 @@
+{
+    "sha": "00af685fc974e4941ef2d309a2e8818d311a370c",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGFmNjg1ZmM5NzRlNDk0MWVmMmQzMDlhMmU4ODE4ZDMxMWEzNzBj",
+    "commit": {
+        "author": {
+            "name": "j_mayer",
+            "email": "j_mayer@c046a42c-6fe2-441c-8c8c-71466251a162",
+            "date": "2007-10-03T01:05:39Z"
+        },
+        "committer": {
+            "name": "j_mayer",
+            "email": "j_mayer@c046a42c-6fe2-441c-8c8c-71466251a162",
+            "date": "2007-10-03T01:05:39Z"
+        },
+        "message": "We never have to export ppc_set_irq.\nProtect PowerPC 64 only features with #ifdef (TARGET_PPC64)\n\n\ngit-svn-id: svn://svn.savannah.nongnu.org/qemu/trunk@3316 c046a42c-6fe2-441c-8c8c-71466251a162",
+        "tree": {
+            "sha": "528461009628f0f774910291f53c33ecfe9963f5",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/528461009628f0f774910291f53c33ecfe9963f5"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00af685fc974e4941ef2d309a2e8818d311a370c",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00af685fc974e4941ef2d309a2e8818d311a370c",
+    "html_url": "https://github.com/qemu/qemu/commit/00af685fc974e4941ef2d309a2e8818d311a370c",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00af685fc974e4941ef2d309a2e8818d311a370c/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+        {
+            "sha": "217fae2d6be868d80c587639d82ed9b1028913bb",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/217fae2d6be868d80c587639d82ed9b1028913bb",
+            "html_url": "https://github.com/qemu/qemu/commit/217fae2d6be868d80c587639d82ed9b1028913bb"
+        }
+    ],
+    "stats": {
+        "total": 59,
+        "additions": 45,
+        "deletions": 14
+    },
+    "files": [
+        {
+            "sha": "a9bfc47d39303f937084558456d1141169bc45d6",
+            "filename": "hw/ppc.c",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4,
+            "blob_url": "https://github.com/qemu/qemu/blob/00af685fc974e4941ef2d309a2e8818d311a370c/hw%2Fppc.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00af685fc974e4941ef2d309a2e8818d311a370c/hw%2Fppc.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fppc.c?ref=00af685fc974e4941ef2d309a2e8818d311a370c",
+            "patch": "@@ -30,7 +30,7 @@\n extern FILE *logfile;\n extern int loglevel;\n \n-void ppc_set_irq (CPUState *env, int n_IRQ, int level)\n+static void ppc_set_irq (CPUState *env, int n_IRQ, int level)\n {\n     if (level) {\n         env->pending_interrupts |= 1 << n_IRQ;\n@@ -162,6 +162,7 @@ void ppc6xx_irq_init (CPUState *env)\n     env->irq_inputs = (void **)qemu_allocate_irqs(&ppc6xx_set_irq, env, 6);\n }\n \n+#if defined(TARGET_PPC64)\n /* PowerPC 970 internal IRQ controller */\n static void ppc970_set_irq (void *opaque, int pin, int level)\n {\n@@ -283,6 +284,7 @@ void ppc970_irq_init (CPUState *env)\n {\n     env->irq_inputs = (void **)qemu_allocate_irqs(&ppc970_set_irq, env, 7);\n }\n+#endif /* defined(TARGET_PPC64) */\n \n /* PowerPC 40x internal IRQ controller */\n static void ppc40x_set_irq (void *opaque, int pin, int level)"
+        },
+        {
+            "sha": "9c6ac84a4f24dd36983fd08729453ae4b2b0ede0",
+            "filename": "hw/ppc_chrp.c",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2,
+            "blob_url": "https://github.com/qemu/qemu/blob/00af685fc974e4941ef2d309a2e8818d311a370c/hw%2Fppc_chrp.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00af685fc974e4941ef2d309a2e8818d311a370c/hw%2Fppc_chrp.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fppc_chrp.c?ref=00af685fc974e4941ef2d309a2e8818d311a370c",
+            "patch": "@@ -491,6 +491,7 @@ static void ppc_chrp_init (int ram_size, int vga_ram_size, int boot_device,\n                 openpic_irqs[i][OPENPIC_OUTPUT_RESET] =\n                     ((qemu_irq *)env->irq_inputs)[PPC6xx_INPUT_HRESET];\n                 break;\n+#if defined(TARGET_PPC64)\n             case PPC_FLAGS_INPUT_970:\n                 openpic_irqs[i] = openpic_irqs[0] + (i * OPENPIC_OUTPUT_NB);\n                 openpic_irqs[i][OPENPIC_OUTPUT_INT] =\n@@ -505,6 +506,7 @@ static void ppc_chrp_init (int ram_size, int vga_ram_size, int boot_device,\n                 openpic_irqs[i][OPENPIC_OUTPUT_RESET] =\n                     ((qemu_irq *)env->irq_inputs)[PPC970_INPUT_HRESET];\n                 break;\n+#endif /* defined(TARGET_PPC64) */\n             default:\n                 cpu_abort(env, \"Bus model not supported on mac99 machine\\n\");\n                 exit(1);"
+        },
+        {
+            "sha": "54baeb8225de4dd36487c7a0dbc601e41d924b53",
+            "filename": "target-ppc/cpu.h",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 4,
+            "changes": 14,
+            "blob_url": "https://github.com/qemu/qemu/blob/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Fcpu.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Fcpu.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target-ppc%2Fcpu.h?ref=00af685fc974e4941ef2d309a2e8818d311a370c",
+            "patch": "@@ -94,8 +94,6 @@ enum {\n     POWERPC_MMU_UNKNOWN    = 0,\n     /* Standard 32 bits PowerPC MMU                            */\n     POWERPC_MMU_32B,\n-    /* Standard 64 bits PowerPC MMU                            */\n-    POWERPC_MMU_64B,\n     /* PowerPC 601 MMU                                         */\n     POWERPC_MMU_601,\n     /* PowerPC 6xx MMU with software TLB                       */\n@@ -112,8 +110,12 @@ enum {\n     POWERPC_MMU_BOOKE,\n     /* BookE FSL MMU model                                     */\n     POWERPC_MMU_BOOKE_FSL,\n+#if defined(TARGET_PPC64)\n+    /* Standard 64 bits PowerPC MMU                            */\n+    POWERPC_MMU_64B,\n     /* 64 bits \"bridge\" PowerPC MMU                            */\n     POWERPC_MMU_64BRIDGE,\n+#endif /* defined(TARGET_PPC64) */\n };\n \n /*****************************************************************************/\n@@ -142,10 +144,12 @@ enum {\n     POWERPC_EXCP_7x5,\n     /* PowerPC 74xx exception model     */\n     POWERPC_EXCP_74xx,\n-    /* PowerPC 970 exception model      */\n-    POWERPC_EXCP_970,\n     /* BookE exception model            */\n     POWERPC_EXCP_BOOKE,\n+#if defined(TARGET_PPC64)\n+    /* PowerPC 970 exception model      */\n+    POWERPC_EXCP_970,\n+#endif /* defined(TARGET_PPC64) */\n };\n \n /*****************************************************************************/\n@@ -1133,6 +1137,7 @@ enum {\n     PPC40x_INPUT_NB,\n };\n \n+#if defined(TARGET_PPC64)\n enum {\n     /* PowerPC 620 (and probably others) input pins */\n     PPC620_INPUT_HRESET     = 0,\n@@ -1155,6 +1160,7 @@ enum {\n     PPC970_INPUT_INT        = 5,\n     PPC970_INPUT_THINT      = 6,\n };\n+#endif\n \n /* Hardware exceptions definitions */\n enum {"
+        },
+        {
+            "sha": "438cad42a6b0aecba178aa0bfd9583945a716bdc",
+            "filename": "target-ppc/helper.c",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13,
+            "blob_url": "https://github.com/qemu/qemu/blob/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Fhelper.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Fhelper.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target-ppc%2Fhelper.c?ref=00af685fc974e4941ef2d309a2e8818d311a370c",
+            "patch": "@@ -1612,10 +1612,16 @@ void ppc_tlb_invalidate_all (CPUPPCState *env)\n         cpu_abort(env, \"MMU model not implemented\\n\");\n         break;\n     case POWERPC_MMU_32B:\n+#if defined(TARGET_PPC64)\n     case POWERPC_MMU_64B:\n     case POWERPC_MMU_64BRIDGE:\n+#endif /* defined(TARGET_PPC64) */\n         tlb_flush(env, 1);\n         break;\n+    default:\n+        /* XXX: TODO */\n+        cpu_abort(env, \"Unknown MMU model %d\\n\", env->mmu_model);\n+        break;\n     }\n }\n \n@@ -1672,14 +1678,21 @@ void ppc_tlb_invalidate_one (CPUPPCState *env, target_ulong addr)\n         tlb_flush_page(env, addr | (0xE << 28));\n         tlb_flush_page(env, addr | (0xF << 28));\n         break;\n+#if defined(TARGET_PPC64)\n     case POWERPC_MMU_64B:\n     case POWERPC_MMU_64BRIDGE:\n         /* tlbie invalidate TLBs for all segments */\n         /* XXX: given the fact that there are too many segments to invalidate,\n+         *      and we still don't have a tlb_flush_mask(env, n, mask) in Qemu,\n          *      we just invalidate all TLBs\n          */\n         tlb_flush(env, 1);\n         break;\n+#endif /* defined(TARGET_PPC64) */\n+    default:\n+        /* XXX: TODO */\n+        cpu_abort(env, \"Unknown MMU model 2\\n\");\n+        break;\n     }\n #else\n     ppc_tlb_invalidate_all(env);"
+        },
+        {
+            "sha": "2a996cc1b611a9892e4b8b123e07f9dac7422ceb",
+            "filename": "target-ppc/translate_init.c",
+            "status": "modified",
+            "additions": 17,
+            "deletions": 9,
+            "changes": 26,
+            "blob_url": "https://github.com/qemu/qemu/blob/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Ftranslate_init.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00af685fc974e4941ef2d309a2e8818d311a370c/target-ppc%2Ftranslate_init.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target-ppc%2Ftranslate_init.c?ref=00af685fc974e4941ef2d309a2e8818d311a370c",
+            "patch": "@@ -4448,6 +4448,7 @@ enum {\n     CPU_POWERPC_74x7_v11    = 0x80030101, /* aka B: 1.1 */\n     CPU_POWERPC_74x7_v12    = 0x80020102, /* aka C: 1.2 */\n     /* 64 bits PowerPC */\n+#if defined(TARGET_PPC64)\n     CPU_POWERPC_620         = 0x00140000,\n     CPU_POWERPC_630         = 0x00400000,\n     CPU_POWERPC_631         = 0x00410104,\n@@ -4481,6 +4482,7 @@ enum {\n     CPU_POWERPC_RS64II      = 0x00340000,\n     CPU_POWERPC_RS64III     = 0x00360000,\n     CPU_POWERPC_RS64IV      = 0x00370000,\n+#endif /* defined(TARGET_PPC64) */\n     /* Original POWER */\n     /* XXX: should be POWER (RIOS), RSC3308, RSC4608,\n      * POWER2 (RIOS2) & RSC2 (P2SC) here\n@@ -5835,9 +5837,6 @@ int cpu_ppc_register (CPUPPCState *env, ppc_def_t *def)\n         case POWERPC_MMU_32B:\n             mmu_model = \"PowerPC 32\";\n             break;\n-        case POWERPC_MMU_64B:\n-            mmu_model = \"PowerPC 64\";\n-            break;\n         case POWERPC_MMU_601:\n             mmu_model = \"PowerPC 601\";\n             break;\n@@ -5863,9 +5862,14 @@ int cpu_ppc_register (CPUPPCState *env, ppc_def_t *def)\n         case POWERPC_MMU_BOOKE_FSL:\n             mmu_model = \"PowerPC BookE FSL\";\n             break;\n+#if defined (TARGET_PPC64)\n+        case POWERPC_MMU_64B:\n+            mmu_model = \"PowerPC 64\";\n+            break;\n         case POWERPC_MMU_64BRIDGE:\n             mmu_model = \"PowerPC 64 bridge\";\n             break;\n+#endif\n         default:\n             mmu_model = \"Unknown or invalid\";\n             break;\n@@ -5901,12 +5905,14 @@ int cpu_ppc_register (CPUPPCState *env, ppc_def_t *def)\n         case POWERPC_EXCP_74xx:\n             excp_model = \"PowerPC 74xx\";\n             break;\n-        case POWERPC_EXCP_970:\n-            excp_model = \"PowerPC 970\";\n-            break;\n         case POWERPC_EXCP_BOOKE:\n             excp_model = \"PowerPC BookE\";\n             break;\n+#if defined (TARGET_PPC64)\n+        case POWERPC_EXCP_970:\n+            excp_model = \"PowerPC 970\";\n+            break;\n+#endif\n         default:\n             excp_model = \"Unknown or invalid\";\n             break;\n@@ -5921,12 +5927,14 @@ int cpu_ppc_register (CPUPPCState *env, ppc_def_t *def)\n         case PPC_FLAGS_INPUT_405:\n             bus_model = \"PowerPC 405\";\n             break;\n-        case PPC_FLAGS_INPUT_970:\n-            bus_model = \"PowerPC 970\";\n-            break;\n         case PPC_FLAGS_INPUT_401:\n             bus_model = \"PowerPC 401/403\";\n             break;\n+#if defined (TARGET_PPC64)\n+        case PPC_FLAGS_INPUT_970:\n+            bus_model = \"PowerPC 970\";\n+            break;\n+#endif\n         default:\n             bus_model = \"Unknown or invalid\";\n             break;"
+        }
+    ]
+}

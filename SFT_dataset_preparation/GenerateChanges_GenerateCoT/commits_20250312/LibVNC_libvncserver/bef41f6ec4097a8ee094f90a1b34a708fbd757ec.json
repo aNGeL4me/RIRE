@@ -1,0 +1,101 @@
+{
+  "sha": "bef41f6ec4097a8ee094f90a1b34a708fbd757ec",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6YmVmNDFmNmVjNDA5N2E4ZWUwOTRmOTBhMWIzNGE3MDhmYmQ3NTdlYw==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "info@christianbeier.net",
+      "date": "2020-11-21T11:52:31Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "info@christianbeier.net",
+      "date": "2020-11-21T11:52:31Z"
+    },
+    "message": "libvncclient: free vncRec memory in rfbClientCleanup()\n\nOtherwise we leak memory. Spotted by Ramin Farajpour Cami\n<ramin.blackhat@gmail.com>, thanks!",
+    "tree": {
+      "sha": "92c335d8747d4d781ed54bb374169e95f03d2ab4",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/92c335d8747d4d781ed54bb374169e95f03d2ab4"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/bef41f6ec4097a8ee094f90a1b34a708fbd757ec",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCX7j/0wAKCRBCG7O0XGBn\n+KLlAJ92zvsqT/e40aWm0KZAmZrR0HeRjwCeLO639ZVgwWaWFhmp0uOnpzt48ZE=\n=JGUe\n-----END PGP SIGNATURE-----",
+      "payload": "tree 92c335d8747d4d781ed54bb374169e95f03d2ab4\nparent 4bef2a0bbf0d368e8b7e46fad628aad5966517c1\nauthor Christian Beier <info@christianbeier.net> 1605959551 +0100\ncommitter Christian Beier <info@christianbeier.net> 1605959551 +0100\n\nlibvncclient: free vncRec memory in rfbClientCleanup()\n\nOtherwise we leak memory. Spotted by Ramin Farajpour Cami\n<ramin.blackhat@gmail.com>, thanks!\n",
+      "verified_at": "2024-11-13T01:55:06Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/bef41f6ec4097a8ee094f90a1b34a708fbd757ec",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/bef41f6ec4097a8ee094f90a1b34a708fbd757ec",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/bef41f6ec4097a8ee094f90a1b34a708fbd757ec/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "4bef2a0bbf0d368e8b7e46fad628aad5966517c1",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/4bef2a0bbf0d368e8b7e46fad628aad5966517c1",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/4bef2a0bbf0d368e8b7e46fad628aad5966517c1"
+    }
+  ],
+  "stats": {
+    "total": 2,
+    "additions": 2,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "0a1bdcf6aa360d180a8edf1571e48511298f72f4",
+      "filename": "libvncclient/vncviewer.c",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0,
+      "changes": 2,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/bef41f6ec4097a8ee094f90a1b34a708fbd757ec/libvncclient%2Fvncviewer.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/bef41f6ec4097a8ee094f90a1b34a708fbd757ec/libvncclient%2Fvncviewer.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fvncviewer.c?ref=bef41f6ec4097a8ee094f90a1b34a708fbd757ec",
+      "patch": "@@ -534,6 +534,8 @@ void rfbClientCleanup(rfbClient* client) {\n     client->clientData = next;\n   }\n \n+  free(client->vncRec);\n+\n   if (client->sock != RFB_INVALID_SOCKET)\n     rfbCloseSocket(client->sock);\n   if (client->listenSock != RFB_INVALID_SOCKET)"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+    "sha": "0ab00a75e41f4399126777e49385c809d8fcc311",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYWIwMGE3NWU0MWY0Mzk5MTI2Nzc3ZTQ5Mzg1YzgwOWQ4ZmNjMzEx",
+    "commit": {
+        "author": {
+            "name": "James Almer",
+            "email": "jamrial@gmail.com",
+            "date": "2014-08-07T04:22:48Z"
+        },
+        "committer": {
+            "name": "Michael Niedermayer",
+            "email": "michaelni@gmx.at",
+            "date": "2014-08-07T10:52:38Z"
+        },
+        "message": "avcodec/raw: add avpriv_get_raw_pix_fmt_tags()\n\nUsed to expose ff_raw_pix_fmt_tags[] to other libav* libraries\n\nSigned-off-by: James Almer <jamrial@gmail.com>\nSigned-off-by: Michael Niedermayer <michaelni@gmx.at>",
+        "tree": {
+            "sha": "f93db9923e7ea25526056f68e17f0bdd31d81424",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/f93db9923e7ea25526056f68e17f0bdd31d81424"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0ab00a75e41f4399126777e49385c809d8fcc311",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0ab00a75e41f4399126777e49385c809d8fcc311",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0ab00a75e41f4399126777e49385c809d8fcc311",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0ab00a75e41f4399126777e49385c809d8fcc311/comments",
+    "author": {
+        "login": "jamrial",
+        "id": 2442845,
+        "node_id": "MDQ6VXNlcjI0NDI4NDU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2442845?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jamrial",
+        "html_url": "https://github.com/jamrial",
+        "followers_url": "https://api.github.com/users/jamrial/followers",
+        "following_url": "https://api.github.com/users/jamrial/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jamrial/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jamrial/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jamrial/subscriptions",
+        "organizations_url": "https://api.github.com/users/jamrial/orgs",
+        "repos_url": "https://api.github.com/users/jamrial/repos",
+        "events_url": "https://api.github.com/users/jamrial/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jamrial/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "4c404611dae4a8fe41b348b8d5db4ea526e24bc5",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/4c404611dae4a8fe41b348b8d5db4ea526e24bc5",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/4c404611dae4a8fe41b348b8d5db4ea526e24bc5"
+        }
+    ],
+    "stats": {
+        "total": 15,
+        "additions": 13,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "62ad338b9f5cc43f668796805e77b327acce984a",
+            "filename": "libavcodec/raw.c",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0ab00a75e41f4399126777e49385c809d8fcc311/libavcodec%2Fraw.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0ab00a75e41f4399126777e49385c809d8fcc311/libavcodec%2Fraw.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fraw.c?ref=0ab00a75e41f4399126777e49385c809d8fcc311",
+            "patch": "@@ -224,6 +224,11 @@ const PixelFormatTag ff_raw_pix_fmt_tags[] = {\n     { AV_PIX_FMT_NONE, 0 },\n };\n \n+const struct PixelFormatTag *avpriv_get_raw_pix_fmt_tags(void)\n+{\n+    return ff_raw_pix_fmt_tags;\n+}\n+\n unsigned int avcodec_pix_fmt_to_codec_tag(enum AVPixelFormat fmt)\n {\n     const PixelFormatTag *tags = ff_raw_pix_fmt_tags;"
+        },
+        {
+            "sha": "a79b8510c12640bf040ccbd42ffc25bef4c83b37",
+            "filename": "libavcodec/raw.h",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0ab00a75e41f4399126777e49385c809d8fcc311/libavcodec%2Fraw.h",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0ab00a75e41f4399126777e49385c809d8fcc311/libavcodec%2Fraw.h",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fraw.h?ref=0ab00a75e41f4399126777e49385c809d8fcc311",
+            "patch": "@@ -35,7 +35,13 @@ typedef struct PixelFormatTag {\n     unsigned int fourcc;\n } PixelFormatTag;\n \n+#if LIBAVCODEC_VERSION_MAJOR < 56\n extern av_export const PixelFormatTag ff_raw_pix_fmt_tags[];\n+#else\n+extern const PixelFormatTag ff_raw_pix_fmt_tags[]; // exposed through avpriv_get_raw_pix_fmt_tags()\n+#endif\n+\n+const struct PixelFormatTag *avpriv_get_raw_pix_fmt_tags(void);\n \n enum AVPixelFormat avpriv_find_pix_fmt(const PixelFormatTag *tags, unsigned int fourcc);\n "
+        },
+        {
+            "sha": "2c098d4839da9ba8d5e726f50ed2a22b8f2ce9e3",
+            "filename": "libavdevice/dshow.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0ab00a75e41f4399126777e49385c809d8fcc311/libavdevice%2Fdshow.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0ab00a75e41f4399126777e49385c809d8fcc311/libavdevice%2Fdshow.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavdevice%2Fdshow.c?ref=0ab00a75e41f4399126777e49385c809d8fcc311",
+            "patch": "@@ -92,7 +92,7 @@ static enum AVPixelFormat dshow_pixfmt(DWORD biCompression, WORD biBitCount)\n                 return AV_PIX_FMT_0RGB32;\n         }\n     }\n-    return avpriv_find_pix_fmt(ff_raw_pix_fmt_tags, biCompression); // all others\n+    return avpriv_find_pix_fmt(avpriv_get_raw_pix_fmt_tags(), biCompression); // all others\n }\n \n static int"
+        },
+        {
+            "sha": "cc52d0ebf88ad7e6bf10d383c2bae6fa83a9a739",
+            "filename": "libavformat/utils.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0ab00a75e41f4399126777e49385c809d8fcc311/libavformat%2Futils.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0ab00a75e41f4399126777e49385c809d8fcc311/libavformat%2Futils.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavformat%2Futils.c?ref=0ab00a75e41f4399126777e49385c809d8fcc311",
+            "patch": "@@ -3275,7 +3275,7 @@ int avformat_find_stream_info(AVFormatContext *ic, AVDictionary **options)\n         if (st->codec->codec_type == AVMEDIA_TYPE_VIDEO) {\n             if (st->codec->codec_id == AV_CODEC_ID_RAWVIDEO && !st->codec->codec_tag && !st->codec->bits_per_coded_sample) {\n                 uint32_t tag= avcodec_pix_fmt_to_codec_tag(st->codec->pix_fmt);\n-                if (avpriv_find_pix_fmt(ff_raw_pix_fmt_tags, tag) == st->codec->pix_fmt)\n+                if (avpriv_find_pix_fmt(avpriv_get_raw_pix_fmt_tags(), tag) == st->codec->pix_fmt)\n                     st->codec->codec_tag= tag;\n             }\n "
+        }
+    ]
+}

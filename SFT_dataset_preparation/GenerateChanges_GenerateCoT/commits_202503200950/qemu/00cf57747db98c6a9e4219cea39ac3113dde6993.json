@@ -1,0 +1,81 @@
+{
+    "sha": "00cf57747db98c6a9e4219cea39ac3113dde6993",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGNmNTc3NDdkYjk4YzZhOWU0MjE5Y2VhMzlhYzMxMTNkZGU2OTkz",
+    "commit": {
+        "author": {
+            "name": "Paolo Bonzini",
+            "email": "pbonzini@redhat.com",
+            "date": "2012-08-02T16:04:11Z"
+        },
+        "committer": {
+            "name": "Anthony Liguori",
+            "email": "aliguori@us.ibm.com",
+            "date": "2012-09-10T18:52:28Z"
+        },
+        "message": "RTC: Do not fire timer periodically to catch next alarm\n\nThis patch limits further the usage of a periodic timer.  It computes the\ntime of the next alarm, and uses it to skip all intermediate occurrences\nof the timer.\n\nCc: Yang Zhang <yang.z.zhang@intel.com>\nSigned-off-by: Paolo Bonzini <pbonzini@redhat.com>\nSigned-off-by: Anthony Liguori <aliguori@us.ibm.com>",
+        "tree": {
+            "sha": "7245e946c73e2989f2d8bad3af1d93b12ecc94b8",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/7245e946c73e2989f2d8bad3af1d93b12ecc94b8"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00cf57747db98c6a9e4219cea39ac3113dde6993",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00cf57747db98c6a9e4219cea39ac3113dde6993",
+    "html_url": "https://github.com/qemu/qemu/commit/00cf57747db98c6a9e4219cea39ac3113dde6993",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00cf57747db98c6a9e4219cea39ac3113dde6993/comments",
+    "author": {
+        "login": "bonzini",
+        "id": 42082,
+        "node_id": "MDQ6VXNlcjQyMDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/42082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bonzini",
+        "html_url": "https://github.com/bonzini",
+        "followers_url": "https://api.github.com/users/bonzini/followers",
+        "following_url": "https://api.github.com/users/bonzini/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bonzini/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bonzini/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bonzini/subscriptions",
+        "organizations_url": "https://api.github.com/users/bonzini/orgs",
+        "repos_url": "https://api.github.com/users/bonzini/repos",
+        "events_url": "https://api.github.com/users/bonzini/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bonzini/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+        {
+            "sha": "41a9b8b24d59acec462b0d8e0d2a7ffce6031d55",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/41a9b8b24d59acec462b0d8e0d2a7ffce6031d55",
+            "html_url": "https://github.com/qemu/qemu/commit/41a9b8b24d59acec462b0d8e0d2a7ffce6031d55"
+        }
+    ],
+    "stats": {
+        "total": 117,
+        "additions": 103,
+        "deletions": 14
+    },
+    "files": [
+        {
+            "sha": "9d530a8a124538128ca3d5a6505faf11c62104dc",
+            "filename": "hw/mc146818rtc.c",
+            "status": "modified",
+            "additions": 103,
+            "deletions": 14,
+            "changes": 117,
+            "blob_url": "https://github.com/qemu/qemu/blob/00cf57747db98c6a9e4219cea39ac3113dde6993/hw%2Fmc146818rtc.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00cf57747db98c6a9e4219cea39ac3113dde6993/hw%2Fmc146818rtc.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/hw%2Fmc146818rtc.c?ref=00cf57747db98c6a9e4219cea39ac3113dde6993",
+            "patch": "@@ -46,6 +46,11 @@\n #endif\n \n #define NSEC_PER_SEC    1000000000LL\n+#define SEC_PER_MIN     60\n+#define MIN_PER_HOUR    60\n+#define SEC_PER_HOUR    3600\n+#define HOUR_PER_DAY    24\n+#define SEC_PER_DAY     86400\n \n #define RTC_REINJECT_ON_ACK_COUNT 20\n #define RTC_CLOCK_RATE            32768\n@@ -69,6 +74,7 @@ typedef struct RTCState {\n     int64_t next_periodic_time;\n     /* update-ended timer */\n     QEMUTimer *update_timer;\n+    uint64_t next_alarm_time;\n     uint16_t irq_reinject_on_ack_count;\n     uint32_t irq_coalesced;\n     uint32_t period;\n@@ -82,6 +88,7 @@ static void rtc_set_time(RTCState *s);\n static void rtc_update_time(RTCState *s);\n static void rtc_set_cmos(RTCState *s);\n static inline int rtc_from_bcd(RTCState *s, int a);\n+static uint64_t get_next_alarm(RTCState *s);\n \n static inline bool rtc_running(RTCState *s)\n {\n@@ -204,6 +211,7 @@ static void check_update_timer(RTCState *s)\n {\n     uint64_t next_update_time;\n     uint64_t guest_nsec;\n+    int next_alarm_sec;\n \n     /* From the data sheet: \"Holding the dividers in reset prevents\n      * interrupts from operating, while setting the SET bit allows\"\n@@ -226,9 +234,21 @@ static void check_update_timer(RTCState *s)\n     }\n \n     guest_nsec = get_guest_rtc_ns(s) % NSEC_PER_SEC;\n-    /* reprogram to next second */\n+    /* if UF is clear, reprogram to next second */\n     next_update_time = qemu_get_clock_ns(rtc_clock)\n         + NSEC_PER_SEC - guest_nsec;\n+\n+    /* Compute time of next alarm.  One second is already accounted\n+     * for in next_update_time.\n+     */\n+    next_alarm_sec = get_next_alarm(s);\n+    s->next_alarm_time = next_update_time + (next_alarm_sec - 1) * NSEC_PER_SEC;\n+\n+    if (s->cmos_data[RTC_REG_C] & REG_C_UF) {\n+        /* UF is set, but AF is clear.  Program the timer to target\n+         * the alarm time.  */\n+        next_update_time = s->next_alarm_time;\n+    }\n     if (next_update_time != qemu_timer_expire_time_ns(s->update_timer)) {\n         qemu_mod_timer(s->update_timer, next_update_time);\n     }\n@@ -245,31 +265,95 @@ static inline uint8_t convert_hour(RTCState *s, uint8_t hour)\n     return hour;\n }\n \n-static uint32_t check_alarm(RTCState *s)\n+static uint64_t get_next_alarm(RTCState *s)\n {\n-    uint8_t alarm_hour, alarm_min, alarm_sec;\n-    uint8_t cur_hour, cur_min, cur_sec;\n+    int32_t alarm_sec, alarm_min, alarm_hour, cur_hour, cur_min, cur_sec;\n+    int32_t hour, min, sec;\n+\n+    rtc_update_time(s);\n \n     alarm_sec = rtc_from_bcd(s, s->cmos_data[RTC_SECONDS_ALARM]);\n     alarm_min = rtc_from_bcd(s, s->cmos_data[RTC_MINUTES_ALARM]);\n     alarm_hour = rtc_from_bcd(s, s->cmos_data[RTC_HOURS_ALARM]);\n-    alarm_hour = convert_hour(s, alarm_hour);\n+    alarm_hour = alarm_hour == -1 ? -1 : convert_hour(s, alarm_hour);\n \n     cur_sec = rtc_from_bcd(s, s->cmos_data[RTC_SECONDS]);\n     cur_min = rtc_from_bcd(s, s->cmos_data[RTC_MINUTES]);\n     cur_hour = rtc_from_bcd(s, s->cmos_data[RTC_HOURS]);\n     cur_hour = convert_hour(s, cur_hour);\n \n-    if (((s->cmos_data[RTC_SECONDS_ALARM] & 0xc0) == 0xc0\n-                || alarm_sec == cur_sec) &&\n-            ((s->cmos_data[RTC_MINUTES_ALARM] & 0xc0) == 0xc0\n-             || alarm_min == cur_min) &&\n-            ((s->cmos_data[RTC_HOURS_ALARM] & 0xc0) == 0xc0\n-             || alarm_hour == cur_hour)) {\n-        return 1;\n+    if (alarm_hour == -1) {\n+        alarm_hour = cur_hour;\n+        if (alarm_min == -1) {\n+            alarm_min = cur_min;\n+            if (alarm_sec == -1) {\n+                alarm_sec = cur_sec + 1;\n+            } else if (cur_sec > alarm_sec) {\n+                alarm_min++;\n+            }\n+        } else if (cur_min == alarm_min) {\n+            if (alarm_sec == -1) {\n+                alarm_sec = cur_sec + 1;\n+            } else {\n+                if (cur_sec > alarm_sec) {\n+                    alarm_hour++;\n+                }\n+            }\n+            if (alarm_sec == SEC_PER_MIN) {\n+                /* wrap to next hour, minutes is not in don't care mode */\n+                alarm_sec = 0;\n+                alarm_hour++;\n+            }\n+        } else if (cur_min > alarm_min) {\n+            alarm_hour++;\n+        }\n+    } else if (cur_hour == alarm_hour) {\n+        if (alarm_min == -1) {\n+            alarm_min = cur_min;\n+            if (alarm_sec == -1) {\n+                alarm_sec = cur_sec + 1;\n+            } else if (cur_sec > alarm_sec) {\n+                alarm_min++;\n+            }\n+\n+            if (alarm_sec == SEC_PER_MIN) {\n+                alarm_sec = 0;\n+                alarm_min++;\n+            }\n+            /* wrap to next day, hour is not in don't care mode */\n+            alarm_min %= MIN_PER_HOUR;\n+        } else if (cur_min == alarm_min) {\n+            if (alarm_sec == -1) {\n+                alarm_sec = cur_sec + 1;\n+            }\n+            /* wrap to next day, hours+minutes not in don't care mode */\n+            alarm_sec %= SEC_PER_MIN;\n+        }\n     }\n-    return 0;\n \n+    /* values that are still don't care fire at the next min/sec */\n+    if (alarm_min == -1) {\n+        alarm_min = 0;\n+    }\n+    if (alarm_sec == -1) {\n+        alarm_sec = 0;\n+    }\n+\n+    /* keep values in range */\n+    if (alarm_sec == SEC_PER_MIN) {\n+        alarm_sec = 0;\n+        alarm_min++;\n+    }\n+    if (alarm_min == MIN_PER_HOUR) {\n+        alarm_min = 0;\n+        alarm_hour++;\n+    }\n+    alarm_hour %= HOUR_PER_DAY;\n+\n+    hour = alarm_hour - cur_hour;\n+    min = hour * MIN_PER_HOUR + alarm_min - cur_min;\n+    sec = min * SEC_PER_MIN + alarm_sec - cur_sec;\n+    return sec <= 0 ? sec + SEC_PER_DAY : sec;\n }\n \n static void rtc_update_timer(void *opaque)\n@@ -284,12 +368,13 @@ static void rtc_update_timer(void *opaque)\n     rtc_update_time(s);\n     s->cmos_data[RTC_REG_A] &= ~REG_A_UIP;\n \n-    if (check_alarm(s)) {\n+    if (qemu_get_clock_ns(rtc_clock) >= s->next_alarm_time) {\n         irqs |= REG_C_AF;\n         if (s->cmos_data[RTC_REG_B] & REG_B_AIE) {\n             qemu_system_wakeup_request(QEMU_WAKEUP_REASON_RTC);\n         }\n     }\n+\n     new_irqs = irqs & ~s->cmos_data[RTC_REG_C];\n     s->cmos_data[RTC_REG_C] |= irqs;\n     if ((new_irqs & s->cmos_data[RTC_REG_B]) != 0) {\n@@ -407,6 +492,9 @@ static inline int rtc_to_bcd(RTCState *s, int a)\n \n static inline int rtc_from_bcd(RTCState *s, int a)\n {\n+    if ((a & 0xc0) == 0xc0) {\n+        return -1;\n+    }\n     if (s->cmos_data[RTC_REG_B] & REG_B_DM) {\n         return a;\n     } else {\n@@ -642,6 +730,7 @@ static const VMStateDescription vmstate_rtc = {\n         VMSTATE_UINT64_V(last_update, RTCState, 3),\n         VMSTATE_INT64_V(offset, RTCState, 3),\n         VMSTATE_TIMER_V(update_timer, RTCState, 3),\n+        VMSTATE_UINT64_V(next_alarm_time, RTCState, 3),\n         VMSTATE_END_OF_LIST()\n     }\n };"
+        }
+    ]
+}

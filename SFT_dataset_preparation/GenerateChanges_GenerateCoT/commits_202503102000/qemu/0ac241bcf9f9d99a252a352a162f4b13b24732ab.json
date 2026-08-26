@@ -1,0 +1,81 @@
+{
+    "sha": "0ac241bcf9f9d99a252a352a162f4b13b24732ab",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYWMyNDFiY2Y5ZjlkOTlhMjUyYTM1MmExNjJmNGIxM2IyNDczMmFi",
+    "commit": {
+        "author": {
+            "name": "Eduardo Otubo",
+            "email": "otubo@redhat.com",
+            "date": "2017-07-28T11:51:31Z"
+        },
+        "committer": {
+            "name": "Michael Tokarev",
+            "email": "mjt@tls.msk.ru",
+            "date": "2017-08-14T10:06:54Z"
+        },
+        "message": "unicore32: abort when entering \"x 0\" on the monitor\n\nStarting Qemu with \"qemu-system-unicore32 -M puv3,accel=qtest -S -nographic\"\nand entering \"x 0 \" at the monitor prompt leads to abort():\n\n  $ ./unicore32-softmmu/qemu-system-unicore32 -M puv3,accel=qtest -S -nographic\n  QEMU 2.9.90 monitor - type 'help' for more information\n  (qemu) x 0\n  qemu: fatal: uc32_cpu_get_phys_page_debug not supported yet\n\n  R00=00000000 R01=00000000 R02=00000000 R03=00000000\n  R04=00000000 R05=00000000 R06=00000000 R07=00000000\n  R08=00000000 R09=00000000 R10=00000000 R11=00000000\n  R12=00000000 R13=00000000 R14=00000000 R15=00000000\n  R16=00000000 R17=00000000 R18=00000000 R19=00000000\n  R20=00000000 R21=00000000 R22=00000000 R23=00000000\n  R24=00000000 R25=00000000 R26=00000000 R27=00000000\n  R28=00000000 R29=00000000 R30=00000000 R31=03000000\n  PSR=40000013 -Z-- PRIV\n  Aborted (core dumped)\n\nThis happens because uc32_cpu_get_phys_page_debug() is not implemented\nyet, this is a temporary workaround to avoid the crash.\n\nSigned-off-by: Eduardo Otubo <otubo@redhat.com>\nSigned-off-by: Michael Tokarev <mjt@tls.msk.ru>",
+        "tree": {
+            "sha": "893bc733cef7a982fcbc974e9c00b3126aa83263",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/893bc733cef7a982fcbc974e9c00b3126aa83263"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0ac241bcf9f9d99a252a352a162f4b13b24732ab",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0ac241bcf9f9d99a252a352a162f4b13b24732ab",
+    "html_url": "https://github.com/qemu/qemu/commit/0ac241bcf9f9d99a252a352a162f4b13b24732ab",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0ac241bcf9f9d99a252a352a162f4b13b24732ab/comments",
+    "author": {
+        "login": "otubo",
+        "id": 105609,
+        "node_id": "MDQ6VXNlcjEwNTYwOQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/105609?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/otubo",
+        "html_url": "https://github.com/otubo",
+        "followers_url": "https://api.github.com/users/otubo/followers",
+        "following_url": "https://api.github.com/users/otubo/following{/other_user}",
+        "gists_url": "https://api.github.com/users/otubo/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/otubo/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/otubo/subscriptions",
+        "organizations_url": "https://api.github.com/users/otubo/orgs",
+        "repos_url": "https://api.github.com/users/otubo/repos",
+        "events_url": "https://api.github.com/users/otubo/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/otubo/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+        {
+            "sha": "9db6ffc76676731a25a5538ab71e8ca6ac234f80",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/9db6ffc76676731a25a5538ab71e8ca6ac234f80",
+            "html_url": "https://github.com/qemu/qemu/commit/9db6ffc76676731a25a5538ab71e8ca6ac234f80"
+        }
+    ],
+    "stats": {
+        "total": 8,
+        "additions": 4,
+        "deletions": 4
+    },
+    "files": [
+        {
+            "sha": "d8d76968f39c98fde49a2d8104a7eb298576ffdc",
+            "filename": "target/unicore32/softmmu.c",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8,
+            "blob_url": "https://github.com/qemu/qemu/blob/0ac241bcf9f9d99a252a352a162f4b13b24732ab/target%2Funicore32%2Fsoftmmu.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0ac241bcf9f9d99a252a352a162f4b13b24732ab/target%2Funicore32%2Fsoftmmu.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/target%2Funicore32%2Fsoftmmu.c?ref=0ac241bcf9f9d99a252a352a162f4b13b24732ab",
+            "patch": "@@ -15,6 +15,7 @@\n #include \"qemu/osdep.h\"\n #include \"cpu.h\"\n #include \"exec/exec-all.h\"\n+#include \"qemu/error-report.h\"\n \n #undef DEBUG_UC32\n \n@@ -271,8 +272,7 @@ int uc32_cpu_handle_mmu_fault(CPUState *cs, vaddr address,\n \n hwaddr uc32_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)\n {\n-    UniCore32CPU *cpu = UNICORE32_CPU(cs);\n-\n-    cpu_abort(CPU(cpu), \"%s not supported yet\\n\", __func__);\n-    return addr;\n+    error_report(\"function uc32_cpu_get_phys_page_debug not \"\n+                    \"implemented, aborting\");\n+    return -1;\n }"
+        }
+    ]
+}

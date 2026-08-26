@@ -1,0 +1,101 @@
+{
+  "sha": "0cf1400c61850065de590d403f6d49e32882fd76",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MGNmMTQwMGM2MTg1MDA2NWRlNTkwZDQwM2Y2ZDQ5ZTMyODgyZmQ3Ng==",
+  "commit": {
+    "author": {
+      "name": "Rolf Eike Beer",
+      "email": "eike@sf-mail.de",
+      "date": "2019-05-28T16:30:46Z"
+    },
+    "committer": {
+      "name": "Rolf Eike Beer",
+      "email": "eike@sf-mail.de",
+      "date": "2019-05-28T16:30:46Z"
+    },
+    "message": "fix crash because of unaligned accesses in hybiReadAndDecode()",
+    "tree": {
+      "sha": "141fe0bfba91693694dcf9391c23fcaf86495eba",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/141fe0bfba91693694dcf9391c23fcaf86495eba"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/0cf1400c61850065de590d403f6d49e32882fd76",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/0cf1400c61850065de590d403f6d49e32882fd76",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/0cf1400c61850065de590d403f6d49e32882fd76",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/0cf1400c61850065de590d403f6d49e32882fd76/comments",
+  "author": {
+    "login": "DerDakon",
+    "id": 10909049,
+    "node_id": "MDQ6VXNlcjEwOTA5MDQ5",
+    "avatar_url": "https://avatars.githubusercontent.com/u/10909049?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/DerDakon",
+    "html_url": "https://github.com/DerDakon",
+    "followers_url": "https://api.github.com/users/DerDakon/followers",
+    "following_url": "https://api.github.com/users/DerDakon/following{/other_user}",
+    "gists_url": "https://api.github.com/users/DerDakon/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/DerDakon/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/DerDakon/subscriptions",
+    "organizations_url": "https://api.github.com/users/DerDakon/orgs",
+    "repos_url": "https://api.github.com/users/DerDakon/repos",
+    "events_url": "https://api.github.com/users/DerDakon/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/DerDakon/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "DerDakon",
+    "id": 10909049,
+    "node_id": "MDQ6VXNlcjEwOTA5MDQ5",
+    "avatar_url": "https://avatars.githubusercontent.com/u/10909049?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/DerDakon",
+    "html_url": "https://github.com/DerDakon",
+    "followers_url": "https://api.github.com/users/DerDakon/followers",
+    "following_url": "https://api.github.com/users/DerDakon/following{/other_user}",
+    "gists_url": "https://api.github.com/users/DerDakon/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/DerDakon/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/DerDakon/subscriptions",
+    "organizations_url": "https://api.github.com/users/DerDakon/orgs",
+    "repos_url": "https://api.github.com/users/DerDakon/repos",
+    "events_url": "https://api.github.com/users/DerDakon/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/DerDakon/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "3b3a5c478344d4f6faba47c9229f76423c87101d",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/3b3a5c478344d4f6faba47c9229f76423c87101d",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/3b3a5c478344d4f6faba47c9229f76423c87101d"
+    }
+  ],
+  "stats": {
+    "total": 7,
+    "additions": 4,
+    "deletions": 3
+  },
+  "files": [
+    {
+      "sha": "10c44d19471a1742981a5840a5c84d86a449173a",
+      "filename": "libvncserver/ws_decode.c",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 3,
+      "changes": 7,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/0cf1400c61850065de590d403f6d49e32882fd76/libvncserver%2Fws_decode.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/0cf1400c61850065de590d403f6d49e32882fd76/libvncserver%2Fws_decode.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Fws_decode.c?ref=0cf1400c61850065de590d403f6d49e32882fd76",
+      "patch": "@@ -327,7 +327,6 @@ hybiReadAndDecode(ws_ctx_t *wsctx, char *dst, int len, int *sockRet, int nInBuf)\n   int bufsize;\n   int nextRead;\n   unsigned char *data;\n-  uint32_t *data32;\n \n   /* if data was carried over, copy to start of buffer */\n   memcpy(wsctx->writePos, wsctx->carryBuf, wsctx->carrylen);\n@@ -383,10 +382,12 @@ hybiReadAndDecode(ws_ctx_t *wsctx, char *dst, int len, int *sockRet, int nInBuf)\n   /* for a possible base64 decoding, we decode multiples of 4 bytes until\n    * the whole frame is received and carry over any remaining bytes in the carry buf*/\n   data = (unsigned char *)(wsctx->writePos - toDecode);\n-  data32= (uint32_t *)data;\n \n   for (i = 0; i < (toDecode >> 2); i++) {\n-    data32[i] ^= wsctx->header.mask.u;\n+    uint32_t tmp;\n+    memcpy(&tmp, data + i * sizeof(tmp), sizeof(tmp));\n+    tmp ^= wsctx->header.mask.u;\n+    memcpy(data + i * sizeof(tmp), &tmp, sizeof(tmp));\n   }\n   ws_dbg(\"mask decoding; i=%d toDecode=%d\\n\", i, toDecode);\n "
+    }
+  ]
+}

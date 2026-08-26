@@ -1,0 +1,117 @@
+{
+    "sha": "0a852417564bc59441dc09509beacf7b49bc1e57",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYTg1MjQxNzU2NGJjNTk0NDFkYzA5NTA5YmVhY2Y3YjQ5YmMxZTU3",
+    "commit": {
+        "author": {
+            "name": "Paul Durrant",
+            "email": "paul.durrant@citrix.com",
+            "date": "2016-08-04T13:44:14Z"
+        },
+        "committer": {
+            "name": "Stefan Hajnoczi",
+            "email": "stefanha@redhat.com",
+            "date": "2016-09-05T17:47:01Z"
+        },
+        "message": "trace: add syslog tracing backend\n\nThis patch adds a tracing backend which sends output using syslog().\nThe syslog backend is limited to POSIX compliant systems.\n\nopenlog() is called with facility set to LOG_DAEMON, with the LOG_PID\noption. Trace events are logged at level LOG_INFO.\n\nSigned-off-by: Paul Durrant <paul.durrant@citrix.com>\nMessage-id: 1470318254-29989-1-git-send-email-paul.durrant@citrix.com\nCc: Stefan Hajnoczi <stefanha@redhat.com>\nSigned-off-by: Stefan Hajnoczi <stefanha@redhat.com>",
+        "tree": {
+            "sha": "a27b04adbdaa3681d8797dab9097df2aca9464fd",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/a27b04adbdaa3681d8797dab9097df2aca9464fd"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0a852417564bc59441dc09509beacf7b49bc1e57",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0a852417564bc59441dc09509beacf7b49bc1e57",
+    "html_url": "https://github.com/qemu/qemu/commit/0a852417564bc59441dc09509beacf7b49bc1e57",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0a852417564bc59441dc09509beacf7b49bc1e57/comments",
+    "author": null,
+    "committer": {
+        "login": "stefanhaRH",
+        "id": 162364839,
+        "node_id": "U_kgDOCa19pw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/162364839?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/stefanhaRH",
+        "html_url": "https://github.com/stefanhaRH",
+        "followers_url": "https://api.github.com/users/stefanhaRH/followers",
+        "following_url": "https://api.github.com/users/stefanhaRH/following{/other_user}",
+        "gists_url": "https://api.github.com/users/stefanhaRH/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/stefanhaRH/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/stefanhaRH/subscriptions",
+        "organizations_url": "https://api.github.com/users/stefanhaRH/orgs",
+        "repos_url": "https://api.github.com/users/stefanhaRH/repos",
+        "events_url": "https://api.github.com/users/stefanhaRH/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/stefanhaRH/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "e87d397e5ef66276ccc49b829527d605ca07d0ad",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/e87d397e5ef66276ccc49b829527d605ca07d0ad",
+            "html_url": "https://github.com/qemu/qemu/commit/e87d397e5ef66276ccc49b829527d605ca07d0ad"
+        }
+    ],
+    "stats": {
+        "total": 83,
+        "additions": 83,
+        "deletions": 0
+    },
+    "files": [
+        {
+            "sha": "5a9bda18b5cfd3ab67b5f06c9f2558c827b309b1",
+            "filename": "configure",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a852417564bc59441dc09509beacf7b49bc1e57/configure",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a852417564bc59441dc09509beacf7b49bc1e57/configure",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/configure?ref=0a852417564bc59441dc09509beacf7b49bc1e57",
+            "patch": "@@ -4191,6 +4191,18 @@ if compile_prog \"\" \"\" ; then\n     posix_madvise=yes\n fi\n \n+##########################################\n+# check if we have posix_syslog\n+\n+posix_syslog=no\n+cat > $TMPC << EOF\n+#include <syslog.h>\n+int main(void) { openlog(\"qemu\", LOG_PID, LOG_DAEMON); syslog(LOG_INFO, \"configure\"); return 0; }\n+EOF\n+if compile_prog \"\" \"\" ; then\n+    posix_syslog=yes\n+fi\n+\n ##########################################\n # check if trace backend exists\n \n@@ -5468,6 +5480,13 @@ if have_backend \"ftrace\"; then\n     feature_not_found \"ftrace(trace backend)\" \"ftrace requires Linux\"\n   fi\n fi\n+if have_backend \"syslog\"; then\n+  if test \"$posix_syslog\" = \"yes\" ; then\n+    echo \"CONFIG_TRACE_SYSLOG=y\" >> $config_host_mak\n+  else\n+    feature_not_found \"syslog(trace backend)\" \"syslog not available\"\n+  fi\n+fi\n echo \"CONFIG_TRACE_FILE=$trace_file\" >> $config_host_mak\n \n if test \"$rdma\" = \"yes\" ; then"
+        },
+        {
+            "sha": "e62444ca68ed0d193638bd90da1bb9590964969c",
+            "filename": "docs/tracing.txt",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a852417564bc59441dc09509beacf7b49bc1e57/docs%2Ftracing.txt",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a852417564bc59441dc09509beacf7b49bc1e57/docs%2Ftracing.txt",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/docs%2Ftracing.txt?ref=0a852417564bc59441dc09509beacf7b49bc1e57",
+            "patch": "@@ -192,6 +192,18 @@ After running qemu by root user, you can get the trace:\n \n Restriction: \"ftrace\" backend is restricted to Linux only.\n \n+=== Syslog ===\n+\n+The \"syslog\" backend sends trace events using the POSIX syslog API. The log\n+is opened specifying the LOG_DAEMON facility and LOG_PID option (so events\n+are tagged with the pid of the particular QEMU process that generated\n+them). All events are logged at LOG_INFO level.\n+\n+NOTE: syslog may squash duplicate consecutive trace events and apply rate\n+      limiting.\n+\n+Restriction: \"syslog\" backend is restricted to POSIX compliant OS.\n+\n ==== Monitor commands ====\n \n * trace-file on|off|flush|set <path>"
+        },
+        {
+            "sha": "89019bc75924144835ceda1c96410febb8ce29ea",
+            "filename": "scripts/tracetool/backend/syslog.py",
+            "status": "added",
+            "additions": 45,
+            "deletions": 0,
+            "changes": 45,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a852417564bc59441dc09509beacf7b49bc1e57/scripts%2Ftracetool%2Fbackend%2Fsyslog.py",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a852417564bc59441dc09509beacf7b49bc1e57/scripts%2Ftracetool%2Fbackend%2Fsyslog.py",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/scripts%2Ftracetool%2Fbackend%2Fsyslog.py?ref=0a852417564bc59441dc09509beacf7b49bc1e57",
+            "patch": "@@ -0,0 +1,45 @@\n+#!/usr/bin/env python\n+# -*- coding: utf-8 -*-\n+\n+\"\"\"\n+Syslog built-in backend.\n+\"\"\"\n+\n+__author__     = \"Paul Durrant <paul.durrant@citrix.com>\"\n+__copyright__  = \"Copyright 2016, Citrix Systems Inc.\"\n+__license__    = \"GPL version 2 or (at your option) any later version\"\n+\n+__maintainer__ = \"Stefan Hajnoczi\"\n+__email__      = \"stefanha@redhat.com\"\n+\n+\n+from tracetool import out\n+\n+\n+PUBLIC = True\n+\n+\n+def generate_h_begin(events):\n+    out('#include <syslog.h>',\n+        '#include \"trace/control.h\"',\n+        '')\n+\n+\n+def generate_h(event):\n+    argnames = \", \".join(event.args.names())\n+    if len(event.args) > 0:\n+        argnames = \", \" + argnames\n+\n+    if \"vcpu\" in event.properties:\n+        # already checked on the generic format code\n+        cond = \"true\"\n+    else:\n+        cond = \"trace_event_get_state(%s)\" % (\"TRACE_\" + event.name.upper())\n+\n+    out('        if (%(cond)s) {',\n+        '            syslog(LOG_INFO, \"%(name)s \" %(fmt)s %(argnames)s);',\n+        '        }',\n+        cond=cond,\n+        name=event.name,\n+        fmt=event.fmt.rstrip(\"\\n\"),\n+        argnames=argnames)"
+        },
+        {
+            "sha": "b179cde9dfeb4748713ec9c029ffb77a904bbaf9",
+            "filename": "trace/control.c",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7,
+            "blob_url": "https://github.com/qemu/qemu/blob/0a852417564bc59441dc09509beacf7b49bc1e57/trace%2Fcontrol.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0a852417564bc59441dc09509beacf7b49bc1e57/trace%2Fcontrol.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/trace%2Fcontrol.c?ref=0a852417564bc59441dc09509beacf7b49bc1e57",
+            "patch": "@@ -19,6 +19,9 @@\n #ifdef CONFIG_TRACE_LOG\n #include \"qemu/log.h\"\n #endif\n+#ifdef CONFIG_TRACE_SYSLOG\n+#include <syslog.h>\n+#endif\n #include \"qapi/error.h\"\n #include \"qemu/error-report.h\"\n #include \"qemu/config-file.h\"\n@@ -250,6 +253,10 @@ bool trace_init_backends(void)\n     }\n #endif\n \n+#ifdef CONFIG_TRACE_SYSLOG\n+    openlog(NULL, LOG_PID, LOG_DAEMON);\n+#endif\n+\n     return true;\n }\n "
+        }
+    ]
+}

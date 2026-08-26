@@ -1,0 +1,101 @@
+{
+    "sha": "00a1e1337f22376909338a5319a378b2e2afdde8",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGExZTEzMzdmMjIzNzY5MDkzMzhhNTMxOWEzNzhiMmUyYWZkZGU4",
+    "commit": {
+        "author": {
+            "name": "Jaroslav Beran",
+            "email": "jara.beran@gmail.com",
+            "date": "2017-09-20T13:14:54Z"
+        },
+        "committer": {
+            "name": "Michael Niedermayer",
+            "email": "michael@niedermayer.cc",
+            "date": "2017-09-24T00:33:48Z"
+        },
+        "message": "libavdevice/v4l2: fix invalid access to struct v4l2_buffer\n\nIn case we are short of queued buffers, at first v4l2_buffer was enqueued to kernel so it's not owned by\nuser-space anymore. After that it's timestamp field was read, but it might be overwritten by driver at\nthat moment. It resulted in invalid timestamp sometimes.\n\nSigned-off-by: Michael Niedermayer <michael@niedermayer.cc>",
+        "tree": {
+            "sha": "f9d8ec3251b3d3842d944e789d7e0f2b763e782b",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/f9d8ec3251b3d3842d944e789d7e0f2b763e782b"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00a1e1337f22376909338a5319a378b2e2afdde8",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00a1e1337f22376909338a5319a378b2e2afdde8",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00a1e1337f22376909338a5319a378b2e2afdde8",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00a1e1337f22376909338a5319a378b2e2afdde8/comments",
+    "author": {
+        "login": "j4r0u53k",
+        "id": 72652580,
+        "node_id": "MDQ6VXNlcjcyNjUyNTgw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/72652580?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/j4r0u53k",
+        "html_url": "https://github.com/j4r0u53k",
+        "followers_url": "https://api.github.com/users/j4r0u53k/followers",
+        "following_url": "https://api.github.com/users/j4r0u53k/following{/other_user}",
+        "gists_url": "https://api.github.com/users/j4r0u53k/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/j4r0u53k/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/j4r0u53k/subscriptions",
+        "organizations_url": "https://api.github.com/users/j4r0u53k/orgs",
+        "repos_url": "https://api.github.com/users/j4r0u53k/repos",
+        "events_url": "https://api.github.com/users/j4r0u53k/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/j4r0u53k/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "5a9415533dd064d44605b3a3896a53377b7a5ca8",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/5a9415533dd064d44605b3a3896a53377b7a5ca8",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/5a9415533dd064d44605b3a3896a53377b7a5ca8"
+        }
+    ],
+    "stats": {
+        "total": 5,
+        "additions": 4,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "f087badf5ca74440ad50396fd36f647c6a614133",
+            "filename": "libavdevice/v4l2.c",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 1,
+            "changes": 5,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00a1e1337f22376909338a5319a378b2e2afdde8/libavdevice%2Fv4l2.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00a1e1337f22376909338a5319a378b2e2afdde8/libavdevice%2Fv4l2.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavdevice%2Fv4l2.c?ref=00a1e1337f22376909338a5319a378b2e2afdde8",
+            "patch": "@@ -492,6 +492,7 @@ static int mmap_read_frame(AVFormatContext *ctx, AVPacket *pkt)\n         .type   = V4L2_BUF_TYPE_VIDEO_CAPTURE,\n         .memory = V4L2_MEMORY_MMAP\n     };\n+    struct timeval buf_ts;\n     int res;\n \n     pkt->size = 0;\n@@ -508,6 +509,8 @@ static int mmap_read_frame(AVFormatContext *ctx, AVPacket *pkt)\n         return res;\n     }\n \n+    buf_ts = buf.timestamp;\n+\n     if (buf.index >= s->buffers) {\n         av_log(ctx, AV_LOG_ERROR, \"Invalid buffer index received.\\n\");\n         return AVERROR(EINVAL);\n@@ -583,7 +586,7 @@ static int mmap_read_frame(AVFormatContext *ctx, AVPacket *pkt)\n             return AVERROR(ENOMEM);\n         }\n     }\n-    pkt->pts = buf.timestamp.tv_sec * INT64_C(1000000) + buf.timestamp.tv_usec;\n+    pkt->pts = buf_ts.tv_sec * INT64_C(1000000) + buf_ts.tv_usec;\n     convert_timestamp(ctx, &pkt->pts);\n \n     return pkt->size;"
+        }
+    ]
+}

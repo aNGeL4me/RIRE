@@ -1,0 +1,101 @@
+{
+  "sha": "54220248886b5001fbbb9fa73c4e1a2cb9413fed",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6NTQyMjAyNDg4ODZiNTAwMWZiYmI5ZmE3M2M0ZTFhMmNiOTQxM2ZlZA==",
+  "commit": {
+    "author": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-11-17T16:18:35Z"
+    },
+    "committer": {
+      "name": "Christian Beier",
+      "email": "dontmind@freeshell.org",
+      "date": "2019-11-17T16:23:03Z"
+    },
+    "message": "libvncclient/cursor: limit width/height input values\n\nAvoids a possible heap overflow reported by Pavel Cheremushkin\n<Pavel.Cheremushkin@kaspersky.com>.\n\nre #275",
+    "tree": {
+      "sha": "9e62085c9b071a63a0e15dadbb1dfa9229a1d72e",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/9e62085c9b071a63a0e15dadbb1dfa9229a1d72e"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/54220248886b5001fbbb9fa73c4e1a2cb9413fed",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\niF0EABECAB0WIQQl5x0nCZVezU0EHgNCG7O0XGBn+AUCXdFz5wAKCRBCG7O0XGBn\n+BJBAKCXLiyry6pOAbmIRlcuG98hWU+l9wCgsc8wQyk5lqEN8tmZ8T5/6RaFCAU=\n=Wquf\n-----END PGP SIGNATURE-----",
+      "payload": "tree 9e62085c9b071a63a0e15dadbb1dfa9229a1d72e\nparent 6073771eed1caf72f196e410182471e0dfd32149\nauthor Christian Beier <dontmind@freeshell.org> 1574007515 +0100\ncommitter Christian Beier <dontmind@freeshell.org> 1574007783 +0100\n\nlibvncclient/cursor: limit width/height input values\n\nAvoids a possible heap overflow reported by Pavel Cheremushkin\n<Pavel.Cheremushkin@kaspersky.com>.\n\nre #275\n",
+      "verified_at": "2024-11-13T08:41:48Z"
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/54220248886b5001fbbb9fa73c4e1a2cb9413fed",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/54220248886b5001fbbb9fa73c4e1a2cb9413fed",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/54220248886b5001fbbb9fa73c4e1a2cb9413fed/comments",
+  "author": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "bk138",
+    "id": 80450,
+    "node_id": "MDQ6VXNlcjgwNDUw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/80450?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/bk138",
+    "html_url": "https://github.com/bk138",
+    "followers_url": "https://api.github.com/users/bk138/followers",
+    "following_url": "https://api.github.com/users/bk138/following{/other_user}",
+    "gists_url": "https://api.github.com/users/bk138/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/bk138/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/bk138/subscriptions",
+    "organizations_url": "https://api.github.com/users/bk138/orgs",
+    "repos_url": "https://api.github.com/users/bk138/repos",
+    "events_url": "https://api.github.com/users/bk138/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/bk138/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "6073771eed1caf72f196e410182471e0dfd32149",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/6073771eed1caf72f196e410182471e0dfd32149",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/6073771eed1caf72f196e410182471e0dfd32149"
+    }
+  ],
+  "stats": {
+    "total": 5,
+    "additions": 5,
+    "deletions": 0
+  },
+  "files": [
+    {
+      "sha": "40ffb3b0eaaebb0a4c40fdb4e2de3ce2a7a1758d",
+      "filename": "libvncclient/cursor.c",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 0,
+      "changes": 5,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/54220248886b5001fbbb9fa73c4e1a2cb9413fed/libvncclient%2Fcursor.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/54220248886b5001fbbb9fa73c4e1a2cb9413fed/libvncclient%2Fcursor.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fcursor.c?ref=54220248886b5001fbbb9fa73c4e1a2cb9413fed",
+      "patch": "@@ -28,6 +28,8 @@\n #define OPER_SAVE     0\n #define OPER_RESTORE  1\n \n+#define MAX_CURSOR_SIZE 1024\n+\n #define RGB24_TO_PIXEL(bpp,r,g,b)                                       \\\n    ((((uint##bpp##_t)(r) & 0xFF) * client->format.redMax + 127) / 255             \\\n     << client->format.redShift |                                              \\\n@@ -54,6 +56,9 @@ rfbBool HandleCursorShape(rfbClient* client,int xhot, int yhot, int width, int h\n   if (width * height == 0)\n     return TRUE;\n \n+  if (width >= MAX_CURSOR_SIZE || height >= MAX_CURSOR_SIZE)\n+    return FALSE;\n+\n   /* Allocate memory for pixel data and temporary mask data. */\n   if(client->rcSource)\n     free(client->rcSource);"
+    }
+  ]
+}

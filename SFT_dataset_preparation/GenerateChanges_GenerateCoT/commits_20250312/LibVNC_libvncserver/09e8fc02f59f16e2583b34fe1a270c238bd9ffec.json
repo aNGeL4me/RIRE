@@ -1,0 +1,101 @@
+{
+  "sha": "09e8fc02f59f16e2583b34fe1a270c238bd9ffec",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6MDllOGZjMDJmNTlmMTZlMjU4M2IzNGZlMWEyNzBjMjM4YmQ5ZmZlYw==",
+  "commit": {
+    "author": {
+      "name": "Petr P\u00edsa\u0159",
+      "email": "ppisar@redhat.com",
+      "date": "2019-01-07T09:40:01Z"
+    },
+    "committer": {
+      "name": "Petr P\u00edsa\u0159",
+      "email": "ppisar@redhat.com",
+      "date": "2019-01-08T09:00:24Z"
+    },
+    "message": "Limit lenght to INT_MAX bytes in rfbProcessFileTransferReadBuffer()\n\nThis ammends 15bb719c03cc70f14c36a843dcb16ed69b405707 fix for a heap\nout-of-bound write access in rfbProcessFileTransferReadBuffer() when\nreading a transfered file content in a server. The former fix did not\nwork on platforms with a 32-bit int type (expected by rfbReadExact()).\n\nCVE-2018-15127\n<https://github.com/LibVNC/libvncserver/issues/243>\n<https://github.com/LibVNC/libvncserver/issues/273>",
+    "tree": {
+      "sha": "e96dda7df48847a09d6006af6be4d1550245b466",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/e96dda7df48847a09d6006af6be4d1550245b466"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/09e8fc02f59f16e2583b34fe1a270c238bd9ffec",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/09e8fc02f59f16e2583b34fe1a270c238bd9ffec",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/09e8fc02f59f16e2583b34fe1a270c238bd9ffec",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/09e8fc02f59f16e2583b34fe1a270c238bd9ffec/comments",
+  "author": {
+    "login": "ppisar",
+    "id": 1064942,
+    "node_id": "MDQ6VXNlcjEwNjQ5NDI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1064942?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ppisar",
+    "html_url": "https://github.com/ppisar",
+    "followers_url": "https://api.github.com/users/ppisar/followers",
+    "following_url": "https://api.github.com/users/ppisar/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ppisar/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ppisar/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ppisar/subscriptions",
+    "organizations_url": "https://api.github.com/users/ppisar/orgs",
+    "repos_url": "https://api.github.com/users/ppisar/repos",
+    "events_url": "https://api.github.com/users/ppisar/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ppisar/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "ppisar",
+    "id": 1064942,
+    "node_id": "MDQ6VXNlcjEwNjQ5NDI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1064942?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ppisar",
+    "html_url": "https://github.com/ppisar",
+    "followers_url": "https://api.github.com/users/ppisar/followers",
+    "following_url": "https://api.github.com/users/ppisar/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ppisar/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ppisar/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ppisar/subscriptions",
+    "organizations_url": "https://api.github.com/users/ppisar/orgs",
+    "repos_url": "https://api.github.com/users/ppisar/repos",
+    "events_url": "https://api.github.com/users/ppisar/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ppisar/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "0a70095271d845d16a3ed17354841b01f33963ad",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/0a70095271d845d16a3ed17354841b01f33963ad",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/0a70095271d845d16a3ed17354841b01f33963ad"
+    }
+  ],
+  "stats": {
+    "total": 7,
+    "additions": 6,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "f2edbeeac87c8f0c05a76cdee63f41dfe7fa30fa",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 1,
+      "changes": 7,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/09e8fc02f59f16e2583b34fe1a270c238bd9ffec/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/09e8fc02f59f16e2583b34fe1a270c238bd9ffec/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=09e8fc02f59f16e2583b34fe1a270c238bd9ffec",
+      "patch": "@@ -88,6 +88,8 @@\n #include <errno.h>\n /* strftime() */\n #include <time.h>\n+/* INT_MAX */\n+#include <limits.h>\n \n #ifdef LIBVNCSERVER_WITH_WEBSOCKETS\n #include \"rfbssl.h\"\n@@ -1472,8 +1474,11 @@ char *rfbProcessFileTransferReadBuffer(rfbClientPtr cl, uint32_t length)\n        0XFFFFFFFF, i.e. SIZE_MAX for 32-bit systems. On 64-bit systems, a length of 0XFFFFFFFF\n        will safely be allocated since this check will never trigger and malloc() can digest length+1\n        without problems as length is a uint32_t.\n+       We also later pass length to rfbReadExact() that expects a signed int type and\n+       that might wrap on platforms with a 32-bit int type if length is bigger\n+       than 0X7FFFFFFF.\n     */\n-    if(length == SIZE_MAX) {\n+    if(length == SIZE_MAX || length > INT_MAX) {\n \trfbErr(\"rfbProcessFileTransferReadBuffer: too big file transfer length requested: %u\", (unsigned int)length);\n \trfbCloseClient(cl);\n \treturn NULL;"
+    }
+  ]
+}

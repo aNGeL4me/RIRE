@@ -1,0 +1,101 @@
+{
+  "sha": "79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6NzlkOTM4YzE2YmY3YTE0YjZkNmVlMjkwYmNmZWYzYzAxZjljNGYwMg==",
+  "commit": {
+    "author": {
+      "name": "Jay Carlson",
+      "email": "nop@nop.com",
+      "date": "2015-03-27T15:22:13Z"
+    },
+    "committer": {
+      "name": "Jay Carlson",
+      "email": "nop@nop.com",
+      "date": "2015-03-27T15:22:13Z"
+    },
+    "message": "Avoid divide-by-zero in raw encoding (OSX RealVNC)\n\nOS X RealVNC server crashes out Remmina because the server can provoke\nbytesPerLine to be zero. Assume this is coding for zero lines.\n\nThe condition could be checked before the calculation of bytesPerLine.\nI don\u2019t understand the preconditions of this code to say one way or the\nother.",
+    "tree": {
+      "sha": "911fdad5eb67a4206b225590b65cefca94e77b34",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/911fdad5eb67a4206b225590b65cefca94e77b34"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02/comments",
+  "author": {
+    "login": "nopdotcom",
+    "id": 1357866,
+    "node_id": "MDQ6VXNlcjEzNTc4NjY=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1357866?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/nopdotcom",
+    "html_url": "https://github.com/nopdotcom",
+    "followers_url": "https://api.github.com/users/nopdotcom/followers",
+    "following_url": "https://api.github.com/users/nopdotcom/following{/other_user}",
+    "gists_url": "https://api.github.com/users/nopdotcom/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/nopdotcom/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/nopdotcom/subscriptions",
+    "organizations_url": "https://api.github.com/users/nopdotcom/orgs",
+    "repos_url": "https://api.github.com/users/nopdotcom/repos",
+    "events_url": "https://api.github.com/users/nopdotcom/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/nopdotcom/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "nopdotcom",
+    "id": 1357866,
+    "node_id": "MDQ6VXNlcjEzNTc4NjY=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1357866?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/nopdotcom",
+    "html_url": "https://github.com/nopdotcom",
+    "followers_url": "https://api.github.com/users/nopdotcom/followers",
+    "following_url": "https://api.github.com/users/nopdotcom/following{/other_user}",
+    "gists_url": "https://api.github.com/users/nopdotcom/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/nopdotcom/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/nopdotcom/subscriptions",
+    "organizations_url": "https://api.github.com/users/nopdotcom/orgs",
+    "repos_url": "https://api.github.com/users/nopdotcom/repos",
+    "events_url": "https://api.github.com/users/nopdotcom/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/nopdotcom/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "53becab94cccbcab9b20efd24b6071c2f3557eff",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/53becab94cccbcab9b20efd24b6071c2f3557eff",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/53becab94cccbcab9b20efd24b6071c2f3557eff"
+    }
+  ],
+  "stats": {
+    "total": 5,
+    "additions": 4,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "d01013f9c57508074476b4326697a9f78b1bb53f",
+      "filename": "libvncclient/rfbproto.c",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 1,
+      "changes": 5,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02/libvncclient%2Frfbproto.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02/libvncclient%2Frfbproto.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Frfbproto.c?ref=79d938c16bf7a14b6d6ee290bcfef3c01f9c4f02",
+      "patch": "@@ -1936,7 +1936,10 @@ HandleRFBServerMessage(rfbClient* client)\n \tint y=rect.r.y, h=rect.r.h;\n \n \tbytesPerLine = rect.r.w * client->format.bitsPerPixel / 8;\n-\tlinesToRead = RFB_BUFFER_SIZE / bytesPerLine;\n+\t/* RealVNC 4.x-5.x on OSX can induce bytesPerLine==0, \n+\t   usually during GPU accel. */\n+\t/* Regardless of cause, do not divide by zero. */\n+\tlinesToRead = bytesPerLine ? (RFB_BUFFER_SIZE / bytesPerLine) : 0;\n \n \twhile (h > 0) {\n \t  if (linesToRead > h)"
+    }
+  ]
+}

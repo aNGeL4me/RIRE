@@ -1,0 +1,81 @@
+{
+    "sha": "00cbe9e4053fd562b6f21e76aca6636ff926b637",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowMGNiZTllNDA1M2ZkNTYyYjZmMjFlNzZhY2E2NjM2ZmY5MjZiNjM3",
+    "commit": {
+        "author": {
+            "name": "Laurent Aimar",
+            "email": "fenrir@videolan.org",
+            "date": "2011-09-24T21:16:17Z"
+        },
+        "committer": {
+            "name": "Michael Niedermayer",
+            "email": "michaelni@gmx.at",
+            "date": "2011-09-24T21:42:49Z"
+        },
+        "message": "Fix potential overread in vmd audio decoder.\n\nSigned-off-by: Michael Niedermayer <michaelni@gmx.at>",
+        "tree": {
+            "sha": "f48a1bcbfcd07b9910f31612a11b0f91b034a417",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/f48a1bcbfcd07b9910f31612a11b0f91b034a417"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/00cbe9e4053fd562b6f21e76aca6636ff926b637",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00cbe9e4053fd562b6f21e76aca6636ff926b637",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/00cbe9e4053fd562b6f21e76aca6636ff926b637",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/00cbe9e4053fd562b6f21e76aca6636ff926b637/comments",
+    "author": null,
+    "committer": {
+        "login": "michaelni",
+        "id": 729390,
+        "node_id": "MDQ6VXNlcjcyOTM5MA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/729390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michaelni",
+        "html_url": "https://github.com/michaelni",
+        "followers_url": "https://api.github.com/users/michaelni/followers",
+        "following_url": "https://api.github.com/users/michaelni/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michaelni/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michaelni/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michaelni/subscriptions",
+        "organizations_url": "https://api.github.com/users/michaelni/orgs",
+        "repos_url": "https://api.github.com/users/michaelni/repos",
+        "events_url": "https://api.github.com/users/michaelni/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michaelni/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "eae3cf06a5410cf6d06235de4ceea28e33e53be3",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/eae3cf06a5410cf6d06235de4ceea28e33e53be3",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/eae3cf06a5410cf6d06235de4ceea28e33e53be3"
+        }
+    ],
+    "stats": {
+        "total": 5,
+        "additions": 4,
+        "deletions": 1
+    },
+    "files": [
+        {
+            "sha": "77e0432610af7e7a1e5ffd095736a075138a5218",
+            "filename": "libavcodec/vmdav.c",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 1,
+            "changes": 5,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/00cbe9e4053fd562b6f21e76aca6636ff926b637/libavcodec%2Fvmdav.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/00cbe9e4053fd562b6f21e76aca6636ff926b637/libavcodec%2Fvmdav.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fvmdav.c?ref=00cbe9e4053fd562b6f21e76aca6636ff926b637",
+            "patch": "@@ -523,7 +523,10 @@ static int vmdaudio_decode_frame(AVCodecContext *avctx,\n \n     silent_chunks = 0;\n     if (block_type == BLOCK_TYPE_INITIAL) {\n-        uint32_t flags = AV_RB32(buf);\n+        uint32_t flags;\n+        if (buf_size < 4)\n+            return -1;\n+        flags = AV_RB32(buf);\n         silent_chunks  = av_popcount(flags);\n         buf      += 4;\n         buf_size -= 4;"
+        }
+    ]
+}

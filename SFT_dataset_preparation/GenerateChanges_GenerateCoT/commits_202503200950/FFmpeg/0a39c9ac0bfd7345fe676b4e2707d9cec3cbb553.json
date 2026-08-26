@@ -1,0 +1,125 @@
+{
+    "sha": "0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTM5YzlhYzBiZmQ3MzQ1ZmU2NzZiNGUyNzA3ZDljZWMzY2JiNTUz",
+    "commit": {
+        "author": {
+            "name": "Diego Biurrun",
+            "email": "diego@biurrun.de",
+            "date": "2016-01-19T16:55:59Z"
+        },
+        "committer": {
+            "name": "Diego Biurrun",
+            "email": "diego@biurrun.de",
+            "date": "2016-07-20T16:37:45Z"
+        },
+        "message": "x86: hpeldsp: Don't check for bitexact flag when initializing VP3-specific code\n\nThat code is only ever initialized with that flag set.",
+        "tree": {
+            "sha": "adb326a9902149403cc54dd8b4a316eb17753f6c",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/adb326a9902149403cc54dd8b4a316eb17753f6c"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/comments",
+    "author": {
+        "login": "DonDiego",
+        "id": 3358278,
+        "node_id": "MDQ6VXNlcjMzNTgyNzg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3358278?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DonDiego",
+        "html_url": "https://github.com/DonDiego",
+        "followers_url": "https://api.github.com/users/DonDiego/followers",
+        "following_url": "https://api.github.com/users/DonDiego/following{/other_user}",
+        "gists_url": "https://api.github.com/users/DonDiego/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/DonDiego/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/DonDiego/subscriptions",
+        "organizations_url": "https://api.github.com/users/DonDiego/orgs",
+        "repos_url": "https://api.github.com/users/DonDiego/repos",
+        "events_url": "https://api.github.com/users/DonDiego/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/DonDiego/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "DonDiego",
+        "id": 3358278,
+        "node_id": "MDQ6VXNlcjMzNTgyNzg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3358278?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DonDiego",
+        "html_url": "https://github.com/DonDiego",
+        "followers_url": "https://api.github.com/users/DonDiego/followers",
+        "following_url": "https://api.github.com/users/DonDiego/following{/other_user}",
+        "gists_url": "https://api.github.com/users/DonDiego/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/DonDiego/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/DonDiego/subscriptions",
+        "organizations_url": "https://api.github.com/users/DonDiego/orgs",
+        "repos_url": "https://api.github.com/users/DonDiego/repos",
+        "events_url": "https://api.github.com/users/DonDiego/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/DonDiego/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "95c1df929b92d81454656c222a35ec5f7db576b4",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/95c1df929b92d81454656c222a35ec5f7db576b4",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/95c1df929b92d81454656c222a35ec5f7db576b4"
+        }
+    ],
+    "stats": {
+        "total": 18,
+        "additions": 7,
+        "deletions": 11
+    },
+    "files": [
+        {
+            "sha": "566e518a09629d9ecddc938f14eefafa2f8770e1",
+            "filename": "libavcodec/x86/hpeldsp.h",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp.h",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp.h",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fx86%2Fhpeldsp.h?ref=0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+            "patch": "@@ -37,6 +37,6 @@ void ff_put_pixels8_xy2_mmx(uint8_t *block, const uint8_t *pixels,\n void ff_put_pixels16_xy2_mmx(uint8_t *block, const uint8_t *pixels,\n                              ptrdiff_t line_size, int h);\n \n-void ff_hpeldsp_vp3_init_x86(HpelDSPContext *c, int cpu_flags, int flags);\n+void ff_hpeldsp_vp3_init_x86(HpelDSPContext *c, int cpu_flags);\n \n #endif /* AVCODEC_X86_HPELDSP_H */"
+        },
+        {
+            "sha": "6a8d4205fa8bb986286cd9f184037b7836e37179",
+            "filename": "libavcodec/x86/hpeldsp_init.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp_init.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp_init.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fx86%2Fhpeldsp_init.c?ref=0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+            "patch": "@@ -255,5 +255,5 @@ av_cold void ff_hpeldsp_init_x86(HpelDSPContext *c, int flags)\n         hpeldsp_init_sse2_fast(c, flags);\n \n     if (CONFIG_VP3_DECODER)\n-        ff_hpeldsp_vp3_init_x86(c, cpu_flags, flags);\n+        ff_hpeldsp_vp3_init_x86(c, cpu_flags);\n }"
+        },
+        {
+            "sha": "cc1f5e456660143e39ca63a1ac5c5e895d4549e0",
+            "filename": "libavcodec/x86/hpeldsp_vp3_init.c",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 9,
+            "changes": 14,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp_vp3_init.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553/libavcodec%2Fx86%2Fhpeldsp_vp3_init.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavcodec%2Fx86%2Fhpeldsp_vp3_init.c?ref=0a39c9ac0bfd7345fe676b4e2707d9cec3cbb553",
+            "patch": "@@ -38,19 +38,15 @@ void ff_put_no_rnd_pixels8_y2_exact_3dnow(uint8_t *block,\n                                           const uint8_t *pixels,\n                                           ptrdiff_t line_size, int h);\n \n-av_cold void ff_hpeldsp_vp3_init_x86(HpelDSPContext *c, int cpu_flags, int flags)\n+av_cold void ff_hpeldsp_vp3_init_x86(HpelDSPContext *c, int cpu_flags)\n {\n     if (EXTERNAL_AMD3DNOW(cpu_flags)) {\n-        if (flags & AV_CODEC_FLAG_BITEXACT) {\n-            c->put_no_rnd_pixels_tab[1][1] = ff_put_no_rnd_pixels8_x2_exact_3dnow;\n-            c->put_no_rnd_pixels_tab[1][2] = ff_put_no_rnd_pixels8_y2_exact_3dnow;\n-        }\n+        c->put_no_rnd_pixels_tab[1][1] = ff_put_no_rnd_pixels8_x2_exact_3dnow;\n+        c->put_no_rnd_pixels_tab[1][2] = ff_put_no_rnd_pixels8_y2_exact_3dnow;\n     }\n \n     if (EXTERNAL_MMXEXT(cpu_flags)) {\n-        if (flags & AV_CODEC_FLAG_BITEXACT) {\n-            c->put_no_rnd_pixels_tab[1][1] = ff_put_no_rnd_pixels8_x2_exact_mmxext;\n-            c->put_no_rnd_pixels_tab[1][2] = ff_put_no_rnd_pixels8_y2_exact_mmxext;\n-        }\n+        c->put_no_rnd_pixels_tab[1][1] = ff_put_no_rnd_pixels8_x2_exact_mmxext;\n+        c->put_no_rnd_pixels_tab[1][2] = ff_put_no_rnd_pixels8_y2_exact_mmxext;\n     }\n }"
+        }
+    ]
+}

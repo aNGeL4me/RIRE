@@ -1,0 +1,125 @@
+{
+    "sha": "0aa7a205c899c516d906673efbe9457f7af0dd3c",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowYWE3YTIwNWM4OTljNTE2ZDkwNjY3M2VmYmU5NDU3ZjdhZjBkZDNj",
+    "commit": {
+        "author": {
+            "name": "Jan Kiszka",
+            "email": "jan.kiszka@siemens.com",
+            "date": "2009-05-08T10:34:17Z"
+        },
+        "committer": {
+            "name": "Mark McLoughlin",
+            "email": "markmc@redhat.com",
+            "date": "2009-06-09T10:38:49Z"
+        },
+        "message": "net: Real fix for check_params users\n\nOK, last try: 8e4416af45 broke -net socket, ffad4116b9 tried to fix it\nbut broke error reporting of invalid parameters. So this patch widely\nreverts ffad4116b9 again and intead fixes those callers of check_params\nthat originally suffered from overwritten buffers by using separate\nones.\n\nSigned-off-by: Jan Kiszka <jan.kiszka@siemens.com>\nSigned-off-by: Mark McLoughlin <markmc@redhat.com>",
+        "tree": {
+            "sha": "018406ee8a9dda90c0c64161b66eb09d13ca606d",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/018406ee8a9dda90c0c64161b66eb09d13ca606d"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/0aa7a205c899c516d906673efbe9457f7af0dd3c",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/0aa7a205c899c516d906673efbe9457f7af0dd3c",
+    "html_url": "https://github.com/qemu/qemu/commit/0aa7a205c899c516d906673efbe9457f7af0dd3c",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/0aa7a205c899c516d906673efbe9457f7af0dd3c/comments",
+    "author": {
+        "login": "jan-kiszka",
+        "id": 1571330,
+        "node_id": "MDQ6VXNlcjE1NzEzMzA=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1571330?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jan-kiszka",
+        "html_url": "https://github.com/jan-kiszka",
+        "followers_url": "https://api.github.com/users/jan-kiszka/followers",
+        "following_url": "https://api.github.com/users/jan-kiszka/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jan-kiszka/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jan-kiszka/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jan-kiszka/subscriptions",
+        "organizations_url": "https://api.github.com/users/jan-kiszka/orgs",
+        "repos_url": "https://api.github.com/users/jan-kiszka/repos",
+        "events_url": "https://api.github.com/users/jan-kiszka/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jan-kiszka/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "markmc",
+        "id": 15288,
+        "node_id": "MDQ6VXNlcjE1Mjg4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/15288?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/markmc",
+        "html_url": "https://github.com/markmc",
+        "followers_url": "https://api.github.com/users/markmc/followers",
+        "following_url": "https://api.github.com/users/markmc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/markmc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/markmc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/markmc/subscriptions",
+        "organizations_url": "https://api.github.com/users/markmc/orgs",
+        "repos_url": "https://api.github.com/users/markmc/repos",
+        "events_url": "https://api.github.com/users/markmc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/markmc/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "cda94b27821726df74eead0701d8401c1acda6ec",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/cda94b27821726df74eead0701d8401c1acda6ec",
+            "html_url": "https://github.com/qemu/qemu/commit/cda94b27821726df74eead0701d8401c1acda6ec"
+        }
+    ],
+    "stats": {
+        "total": 65,
+        "additions": 28,
+        "deletions": 37
+    },
+    "files": [
+        {
+            "sha": "723e9342245d14802ff4364bd9fa738b3829d12b",
+            "filename": "net.c",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 11,
+            "changes": 23,
+            "blob_url": "https://github.com/qemu/qemu/blob/0aa7a205c899c516d906673efbe9457f7af0dd3c/net.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0aa7a205c899c516d906673efbe9457f7af0dd3c/net.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/net.c?ref=0aa7a205c899c516d906673efbe9457f7af0dd3c",
+            "patch": "@@ -1911,7 +1911,7 @@ int net_client_init(const char *device, const char *p)\n         uint8_t *macaddr;\n         int idx = nic_get_free_idx();\n \n-        if (check_params(nic_params, p) < 0) {\n+        if (check_params(buf, sizeof(buf), nic_params, p) < 0) {\n             fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                     buf, p);\n             return -1;\n@@ -1962,7 +1962,7 @@ int net_client_init(const char *device, const char *p)\n         static const char * const slirp_params[] = {\n             \"vlan\", \"name\", \"hostname\", \"restrict\", \"ip\", NULL\n         };\n-        if (check_params(slirp_params, p) < 0) {\n+        if (check_params(buf, sizeof(buf), slirp_params, p) < 0) {\n             fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                     buf, p);\n             return -1;\n@@ -2013,7 +2013,7 @@ int net_client_init(const char *device, const char *p)\n         };\n         char ifname[64];\n \n-        if (check_params(tap_params, p) < 0) {\n+        if (check_params(buf, sizeof(buf), tap_params, p) < 0) {\n             fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                     buf, p);\n             return -1;\n@@ -2029,12 +2029,12 @@ int net_client_init(const char *device, const char *p)\n #elif defined (_AIX)\n #else\n     if (!strcmp(device, \"tap\")) {\n-        char ifname[64];\n+        char ifname[64], chkbuf[64];\n         char setup_script[1024], down_script[1024];\n         int fd;\n         vlan->nb_host_devs++;\n         if (get_param_value(buf, sizeof(buf), \"fd\", p) > 0) {\n-            if (check_params(fd_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), fd_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2047,7 +2047,7 @@ int net_client_init(const char *device, const char *p)\n             static const char * const tap_params[] = {\n                 \"vlan\", \"name\", \"ifname\", \"script\", \"downscript\", NULL\n             };\n-            if (check_params(tap_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), tap_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2066,9 +2066,10 @@ int net_client_init(const char *device, const char *p)\n     } else\n #endif\n     if (!strcmp(device, \"socket\")) {\n+        char chkbuf[64];\n         if (get_param_value(buf, sizeof(buf), \"fd\", p) > 0) {\n             int fd;\n-            if (check_params(fd_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), fd_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2081,7 +2082,7 @@ int net_client_init(const char *device, const char *p)\n             static const char * const listen_params[] = {\n                 \"vlan\", \"name\", \"listen\", NULL\n             };\n-            if (check_params(listen_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), listen_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2091,7 +2092,7 @@ int net_client_init(const char *device, const char *p)\n             static const char * const connect_params[] = {\n                 \"vlan\", \"name\", \"connect\", NULL\n             };\n-            if (check_params(connect_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), connect_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2101,7 +2102,7 @@ int net_client_init(const char *device, const char *p)\n             static const char * const mcast_params[] = {\n                 \"vlan\", \"name\", \"mcast\", NULL\n             };\n-            if (check_params(mcast_params, p) < 0) {\n+            if (check_params(chkbuf, sizeof(chkbuf), mcast_params, p) < 0) {\n                 fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                         buf, p);\n                 return -1;\n@@ -2122,7 +2123,7 @@ int net_client_init(const char *device, const char *p)\n         char vde_sock[1024], vde_group[512];\n \tint vde_port, vde_mode;\n \n-        if (check_params(vde_params, p) < 0) {\n+        if (check_params(buf, sizeof(buf), vde_params, p) < 0) {\n             fprintf(stderr, \"qemu: invalid parameter '%s' in '%s'\\n\",\n                     buf, p);\n             return -1;"
+        },
+        {
+            "sha": "e5e5ba0603ebfb4fb09601385d858ec5990f15fa",
+            "filename": "sysemu.h",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3,
+            "blob_url": "https://github.com/qemu/qemu/blob/0aa7a205c899c516d906673efbe9457f7af0dd3c/sysemu.h",
+            "raw_url": "https://github.com/qemu/qemu/raw/0aa7a205c899c516d906673efbe9457f7af0dd3c/sysemu.h",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/sysemu.h?ref=0aa7a205c899c516d906673efbe9457f7af0dd3c",
+            "patch": "@@ -270,7 +270,8 @@ void usb_info(Monitor *mon);\n \n int get_param_value(char *buf, int buf_size,\n                     const char *tag, const char *str);\n-int check_params(const char * const *params, const char *str);\n+int check_params(char *buf, int buf_size,\n+                 const char * const *params, const char *str);\n \n void register_devices(void);\n "
+        },
+        {
+            "sha": "659e9f7bc5b9722b976cc08542dd254719a0a8a6",
+            "filename": "vl.c",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 25,
+            "changes": 39,
+            "blob_url": "https://github.com/qemu/qemu/blob/0aa7a205c899c516d906673efbe9457f7af0dd3c/vl.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/0aa7a205c899c516d906673efbe9457f7af0dd3c/vl.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/vl.c?ref=0aa7a205c899c516d906673efbe9457f7af0dd3c",
+            "patch": "@@ -1836,45 +1836,34 @@ int get_param_value(char *buf, int buf_size,\n     return 0;\n }\n \n-int check_params(const char * const *params, const char *str)\n+int check_params(char *buf, int buf_size,\n+                 const char * const *params, const char *str)\n {\n-    int name_buf_size = 1;\n     const char *p;\n-    char *name_buf;\n-    int i, len;\n-    int ret = 0;\n-\n-    for (i = 0; params[i] != NULL; i++) {\n-        len = strlen(params[i]) + 1;\n-        if (len > name_buf_size) {\n-            name_buf_size = len;\n-        }\n-    }\n-    name_buf = qemu_malloc(name_buf_size);\n+    int i;\n \n     p = str;\n     while (*p != '\\0') {\n-        p = get_opt_name(name_buf, name_buf_size, p, '=');\n+        p = get_opt_name(buf, buf_size, p, '=');\n         if (*p != '=') {\n-            ret = -1;\n-            break;\n+            return -1;\n         }\n         p++;\n-        for(i = 0; params[i] != NULL; i++)\n-            if (!strcmp(params[i], name_buf))\n+        for (i = 0; params[i] != NULL; i++) {\n+            if (!strcmp(params[i], buf)) {\n                 break;\n+            }\n+        }\n         if (params[i] == NULL) {\n-            ret = -1;\n-            break;\n+            return -1;\n         }\n         p = get_opt_value(NULL, 0, p);\n-        if (*p != ',')\n+        if (*p != ',') {\n             break;\n+        }\n         p++;\n     }\n-\n-    qemu_free(name_buf);\n-    return ret;\n+    return 0;\n }\n \n /***********************************************************/\n@@ -2227,7 +2216,7 @@ int drive_init(struct drive_opt *arg, int snapshot, void *opaque)\n                                            \"cache\", \"format\", \"serial\", \"werror\",\n                                            NULL };\n \n-    if (check_params(params, str) < 0) {\n+    if (check_params(buf, sizeof(buf), params, str) < 0) {\n          fprintf(stderr, \"qemu: unknown parameter '%s' in '%s'\\n\",\n                          buf, str);\n          return -1;"
+        }
+    ]
+}

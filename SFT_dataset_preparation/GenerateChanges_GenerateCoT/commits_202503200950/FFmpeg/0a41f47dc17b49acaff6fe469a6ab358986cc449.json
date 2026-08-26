@@ -1,0 +1,101 @@
+{
+    "sha": "0a41f47dc17b49acaff6fe469a6ab358986cc449",
+    "node_id": "MDY6Q29tbWl0MTYxNDQxMDowYTQxZjQ3ZGMxN2I0OWFjYWZmNmZlNDY5YTZhYjM1ODk4NmNjNDQ5",
+    "commit": {
+        "author": {
+            "name": "Diego Biurrun",
+            "email": "diego@biurrun.de",
+            "date": "2012-03-05T12:57:14Z"
+        },
+        "committer": {
+            "name": "Diego Biurrun",
+            "email": "diego@biurrun.de",
+            "date": "2012-03-05T16:02:59Z"
+        },
+        "message": "dv: Do not redundantly initialize struct members to zero.",
+        "tree": {
+            "sha": "59e7256bf8b1d7b7efb47763db99a3946f8b2a19",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/trees/59e7256bf8b1d7b7efb47763db99a3946f8b2a19"
+        },
+        "url": "https://api.github.com/repos/FFmpeg/FFmpeg/git/commits/0a41f47dc17b49acaff6fe469a6ab358986cc449",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a41f47dc17b49acaff6fe469a6ab358986cc449",
+    "html_url": "https://github.com/FFmpeg/FFmpeg/commit/0a41f47dc17b49acaff6fe469a6ab358986cc449",
+    "comments_url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/0a41f47dc17b49acaff6fe469a6ab358986cc449/comments",
+    "author": {
+        "login": "DonDiego",
+        "id": 3358278,
+        "node_id": "MDQ6VXNlcjMzNTgyNzg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3358278?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DonDiego",
+        "html_url": "https://github.com/DonDiego",
+        "followers_url": "https://api.github.com/users/DonDiego/followers",
+        "following_url": "https://api.github.com/users/DonDiego/following{/other_user}",
+        "gists_url": "https://api.github.com/users/DonDiego/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/DonDiego/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/DonDiego/subscriptions",
+        "organizations_url": "https://api.github.com/users/DonDiego/orgs",
+        "repos_url": "https://api.github.com/users/DonDiego/repos",
+        "events_url": "https://api.github.com/users/DonDiego/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/DonDiego/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "DonDiego",
+        "id": 3358278,
+        "node_id": "MDQ6VXNlcjMzNTgyNzg=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3358278?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/DonDiego",
+        "html_url": "https://github.com/DonDiego",
+        "followers_url": "https://api.github.com/users/DonDiego/followers",
+        "following_url": "https://api.github.com/users/DonDiego/following{/other_user}",
+        "gists_url": "https://api.github.com/users/DonDiego/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/DonDiego/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/DonDiego/subscriptions",
+        "organizations_url": "https://api.github.com/users/DonDiego/orgs",
+        "repos_url": "https://api.github.com/users/DonDiego/repos",
+        "events_url": "https://api.github.com/users/DonDiego/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/DonDiego/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "356ee8d7def6e7e09e590d6065f5de5a92b77965",
+            "url": "https://api.github.com/repos/FFmpeg/FFmpeg/commits/356ee8d7def6e7e09e590d6065f5de5a92b77965",
+            "html_url": "https://github.com/FFmpeg/FFmpeg/commit/356ee8d7def6e7e09e590d6065f5de5a92b77965"
+        }
+    ],
+    "stats": {
+        "total": 8,
+        "additions": 1,
+        "deletions": 7
+    },
+    "files": [
+        {
+            "sha": "14be5fb27b7a6451cfa9cad17be736633f82a8e3",
+            "filename": "libavformat/dv.c",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 7,
+            "changes": 8,
+            "blob_url": "https://github.com/FFmpeg/FFmpeg/blob/0a41f47dc17b49acaff6fe469a6ab358986cc449/libavformat%2Fdv.c",
+            "raw_url": "https://github.com/FFmpeg/FFmpeg/raw/0a41f47dc17b49acaff6fe469a6ab358986cc449/libavformat%2Fdv.c",
+            "contents_url": "https://api.github.com/repos/FFmpeg/FFmpeg/contents/libavformat%2Fdv.c?ref=0a41f47dc17b49acaff6fe469a6ab358986cc449",
+            "patch": "@@ -303,13 +303,7 @@ DVDemuxContext* avpriv_dv_init_demux(AVFormatContext *s)\n         return NULL;\n     }\n \n-    c->sys  = NULL;\n-    c->fctx = s;\n-    memset(c->ast, 0, sizeof(c->ast));\n-    c->ach    = 0;\n-    c->frames = 0;\n-    c->abytes = 0;\n-\n+    c->fctx                   = s;\n     c->vst->codec->codec_type = AVMEDIA_TYPE_VIDEO;\n     c->vst->codec->codec_id   = CODEC_ID_DVVIDEO;\n     c->vst->codec->bit_rate   = 25000000;"
+        }
+    ]
+}

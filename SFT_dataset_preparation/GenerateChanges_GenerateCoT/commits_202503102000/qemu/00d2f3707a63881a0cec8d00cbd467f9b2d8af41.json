@@ -1,0 +1,101 @@
+{
+    "sha": "00d2f3707a63881a0cec8d00cbd467f9b2d8af41",
+    "node_id": "MDY6Q29tbWl0NTM4MzczMTowMGQyZjM3MDdhNjM4ODFhMGNlYzhkMDBjYmQ0NjdmOWIyZDhhZjQx",
+    "commit": {
+        "author": {
+            "name": "Marc-Andr\u00e9 Lureau",
+            "email": "marcandre.lureau@redhat.com",
+            "date": "2015-07-05T14:28:58Z"
+        },
+        "committer": {
+            "name": "Michael Roth",
+            "email": "mdroth@linux.vnet.ibm.com",
+            "date": "2015-07-08T01:14:35Z"
+        },
+        "message": "qga: fail early for invalid time\n\nIt's possible to set system time with dates after 2070, however, it's\nnot possible to set the RTC. It has limitation to up to year\n2070 (1970+100). In order to keep both clock in sync and before the\nkernel complains on invalid values, bail out early.\n\nSigned-off-by: Marc-Andr\u00e9 Lureau <marcandre.lureau@redhat.com>\nSigned-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>",
+        "tree": {
+            "sha": "fc9645a13d130b02fb78ae11160ff53384225600",
+            "url": "https://api.github.com/repos/qemu/qemu/git/trees/fc9645a13d130b02fb78ae11160ff53384225600"
+        },
+        "url": "https://api.github.com/repos/qemu/qemu/git/commits/00d2f3707a63881a0cec8d00cbd467f9b2d8af41",
+        "comment_count": 0,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null,
+            "verified_at": null
+        }
+    },
+    "url": "https://api.github.com/repos/qemu/qemu/commits/00d2f3707a63881a0cec8d00cbd467f9b2d8af41",
+    "html_url": "https://github.com/qemu/qemu/commit/00d2f3707a63881a0cec8d00cbd467f9b2d8af41",
+    "comments_url": "https://api.github.com/repos/qemu/qemu/commits/00d2f3707a63881a0cec8d00cbd467f9b2d8af41/comments",
+    "author": {
+        "login": "elmarco",
+        "id": 9381,
+        "node_id": "MDQ6VXNlcjkzODE=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9381?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/elmarco",
+        "html_url": "https://github.com/elmarco",
+        "followers_url": "https://api.github.com/users/elmarco/followers",
+        "following_url": "https://api.github.com/users/elmarco/following{/other_user}",
+        "gists_url": "https://api.github.com/users/elmarco/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/elmarco/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/elmarco/subscriptions",
+        "organizations_url": "https://api.github.com/users/elmarco/orgs",
+        "repos_url": "https://api.github.com/users/elmarco/repos",
+        "events_url": "https://api.github.com/users/elmarco/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/elmarco/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "mdroth",
+        "id": 733328,
+        "node_id": "MDQ6VXNlcjczMzMyOA==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/733328?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mdroth",
+        "html_url": "https://github.com/mdroth",
+        "followers_url": "https://api.github.com/users/mdroth/followers",
+        "following_url": "https://api.github.com/users/mdroth/following{/other_user}",
+        "gists_url": "https://api.github.com/users/mdroth/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/mdroth/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/mdroth/subscriptions",
+        "organizations_url": "https://api.github.com/users/mdroth/orgs",
+        "repos_url": "https://api.github.com/users/mdroth/repos",
+        "events_url": "https://api.github.com/users/mdroth/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/mdroth/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "d6c5528b0ce91667714b8c7dabaf4fbf8a898a9c",
+            "url": "https://api.github.com/repos/qemu/qemu/commits/d6c5528b0ce91667714b8c7dabaf4fbf8a898a9c",
+            "html_url": "https://github.com/qemu/qemu/commit/d6c5528b0ce91667714b8c7dabaf4fbf8a898a9c"
+        }
+    ],
+    "stats": {
+        "total": 7,
+        "additions": 7,
+        "deletions": 0
+    },
+    "files": [
+        {
+            "sha": "675f4b4c667987f78a62b29259de12bb05ee36d6",
+            "filename": "qga/commands-posix.c",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7,
+            "blob_url": "https://github.com/qemu/qemu/blob/00d2f3707a63881a0cec8d00cbd467f9b2d8af41/qga%2Fcommands-posix.c",
+            "raw_url": "https://github.com/qemu/qemu/raw/00d2f3707a63881a0cec8d00cbd467f9b2d8af41/qga%2Fcommands-posix.c",
+            "contents_url": "https://api.github.com/repos/qemu/qemu/contents/qga%2Fcommands-posix.c?ref=00d2f3707a63881a0cec8d00cbd467f9b2d8af41",
+            "patch": "@@ -154,6 +154,8 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)\n \n     /* If user has passed a time, validate and set it. */\n     if (has_time) {\n+        GDate date = { 0, };\n+\n         /* year-2038 will overflow in case time_t is 32bit */\n         if (time_ns / 1000000000 != (time_t)(time_ns / 1000000000)) {\n             error_setg(errp, \"Time %\" PRId64 \" is too large\", time_ns);\n@@ -162,6 +164,11 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)\n \n         tv.tv_sec = time_ns / 1000000000;\n         tv.tv_usec = (time_ns % 1000000000) / 1000;\n+        g_date_set_time_t(&date, tv.tv_sec);\n+        if (date.year < 1970 || date.year >= 2070) {\n+            error_setg_errno(errp, errno, \"Invalid time\");\n+            return;\n+        }\n \n         ret = settimeofday(&tv, NULL);\n         if (ret < 0) {"
+        }
+    ]
+}

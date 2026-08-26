@@ -1,0 +1,169 @@
+{
+  "sha": "804335f9d296440bb708ca844f5d89b58b50b0c6",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6ODA0MzM1ZjlkMjk2NDQwYmI3MDhjYTg0NGY1ZDg5YjU4YjUwYjBjNg==",
+  "commit": {
+    "author": {
+      "name": "runge",
+      "email": "runge@karlrunge.com",
+      "date": "2009-05-21T14:32:18Z"
+    },
+    "committer": {
+      "name": "runge",
+      "email": "runge@karlrunge.com",
+      "date": "2009-05-21T14:32:18Z"
+    },
+    "message": "Thread safety for zrle, zlib, tight.\nProposed tight security type fix for debian bug 517422.",
+    "tree": {
+      "sha": "a59c3c06a829b0a80c5d276d587369e01e92a5fb",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/a59c3c06a829b0a80c5d276d587369e01e92a5fb"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/804335f9d296440bb708ca844f5d89b58b50b0c6",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/804335f9d296440bb708ca844f5d89b58b50b0c6",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/804335f9d296440bb708ca844f5d89b58b50b0c6",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/804335f9d296440bb708ca844f5d89b58b50b0c6/comments",
+  "author": null,
+  "committer": null,
+  "parents": [
+    {
+      "sha": "2cd48332e02d9c81f67b2d718ad1feed5b0a808e",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/2cd48332e02d9c81f67b2d718ad1feed5b0a808e",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/2cd48332e02d9c81f67b2d718ad1feed5b0a808e"
+    }
+  ],
+  "stats": {
+    "total": 234,
+    "additions": 187,
+    "deletions": 47
+  },
+  "files": [
+    {
+      "sha": "4a797fc39f53d0f1fb52108b2ba5f32091db16c7",
+      "filename": "ChangeLog",
+      "status": "modified",
+      "additions": 13,
+      "deletions": 0,
+      "changes": 13,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/ChangeLog",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/ChangeLog",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/ChangeLog?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -1,3 +1,16 @@\n+2009-05-21  Karl Runge <runge@karlrunge.com>\n+\t* configure.ac: check for __thread.\n+\t* libvncserver/main.c, libvncserver/rfbserver.c: various\n+\t  thread safe corrections including sendMutex guard.\n+\t* libvncserver/zrle.c, libvncserver/zrleencodetemplate.c:\n+\t  thread safety via per-client buffers.\n+\t* libvncserver/tight.c, libvncserver/zlib.c: thread safety\n+\t  corrections via thread local storage using __thread.\n+\t* rfb/rfb.h: new members for threaded usage.\n+\t* tightvnc-filetransfer/rfbtightserver.c: fix (currently disabled)\n+\t  for tight security type for RFB 3.8 (debian bug 517422.)\n+\t  NEEDS AUDIT.\n+\n 2009-03-12  Johannes E. Schindelin  <Johannes.Schindelin@gmx.de>\n \t* client_examples/SDLvncviewer.c: support mouse wheel operations\n "
+    },
+    {
+      "sha": "65e258ce3796172d250ef17dd53e497cca88ad36",
+      "filename": "configure.ac",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 0,
+      "changes": 7,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/configure.ac",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/configure.ac",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/configure.ac?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -628,6 +628,13 @@ if test \"x$with_pthread\" != \"xno\"; then\n fi\n AM_CONDITIONAL(HAVE_LIBPTHREAD, test ! -z \"$HAVE_LIBPTHREAD\")\n \n+AC_MSG_CHECKING([for __thread])\n+AC_LINK_IFELSE([AC_LANG_PROGRAM(, [static __thread int p = 0])],\n+\t       [AC_DEFINE(HAVE_TLS, 1,\n+\t\t      Define to 1 if compiler supports __thread)\n+\t\tAC_MSG_RESULT([yes])],\n+\t       [AC_MSG_RESULT([no])])\n+\n # tightvnc-filetransfer implemented using threads:\n if test -z \"$HAVE_LIBPTHREAD\"; then\n \twith_tightvnc_filetransfer=\"\""
+    },
+    {
+      "sha": "1c9a4e7cc9cdaf0c6cf52c4a1b1bb839a62aebd0",
+      "filename": "libvncserver/main.c",
+      "status": "modified",
+      "additions": 30,
+      "deletions": 16,
+      "changes": 46,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fmain.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fmain.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Fmain.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -444,22 +444,34 @@ clientOutput(void *data)\n     while (1) {\n         haveUpdate = false;\n         while (!haveUpdate) {\n-            if (cl->sock == -1) {\n-                /* Client has disconnected. */\n-                return NULL;\n-            }\n-\t    LOCK(cl->updateMutex);\n-\t    haveUpdate = FB_UPDATE_PENDING(cl);\n-\t    if(!haveUpdate) {\n-\t\tupdateRegion = sraRgnCreateRgn(cl->modifiedRegion);\n-\t\thaveUpdate = sraRgnAnd(updateRegion,cl->requestedRegion);\n-\t\tsraRgnDestroy(updateRegion);\n-\t    }\n-\n-            if (!haveUpdate) {\n-                WAIT(cl->updateCond, cl->updateMutex);\n-            }\n-\t    UNLOCK(cl->updateMutex);\n+\t\tif (cl->sock == -1) {\n+\t\t\t/* Client has disconnected. */\n+\t\t\treturn NULL;\n+\t\t}\n+\t\tif (cl->state != RFB_NORMAL || cl->onHold) {\n+\t\t\t/* just sleep until things get normal */\n+\t\t\tusleep(cl->screen->deferUpdateTime * 1000);\n+\t\t\tcontinue;\n+\t\t}\n+\n+\t\tLOCK(cl->updateMutex);\n+\n+\t\tif (sraRgnEmpty(cl->requestedRegion)) {\n+\t\t\t; /* always require a FB Update Request (otherwise can crash.) */\n+\t\t} else {\n+\t\t\thaveUpdate = FB_UPDATE_PENDING(cl);\n+\t\t\tif(!haveUpdate) {\n+\t\t\t\tupdateRegion = sraRgnCreateRgn(cl->modifiedRegion);\n+\t\t\t\thaveUpdate   = sraRgnAnd(updateRegion,cl->requestedRegion);\n+\t\t\t\tsraRgnDestroy(updateRegion);\n+\t\t\t}\n+\t\t}\n+\n+\t\tif (!haveUpdate) {\n+\t\t\tWAIT(cl->updateCond, cl->updateMutex);\n+\t\t}\n+\n+\t\tUNLOCK(cl->updateMutex);\n         }\n         \n         /* OK, now, to save bandwidth, wait a little while for more\n@@ -476,7 +488,9 @@ clientOutput(void *data)\n \n         /* Now actually send the update. */\n \trfbIncrClientRef(cl);\n+        LOCK(cl->sendMutex);\n         rfbSendFramebufferUpdate(cl, updateRegion);\n+        UNLOCK(cl->sendMutex);\n \trfbDecrClientRef(cl);\n \n \tsraRgnDestroy(updateRegion);"
+    },
+    {
+      "sha": "bb9c665fb9ad775226b805fdb5447e2187649ea3",
+      "filename": "libvncserver/rfbserver.c",
+      "status": "modified",
+      "additions": 21,
+      "deletions": 0,
+      "changes": 21,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Frfbserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Frfbserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Frfbserver.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -327,6 +327,7 @@ rfbNewTCPOrUDPClient(rfbScreenInfoPtr rfbScreen,\n \n       INIT_MUTEX(cl->outputMutex);\n       INIT_MUTEX(cl->refCountMutex);\n+      INIT_MUTEX(cl->sendMutex);\n       INIT_COND(cl->deleteCond);\n \n       cl->state = RFB_PROTOCOL_VERSION;\n@@ -550,6 +551,10 @@ rfbClientConnectionGone(rfbClientPtr cl)\n     UNLOCK(cl->outputMutex);\n     TINI_MUTEX(cl->outputMutex);\n \n+    LOCK(cl->sendMutex);\n+    UNLOCK(cl->sendMutex);\n+    TINI_MUTEX(cl->sendMutex);\n+\n #ifdef CORBA\n     destroyConnection(cl);\n #endif\n@@ -1102,9 +1107,11 @@ rfbBool rfbSendFileTransferMessage(rfbClientPtr cl, uint8_t contentType, uint8_t\n     /*\n     rfbLog(\"rfbSendFileTransferMessage( %dtype, %dparam, %dsize, %dlen, %p)\\n\", contentType, contentParam, size, length, buffer);\n     */\n+    LOCK(cl->sendMutex);\n     if (rfbWriteExact(cl, (char *)&ft, sz_rfbFileTransferMsg) < 0) {\n         rfbLogPerror(\"rfbSendFileTransferMessage: write\");\n         rfbCloseClient(cl);\n+        UNLOCK(cl->sendMutex);\n         return FALSE;\n     }\n \n@@ -1113,9 +1120,11 @@ rfbBool rfbSendFileTransferMessage(rfbClientPtr cl, uint8_t contentType, uint8_t\n         if (rfbWriteExact(cl, buffer, length) < 0) {\n             rfbLogPerror(\"rfbSendFileTransferMessage: write\");\n             rfbCloseClient(cl);\n+            UNLOCK(cl->sendMutex);\n             return FALSE;\n         }\n     }\n+    UNLOCK(cl->sendMutex);\n \n     rfbStatRecordMessageSent(cl, rfbFileTransfer, sz_rfbFileTransferMsg+length, sz_rfbFileTransferMsg+length);\n \n@@ -1525,12 +1534,15 @@ rfbBool rfbProcessFileTransfer(rfbClientPtr cl, uint8_t contentType, uint8_t con\n \n         /* TODO: finish 64-bit file size support */\n         sizeHtmp = 0;        \n+        LOCK(cl->sendMutex);\n         if (rfbWriteExact(cl, (char *)&sizeHtmp, 4) < 0) {\n           rfbLogPerror(\"rfbProcessFileTransfer: write\");\n           rfbCloseClient(cl);\n+          UNLOCK(cl->sendMutex);\n           if (buffer!=NULL) free(buffer);\n           return FALSE;\n         }\n+        UNLOCK(cl->sendMutex);\n         break;\n \n     case rfbFileHeader:\n@@ -2122,6 +2134,7 @@ rfbProcessClientNormalMessage(rfbClientPtr cl)\n \t    if (!cl->format.trueColour) {\n \t\tif (!rfbSetClientColourMap(cl, 0, 0)) {\n \t\t    sraRgnDestroy(tmpRegion);\n+\t\t    TSIGNAL(cl->updateCond);\n \t\t    UNLOCK(cl->updateMutex);\n \t\t    return;\n \t\t}\n@@ -3103,12 +3116,15 @@ rfbSendSetColourMapEntries(rfbClientPtr cl,\n \n     len += nColours * 3 * 2;\n \n+    LOCK(cl->sendMutex);\n     if (rfbWriteExact(cl, wbuf, len) < 0) {\n \trfbLogPerror(\"rfbSendSetColourMapEntries: write\");\n \trfbCloseClient(cl);\n         if (wbuf != buf) free(wbuf);\n+        UNLOCK(cl->sendMutex);\n \treturn FALSE;\n     }\n+    UNLOCK(cl->sendMutex);\n \n     rfbStatRecordMessageSent(cl, rfbSetColourMapEntries, len, len);\n     if (wbuf != buf) free(wbuf);\n@@ -3129,10 +3145,12 @@ rfbSendBell(rfbScreenInfoPtr rfbScreen)\n     i = rfbGetClientIterator(rfbScreen);\n     while((cl=rfbClientIteratorNext(i))) {\n \tb.type = rfbBell;\n+        LOCK(cl->sendMutex);\n \tif (rfbWriteExact(cl, (char *)&b, sz_rfbBellMsg) < 0) {\n \t    rfbLogPerror(\"rfbSendBell: write\");\n \t    rfbCloseClient(cl);\n \t}\n+        UNLOCK(cl->sendMutex);\n     }\n     rfbStatRecordMessageSent(cl, rfbBell, sz_rfbBellMsg, sz_rfbBellMsg);\n     rfbReleaseClientIterator(i);\n@@ -3154,16 +3172,19 @@ rfbSendServerCutText(rfbScreenInfoPtr rfbScreen,char *str, int len)\n     while ((cl = rfbClientIteratorNext(iterator)) != NULL) {\n         sct.type = rfbServerCutText;\n         sct.length = Swap32IfLE(len);\n+        LOCK(cl->sendMutex);\n         if (rfbWriteExact(cl, (char *)&sct,\n                        sz_rfbServerCutTextMsg) < 0) {\n             rfbLogPerror(\"rfbSendServerCutText: write\");\n             rfbCloseClient(cl);\n+            UNLOCK(cl->sendMutex);\n             continue;\n         }\n         if (rfbWriteExact(cl, str, len) < 0) {\n             rfbLogPerror(\"rfbSendServerCutText: write\");\n             rfbCloseClient(cl);\n         }\n+        UNLOCK(cl->sendMutex);\n         rfbStatRecordMessageSent(cl, rfbServerCutText, sz_rfbServerCutTextMsg+len, sz_rfbServerCutTextMsg+len);\n     }\n     rfbReleaseClientIterator(iterator);"
+    },
+    {
+      "sha": "54eb9215fb6ef944cc363e6be39ae4f2e81035b8",
+      "filename": "libvncserver/tight.c",
+      "status": "modified",
+      "additions": 30,
+      "deletions": 15,
+      "changes": 45,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Ftight.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Ftight.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Ftight.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -47,9 +47,20 @@\n /* May be set to TRUE with \"-lazytight\" Xvnc option. */\n rfbBool rfbTightDisableGradient = FALSE;\n \n-/* This variable is set on every rfbSendRectEncodingTight() call. */\n-static rfbBool usePixelFormat24;\n+/*\n+ * There is so much access of the Tight encoding static data buffers\n+ * that we resort to using thread local storage instead of having\n+ * per-client data.\n+ */\n+#if LIBVNCSERVER_HAVE_LIBPTHREAD && LIBVNCSERVER_HAVE_TLS && !defined(TLS) && defined(__linux__)\n+#define TLS __thread\n+#endif\n+#ifndef TLS\n+#define TLS\n+#endif\n \n+/* This variable is set on every rfbSendRectEncodingTight() call. */\n+static TLS rfbBool usePixelFormat24 = FALSE;\n \n /* Compression level stuff. The following array contains various\n    encoder parameters for each of 10 compression levels (0..9).\n@@ -77,8 +88,8 @@ static TIGHT_CONF tightConf[10] = {\n     { 65536, 2048,  32,  8192, 9, 9, 9, 6, 200, 500,  96, 80,   200,   500 }\n };\n \n-static int compressLevel;\n-static int qualityLevel;\n+static TLS int compressLevel = 0;\n+static TLS int qualityLevel = 0;\n \n /* Stuff dealing with palettes. */\n \n@@ -100,29 +111,33 @@ typedef struct PALETTE_s {\n } PALETTE;\n \n /* TODO: move into rfbScreen struct */\n-static int paletteNumColors, paletteMaxColors;\n-static uint32_t monoBackground, monoForeground;\n-static PALETTE palette;\n+static TLS int paletteNumColors = 0;\n+static TLS int paletteMaxColors = 0;\n+static TLS uint32_t monoBackground = 0;\n+static TLS uint32_t monoForeground = 0;\n+static TLS PALETTE palette;\n \n /* Pointers to dynamically-allocated buffers. */\n \n-static int tightBeforeBufSize = 0;\n-static char *tightBeforeBuf = NULL;\n+static TLS int tightBeforeBufSize = 0;\n+static TLS char *tightBeforeBuf = NULL;\n \n-static int tightAfterBufSize = 0;\n-static char *tightAfterBuf = NULL;\n+static TLS int tightAfterBufSize = 0;\n+static TLS char *tightAfterBuf = NULL;\n \n-static int *prevRowBuf = NULL;\n+static TLS int *prevRowBuf = NULL;\n \n void rfbTightCleanup(rfbScreenInfoPtr screen)\n {\n   if(tightBeforeBufSize) {\n     free(tightBeforeBuf);\n     tightBeforeBufSize=0;\n+    tightBeforeBuf = NULL;\n   }\n   if(tightAfterBufSize) {\n     free(tightAfterBuf);\n     tightAfterBufSize=0;\n+    tightAfterBuf = NULL;\n   }\n }\n \n@@ -1627,9 +1642,9 @@ DEFINE_DETECT_FUNCTION(32)\n  * JPEG compression stuff.\n  */\n \n-static struct jpeg_destination_mgr jpegDstManager;\n-static rfbBool jpegError;\n-static int jpegDstDataLen;\n+static TLS struct jpeg_destination_mgr jpegDstManager;\n+static TLS rfbBool jpegError = FALSE;\n+static TLS int jpegDstDataLen = 0;\n \n static rfbBool\n SendJpegRect(rfbClientPtr cl, int x, int y, int w, int h, int quality)"
+    },
+    {
+      "sha": "ef29514f32056a16c954388681d7cc7617439620",
+      "filename": "libvncserver/tightvnc-filetransfer/rfbtightserver.c",
+      "status": "modified",
+      "additions": 24,
+      "deletions": 0,
+      "changes": 24,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Ftightvnc-filetransfer%2Frfbtightserver.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Ftightvnc-filetransfer%2Frfbtightserver.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Ftightvnc-filetransfer%2Frfbtightserver.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -74,6 +74,24 @@ rfbVncAuthSendChallenge(rfbClientPtr cl)\n \n }\n \n+/*\n+ * LibVNCServer has a bug WRT Tight SecurityType and RFB 3.8\n+ * It should send auth result even for rfbAuthNone.\n+ * See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=517422\n+ * For testing set USE_SECTYPE_TIGHT_FOR_RFB_3_8 when compiling\n+ * or set it here.\n+ */\n+#define SECTYPE_TIGHT_FOR_RFB_3_8 \\\n+\tif (cl->protocolMajorVersion==3 && cl->protocolMinorVersion > 7) { \\\n+\t\tuint32_t authResult; \\\n+\t\trfbLog(\"rfbProcessClientSecurityType: returning securityResult for client rfb version >= 3.8\\n\"); \\\n+\t\tauthResult = Swap32IfLE(rfbVncAuthOK); \\\n+\t\tif (rfbWriteExact(cl, (char *)&authResult, 4) < 0) { \\\n+\t\t\trfbLogPerror(\"rfbAuthProcessClientMessage: write\"); \\\n+\t\t\trfbCloseClient(cl); \\\n+\t\t\treturn; \\\n+\t\t} \\\n+\t}\n /*\n  * Read client's preferred authentication type (protocol 3.7t).\n  */\n@@ -117,6 +135,9 @@ rfbProcessClientAuthType(rfbClientPtr cl)\n     switch (auth_type) {\n     case rfbAuthNone:\n \t/* Dispatch client input to rfbProcessClientInitMessage. */\n+#ifdef USE_SECTYPE_TIGHT_FOR_RFB_3_8\n+\tSECTYPE_TIGHT_FOR_RFB_3_8\n+#endif\n \tcl->state = RFB_INITIALISATION;\n \tbreak;\n     case rfbAuthVNC:\n@@ -188,6 +209,9 @@ rfbSendAuthCaps(rfbClientPtr cl)\n \t/* Call the function for authentication from here */\n \trfbProcessClientAuthType(cl);\n     } else {\n+#ifdef USE_SECTYPE_TIGHT_FOR_RFB_3_8\n+\tSECTYPE_TIGHT_FOR_RFB_3_8\n+#endif\n \t/* Dispatch client input to rfbProcessClientInitMessage. */\n \tcl->state = RFB_INITIALISATION;\n     }"
+    },
+    {
+      "sha": "ac20c9c9aa305832a4ffbca61da11f11c1792ea1",
+      "filename": "libvncserver/zlib.c",
+      "status": "modified",
+      "additions": 18,
+      "deletions": 6,
+      "changes": 24,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzlib.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzlib.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Fzlib.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -40,12 +40,24 @@\n  * raw encoding is used instead.\n  */\n \n-static int zlibBeforeBufSize = 0;\n-static char *zlibBeforeBuf = NULL;\n-\n-static int zlibAfterBufSize = 0;\n-static char *zlibAfterBuf = NULL;\n-static int zlibAfterBufLen;\n+/*\n+ * Out of lazyiness, we use thread local storage for zlib as we did for\n+ * tight.  N.B. ZRLE does it the traditional way with per-client storage\n+ * (and so at least ZRLE will work threaded on older systems.)\n+ */\n+#if LIBVNCSERVER_HAVE_LIBPTHREAD && LIBVNCSERVER_HAVE_TLS && !defined(TLS) && defined(__linux__)\n+#define TLS __thread\n+#endif\n+#ifndef TLS\n+#define TLS\n+#endif\n+\n+static TLS int zlibBeforeBufSize = 0;\n+static TLS char *zlibBeforeBuf = NULL;\n+\n+static TLS int zlibAfterBufSize = 0;\n+static TLS char *zlibAfterBuf = NULL;\n+static TLS int zlibAfterBufLen = 0;\n \n void rfbZlibCleanup(rfbScreenInfoPtr screen)\n {"
+    },
+    {
+      "sha": "e1f14475bdab0011d09d170465a153a7f6e20842",
+      "filename": "libvncserver/zrle.c",
+      "status": "modified",
+      "additions": 21,
+      "deletions": 6,
+      "changes": 27,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzrle.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzrle.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Fzrle.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -97,21 +97,25 @@\n  */\n \n /* TODO: put into rfbClient struct */\n-static char zrleBeforeBuf[rfbZRLETileWidth * rfbZRLETileHeight * 4 + 4];\n-\n \n+static char zrleBeforeBuf[rfbZRLETileWidth * rfbZRLETileHeight * 4 + 4];\n \n /*\n  * rfbSendRectEncodingZRLE - send a given rectangle using ZRLE encoding.\n  */\n \n-\n rfbBool rfbSendRectEncodingZRLE(rfbClientPtr cl, int x, int y, int w, int h)\n {\n   zrleOutStream* zos;\n   rfbFramebufferUpdateRectHeader rect;\n   rfbZRLEHeader hdr;\n   int i;\n+  char *zrleBeforeBuf;\n+\n+  if (cl->zrleBeforeBuf == NULL) {\n+\tcl->zrleBeforeBuf = (char *) malloc(rfbZRLETileWidth * rfbZRLETileHeight * 4 + 4);\n+  }\n+  zrleBeforeBuf = cl->zrleBeforeBuf;\n \n   if (cl->preferredEncoding == rfbEncodingZYWRLE) {\n \t  if (cl->tightQualityLevel < 0) {\n@@ -238,8 +242,19 @@ rfbBool rfbSendRectEncodingZRLE(rfbClientPtr cl, int x, int y, int w, int h)\n \n void rfbFreeZrleData(rfbClientPtr cl)\n {\n-  if (cl->zrleData)\n-    zrleOutStreamFree(cl->zrleData);\n-  cl->zrleData = NULL;\n+\tif (cl->zrleData) {\n+\t\tzrleOutStreamFree(cl->zrleData);\n+\t}\n+\tcl->zrleData = NULL;\n+\n+\tif (cl->zrleBeforeBuf) {\n+\t\tfree(cl->zrleBeforeBuf);\n+\t}\n+\tcl->zrleBeforeBuf = NULL;\n+\n+\tif (cl->paletteHelper) {\n+\t\tfree(cl->paletteHelper);\n+\t}\n+\tcl->paletteHelper = NULL;\n }\n "
+    },
+    {
+      "sha": "3a6f117d167652835d5cb0b688b3202088303d9d",
+      "filename": "libvncserver/zrleencodetemplate.c",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 4,
+      "changes": 16,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzrleencodetemplate.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/libvncserver%2Fzrleencodetemplate.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncserver%2Fzrleencodetemplate.c?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -89,7 +89,7 @@ static zrlePaletteHelper paletteHelper;\n #endif /* ZRLE_ONCE */\n \n void ZRLE_ENCODE_TILE (PIXEL_T* data, int w, int h, zrleOutStream* os,\n-\t\tint zywrle_level, int *zywrleBuf);\n+\t\tint zywrle_level, int *zywrleBuf, void *paletteHelper);\n \n #if BPP!=8\n #define ZYWRLE_ENCODE\n@@ -111,16 +111,20 @@ static void ZRLE_ENCODE (int x, int y, int w, int h,\n \n       GET_IMAGE_INTO_BUF(tx,ty,tw,th,buf);\n \n+      if (cl->paletteHelper == NULL) {\n+          cl->paletteHelper = (void *) calloc(sizeof(zrlePaletteHelper), 1);\n+      }\n+\n       ZRLE_ENCODE_TILE((PIXEL_T*)buf, tw, th, os,\n-\t\t      cl->zywrleLevel, cl->zywrleBuf);\n+\t\t      cl->zywrleLevel, cl->zywrleBuf, cl->paletteHelper);\n     }\n   }\n   zrleOutStreamFlush(os);\n }\n \n \n void ZRLE_ENCODE_TILE(PIXEL_T* data, int w, int h, zrleOutStream* os,\n-\tint zywrle_level, int *zywrleBuf)\n+\tint zywrle_level, int *zywrleBuf,  void *paletteHelper)\n {\n   /* First find the palette and the number of runs */\n \n@@ -140,7 +144,11 @@ void ZRLE_ENCODE_TILE(PIXEL_T* data, int w, int h, zrleOutStream* os,\n   PIXEL_T* end = ptr + h * w;\n   *end = ~*(end-1); /* one past the end is different so the while loop ends */\n \n+#if 0\n   ph = &paletteHelper;\n+#else\n+  ph = (zrlePaletteHelper *) paletteHelper;\n+#endif\n   zrlePaletteHelperInit(ph);\n \n   while (ptr < end) {\n@@ -289,7 +297,7 @@ void ZRLE_ENCODE_TILE(PIXEL_T* data, int w, int h, zrleOutStream* os,\n #if BPP!=8\n       if (zywrle_level > 0 && !(zywrle_level & 0x80)) {\n         ZYWRLE_ANALYZE(data, data, w, h, w, zywrle_level, zywrleBuf);\n-\tZRLE_ENCODE_TILE(data, w, h, os, zywrle_level | 0x80, zywrleBuf);\n+\tZRLE_ENCODE_TILE(data, w, h, os, zywrle_level | 0x80, zywrleBuf, paletteHelper);\n       }\n       else\n #endif"
+    },
+    {
+      "sha": "b28a863730ca85dfb45a6a3843466cb23bffbacd",
+      "filename": "rfb/rfb.h",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 0,
+      "changes": 11,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/804335f9d296440bb708ca844f5d89b58b50b0c6/rfb%2Frfb.h",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/804335f9d296440bb708ca844f5d89b58b50b0c6/rfb%2Frfb.h",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/rfb%2Frfb.h?ref=804335f9d296440bb708ca844f5d89b58b50b0c6",
+      "patch": "@@ -589,6 +589,17 @@ typedef struct _rfbClientRec {\n     int progressiveSliceY;\n \n     rfbExtensionData* extensions;\n+\n+    /* for threaded zrle */\n+    char *zrleBeforeBuf;\n+    void *paletteHelper;\n+\n+    /* for thread safety for rfbSendFBUpdate() */\n+#ifdef LIBVNCSERVER_HAVE_LIBPTHREAD\n+#define LIBVNCSERVER_SEND_MUTEX\n+    MUTEX(sendMutex);\n+#endif\n+\n } rfbClientRec, *rfbClientPtr;\n \n /*"
+    }
+  ]
+}

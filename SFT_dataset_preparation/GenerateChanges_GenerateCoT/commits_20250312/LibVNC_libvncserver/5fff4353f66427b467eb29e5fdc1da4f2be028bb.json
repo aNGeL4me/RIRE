@@ -1,0 +1,101 @@
+{
+  "sha": "5fff4353f66427b467eb29e5fdc1da4f2be028bb",
+  "node_id": "MDY6Q29tbWl0MTgyNzc4ODc6NWZmZjQzNTNmNjY0MjdiNDY3ZWIyOWU1ZmRjMWRhNGYyYmUwMjhiYg==",
+  "commit": {
+    "author": {
+      "name": "Josef Gajdusek",
+      "email": "atx@atx.name",
+      "date": "2016-11-14T11:38:05Z"
+    },
+    "committer": {
+      "name": "Josef Gajdusek",
+      "email": "atx@atx.name",
+      "date": "2016-11-14T11:51:50Z"
+    },
+    "message": "Fix heap overflow in the ultra.c decoder\n\nThe Ultra type tile decoder does not use the _safe variant of the LZO\ndecompress function, which allows a maliciuous server to overwrite parts of the\nheap by sending a larger-than-specified LZO data stream.",
+    "tree": {
+      "sha": "4f3886346bc97e7a7e2abd0e3be28845b216dea3",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/git/trees/4f3886346bc97e7a7e2abd0e3be28845b216dea3"
+    },
+    "url": "https://api.github.com/repos/LibVNC/libvncserver/git/commits/5fff4353f66427b467eb29e5fdc1da4f2be028bb",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/5fff4353f66427b467eb29e5fdc1da4f2be028bb",
+  "html_url": "https://github.com/LibVNC/libvncserver/commit/5fff4353f66427b467eb29e5fdc1da4f2be028bb",
+  "comments_url": "https://api.github.com/repos/LibVNC/libvncserver/commits/5fff4353f66427b467eb29e5fdc1da4f2be028bb/comments",
+  "author": {
+    "login": "atx",
+    "id": 3966931,
+    "node_id": "MDQ6VXNlcjM5NjY5MzE=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3966931?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/atx",
+    "html_url": "https://github.com/atx",
+    "followers_url": "https://api.github.com/users/atx/followers",
+    "following_url": "https://api.github.com/users/atx/following{/other_user}",
+    "gists_url": "https://api.github.com/users/atx/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/atx/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/atx/subscriptions",
+    "organizations_url": "https://api.github.com/users/atx/orgs",
+    "repos_url": "https://api.github.com/users/atx/repos",
+    "events_url": "https://api.github.com/users/atx/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/atx/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "atx",
+    "id": 3966931,
+    "node_id": "MDQ6VXNlcjM5NjY5MzE=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3966931?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/atx",
+    "html_url": "https://github.com/atx",
+    "followers_url": "https://api.github.com/users/atx/followers",
+    "following_url": "https://api.github.com/users/atx/following{/other_user}",
+    "gists_url": "https://api.github.com/users/atx/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/atx/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/atx/subscriptions",
+    "organizations_url": "https://api.github.com/users/atx/orgs",
+    "repos_url": "https://api.github.com/users/atx/repos",
+    "events_url": "https://api.github.com/users/atx/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/atx/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "5418e8007c248bf9668d22a8c1fa9528149b69f2",
+      "url": "https://api.github.com/repos/LibVNC/libvncserver/commits/5418e8007c248bf9668d22a8c1fa9528149b69f2",
+      "html_url": "https://github.com/LibVNC/libvncserver/commit/5418e8007c248bf9668d22a8c1fa9528149b69f2"
+    }
+  ],
+  "stats": {
+    "total": 8,
+    "additions": 4,
+    "deletions": 4
+  },
+  "files": [
+    {
+      "sha": "32a1b2b868b4bb4b0728a290301cc0911f03d434",
+      "filename": "libvncclient/ultra.c",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 4,
+      "changes": 8,
+      "blob_url": "https://github.com/LibVNC/libvncserver/blob/5fff4353f66427b467eb29e5fdc1da4f2be028bb/libvncclient%2Fultra.c",
+      "raw_url": "https://github.com/LibVNC/libvncserver/raw/5fff4353f66427b467eb29e5fdc1da4f2be028bb/libvncclient%2Fultra.c",
+      "contents_url": "https://api.github.com/repos/LibVNC/libvncserver/contents/libvncclient%2Fultra.c?ref=5fff4353f66427b467eb29e5fdc1da4f2be028bb",
+      "patch": "@@ -86,14 +86,14 @@ HandleUltraBPP (rfbClient* client, int rx, int ry, int rw, int rh)\n \n   /* uncompress the data */\n   uncompressedBytes = client->raw_buffer_size;\n-  inflateResult = lzo1x_decompress(\n+  inflateResult = lzo1x_decompress_safe(\n               (lzo_byte *)client->ultra_buffer, toRead,\n               (lzo_byte *)client->raw_buffer, (lzo_uintp) &uncompressedBytes,\n               NULL);\n   \n-  \n+  /* Note that uncompressedBytes will be 0 on output overrun */\n   if ((rw * rh * (BPP / 8)) != uncompressedBytes)\n-      rfbClientLog(\"Ultra decompressed too little (%d < %d)\", (rw * rh * (BPP / 8)), uncompressedBytes);\n+      rfbClientLog(\"Ultra decompressed unexpected amount of data (%d != %d)\\n\", (rw * rh * (BPP / 8)), uncompressedBytes);\n   \n   /* Put the uncompressed contents of the update on the screen. */\n   if ( inflateResult == LZO_E_OK ) \n@@ -168,7 +168,7 @@ HandleUltraZipBPP (rfbClient* client, int rx, int ry, int rw, int rh)\n \n   /* uncompress the data */\n   uncompressedBytes = client->raw_buffer_size;\n-  inflateResult = lzo1x_decompress(\n+  inflateResult = lzo1x_decompress_safe(\n               (lzo_byte *)client->ultra_buffer, toRead,\n               (lzo_byte *)client->raw_buffer, &uncompressedBytes, NULL);\n   if ( inflateResult != LZO_E_OK ) "
+    }
+  ]
+}
